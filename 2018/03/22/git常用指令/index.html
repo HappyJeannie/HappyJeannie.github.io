@@ -3,20 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>D3使用 | Summer&#39;s blog</title>
+  <title>git常用指令 | Summer&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="yanjun|闫俊|summer|HappyJeannie|Happjeannie|html|css|html5|css3|javascript|vue|webpack|node|java|chart|d3|响应式|h5">
-<meta name="keywords" content="数据可视化 D3.js">
+  <meta name="description" content="主要介绍一下git/github的使用及相关配置；">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="D3使用">
-<meta property="og:url" content="http://yoursite.com/2017/12/14/D3使用/index.html">
+<meta property="og:title" content="git常用指令">
+<meta property="og:url" content="http://yoursite.com/2018/03/22/git常用指令/index.html">
 <meta property="og:site_name" content="Summer&#39;s blog">
-<meta property="og:description" content="yanjun|闫俊|summer|HappyJeannie|Happjeannie|html|css|html5|css3|javascript|vue|webpack|node|java|chart|d3|响应式|h5">
+<meta property="og:description" content="主要介绍一下git/github的使用及相关配置；">
 <meta property="og:locale" content="Chinese">
-<meta property="og:updated_time" content="2017-12-17T09:08:13.378Z">
+<meta property="og:image" content="http://yoursite.com/css/images/git.png">
+<meta property="og:image" content="http://yoursite.com/css/images/git/init.png">
+<meta property="og:updated_time" content="2018-03-22T03:50:57.257Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="D3使用">
-<meta name="twitter:description" content="yanjun|闫俊|summer|HappyJeannie|Happjeannie|html|css|html5|css3|javascript|vue|webpack|node|java|chart|d3|响应式|h5">
+<meta name="twitter:title" content="git常用指令">
+<meta name="twitter:description" content="主要介绍一下git/github的使用及相关配置；">
+<meta name="twitter:image" content="http://yoursite.com/css/images/git.png">
   
     <link rel="alternate" href="/atom.xml" title="Summer&#39;s blog" type="application/atom+xml">
   
@@ -69,10 +72,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-D3使用" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-git常用指令" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/12/14/D3使用/" class="article-date">
-  <time datetime="2017-12-14T02:54:04.000Z" itemprop="datePublished">2017-12-14</time>
+    <a href="/2018/03/22/git常用指令/" class="article-date">
+  <time datetime="2018-03-21T16:40:35.000Z" itemprop="datePublished">2018-03-22</time>
 </a>
     
   </div>
@@ -83,7 +86,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      D3使用
+      git常用指令
     </h1>
   
 
@@ -91,14 +94,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>主要介绍一下git/github的使用及相关配置；</p>
+<a id="more"></a>
+<h5 id="一、SSH-Keys"><a href="#一、SSH-Keys" class="headerlink" title="一、SSH Keys"></a>一、SSH Keys</h5><p>这个相当于一把钥匙（在机器中即笔记本中进行配置），github相当于一把锁，每次发起请求是会去验证钥匙与锁是否配对。<a href="&quot;https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/&quot;">如何添加新的SSH Keys</a></p>
+<h5 id="二、git操作流程概览"><a href="#二、git操作流程概览" class="headerlink" title="二、git操作流程概览"></a>二、git操作流程概览</h5><p>这里指介绍常用的操作流程。<br><img src="./../../../../css/images/git.png" alt="git操作流程图"><br>在这里不得不给ProcessOn打一波广告，第一次用这个，实在是好用，可以画流程图、思维导图，简直神器！</p>
+<h5 id="三、实例操作"><a href="#三、实例操作" class="headerlink" title="三、实例操作"></a>三、实例操作</h5><p>1、项目建立<br>在github上新建一个Respostory(仓库)，新建完成后的页面为<br><img src="./../../../../css/images/git/init.png" alt="git仓库建立"><br>2、在本地新建文件夹，命名为blog，依据上图提示进行操作。在blog文件夹中快速打开命令行工具，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init;    // 在当前目录新建一个Git代码库</span><br></pre></td></tr></table></figure></p>
+<p>这个操作在当前目录下声生成了一个.git文件，默认不显示，可在命令行中输入 ls -a,即可看到所有被隐藏文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. echo &quot;# testblog&quot; &gt;&gt; README.md   //在当前目录下新建README.md,且文件内容为&apos;testblog&apos;</span><br><span class="line">2. git add README.md                //将README.md文件提交到问题暂存区</span><br><span class="line">3. git commit -m &quot;first commit&quot;     //将暂存区文件提交到本地仓库，且本次提交记录为&apos;first commit&apos;</span><br><span class="line">4.                                  //以上commit命令也可用git commit -v来执行，区别是-v情况下会启动编辑器，输入本次修改的详细内容</span><br><span class="line">5. git remote add origin git@github.com:HappyJeannie/testblog.git   //添加远程仓库</span><br><span class="line">6. git push -u origin master        // 将本地仓库中的文件推送到远端，在你的github项目中便可以查看到刚刚新建的文件</span><br></pre></td></tr></table></figure></p>
+<h5 id="四、操作用遇到的问题"><a href="#四、操作用遇到的问题" class="headerlink" title="四、操作用遇到的问题"></a>四、操作用遇到的问题</h5><p>提交到远端并不是所有人都可以提交的，所以输入上述命令的过程中，输入第6行命令后会报错，因为我们本地并未生成SSH Keys。此时我们需要打开登录状态下的github官网，点击个人头像-&gt;Settings-&gt;SSH and GPG keys-&gt;New SSH Keys，如何新SSH Keys请参考本文第一条。<br>在添加完成SSH Keys后，在重复实力操作部分，即可完成本地文件到github文件的提交。</p>
+<p>至此，本次介绍就暂时这么多，如有错误，敬请指正。后续会持续更新。<br>本文将转载至个人的<a href="&#39;https://www.jianshu.com/p/6f05524c4db2&#39;">简书</a>以及<a href="&quot;https://zhuanlan.zhihu.com/p/34817042&quot;">知乎</a>。个人原创，转载请注明出处。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/14/D3使用/" data-id="cjf1blbuy00006ws6clc620yi" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2018/03/22/git常用指令/" data-id="cjf1blbv700046ws6wna5q03w" class="article-share-link">Partager</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据可视化-D3-js/">数据可视化 D3.js</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
 
     </footer>
   </div>
@@ -106,19 +117,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/01/02/flex/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
-      <div class="article-nav-title">
-        
-          flex
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/11/30/MarkDown/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/03/19/前端入门知识总结/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Ancien</strong>
-      <div class="article-nav-title">MarkDown</div>
+      <div class="article-nav-title">前端入门知识总结</div>
     </a>
   
 </nav>
