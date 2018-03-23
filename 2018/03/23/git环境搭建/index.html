@@ -3,20 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>flex | Summer&#39;s blog</title>
+  <title>git环境搭建 | Summer&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于flex弹性布局在前端页面，尤其是在响应式布局中的应用是非常的简便，由于对ie9兼容性不是很好，而之前的开发模式并没有摒弃ie用户，所以至今才开始了解flex弹性布局。简要介绍几种在前端中常用的几种布局模式：">
-<meta name="keywords" content="flex 弹性盒模型">
+  <meta name="description" content="上一篇文章直接写了一些git的基础指令，在本文，将要介绍一下如何安装git环境。hexo的安装依赖node，在安装git之前，我们需要去node官网下载node的安装包，按照操作提示完成node的安装。安装完成，可以直接win+r(windows)/Finder——应用程序——工具——终端(mac,打开后可将终端锁定在">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="flex">
-<meta property="og:url" content="http://yoursite.com/2018/01/02/flex/index.html">
+<meta property="og:title" content="git环境搭建">
+<meta property="og:url" content="http://yoursite.com/2018/03/23/git环境搭建/index.html">
 <meta property="og:site_name" content="Summer&#39;s blog">
-<meta property="og:description" content="关于flex弹性布局在前端页面，尤其是在响应式布局中的应用是非常的简便，由于对ie9兼容性不是很好，而之前的开发模式并没有摒弃ie用户，所以至今才开始了解flex弹性布局。简要介绍几种在前端中常用的几种布局模式：">
+<meta property="og:description" content="上一篇文章直接写了一些git的基础指令，在本文，将要介绍一下如何安装git环境。hexo的安装依赖node，在安装git之前，我们需要去node官网下载node的安装包，按照操作提示完成node的安装。安装完成，可以直接win+r(windows)/Finder——应用程序——工具——终端(mac,打开后可将终端锁定在Dock，方便操作)。安装完成后，可在命令行工具中输入node -v，则剋查询出">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-13T15:48:02.282Z">
+<meta property="og:image" content="http://yoursite.com/css/images/git/step.png">
+<meta property="og:updated_time" content="2018-03-23T04:37:39.467Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="flex">
-<meta name="twitter:description" content="关于flex弹性布局在前端页面，尤其是在响应式布局中的应用是非常的简便，由于对ie9兼容性不是很好，而之前的开发模式并没有摒弃ie用户，所以至今才开始了解flex弹性布局。简要介绍几种在前端中常用的几种布局模式：">
+<meta name="twitter:title" content="git环境搭建">
+<meta name="twitter:description" content="上一篇文章直接写了一些git的基础指令，在本文，将要介绍一下如何安装git环境。hexo的安装依赖node，在安装git之前，我们需要去node官网下载node的安装包，按照操作提示完成node的安装。安装完成，可以直接win+r(windows)/Finder——应用程序——工具——终端(mac,打开后可将终端锁定在Dock，方便操作)。安装完成后，可在命令行工具中输入node -v，则剋查询出">
+<meta name="twitter:image" content="http://yoursite.com/css/images/git/step.png">
   
     <link rel="alternate" href="/atom.xml" title="Summer&#39;s blog" type="application/atom+xml">
   
@@ -69,10 +71,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-flex" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-git环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/01/02/flex/" class="article-date">
-  <time datetime="2018-01-02T15:26:18.000Z" itemprop="datePublished">2018-01-02</time>
+    <a href="/2018/03/23/git环境搭建/" class="article-date">
+  <time datetime="2018-03-23T02:53:10.000Z" itemprop="datePublished">2018-03-23</time>
 </a>
     
   </div>
@@ -83,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      flex
+      git环境搭建
     </h1>
   
 
@@ -91,16 +93,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关于flex弹性布局在前端页面，尤其是在响应式布局中的应用是非常的简便，由于对ie9兼容性不是很好，而之前的开发模式并没有摒弃ie用户，所以至今才开始了解flex弹性布局。<br>简要介绍几种在前端中常用的几种布局模式：</p>
-<a id="more"></a>
-<h5 id="一、左侧固定宽度，右侧弹性宽度"><a href="#一、左侧固定宽度，右侧弹性宽度" class="headerlink" title="一、左侧固定宽度，右侧弹性宽度"></a>一、左侧固定宽度，右侧弹性宽度</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">....</span><br><span class="line">	&lt;div class=&quot;box&quot;&gt;</span><br><span class="line">		&lt;div class=&quot;left&quot;&gt;固定宽度&lt;/div&gt;</span><br><span class="line">		&lt;div class=&quot;right&quot;&gt;弹性宽度&lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	&lt;style&gt;</span><br><span class="line">		.box&#123;</span><br><span class="line">			display: flex;</span><br><span class="line">			flex-flow: row;</span><br><span class="line">		&#125;</span><br><span class="line">		.left&#123;</span><br><span class="line">			width: 200px;</span><br><span class="line">		&#125;</span><br><span class="line">		.right&#123;</span><br><span class="line">			flex: 1;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/style&gt;</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+        <p>上一篇文章直接写了一些git的基础指令，在本文，将要介绍一下如何安装git环境。<br>hexo的安装依赖node，在安装git之前，我们需要去<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">node官网下载</a>node的安装包，按照操作提示完成node的安装。安装完成，可以直接win+r(windows)/Finder——应用程序——工具——终端(mac,打开后可将终端锁定在Dock，方便操作)。安装完成后，可在命令行工具中输入node -v，则剋查询出当前使用node版本。本机使用的node版本为v8.7.0。</p>
+<h5 id="Windows系统下安装git"><a href="#Windows系统下安装git" class="headerlink" title="Windows系统下安装git:"></a>Windows系统下安装git:</h5><p>1.Windowsx系统下可直接安装gitbash,gitbash中集成多种命令包括git。可从<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">gitbash官网</a>进行下载安装，按照提示操作即可。<br>安装完成后，点击右键即可看到”Git Bash Here”，点击打开，在gitbash的标题栏右键可看到默认值选项，进入之后可在里面设置gitbash背景色、字体颜色、透明度等配置。如下图所示：</p>
+<p><img src="./../../../../css/images/git/step.png" alt="git仓库建立"></p>
+<h5 id="MacOS安装git"><a href="#MacOS安装git" class="headerlink" title="MacOS安装git:"></a>MacOS安装git:</h5><p>在mac的终端上，输入git会提示安装git软件，确认安装。安装完成后打开终端，使用git –version或者which git命令查看安装版本，有就是安装成功了。本机使用的是2.16.2版本。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/02/flex/" data-id="cjf3cpiu20008rp5li7t5sc5v" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/23/git环境搭建/" data-id="cjf3cpiu6000brp5lpzadfwjn" class="article-share-link">分享</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex-弹性盒模型/">flex 弹性盒模型</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
 
     </footer>
   </div>
@@ -108,19 +112,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/01/03/Interview/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Interview
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/12/14/D3使用/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/03/23/HEXO-Github搭建个人博客/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">D3使用</div>
+      <div class="article-nav-title">HEXO+Github搭建个人博客</div>
     </a>
   
 </nav>

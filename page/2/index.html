@@ -3,20 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>flex | Summer&#39;s blog</title>
+  <title>Summer&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于flex弹性布局在前端页面，尤其是在响应式布局中的应用是非常的简便，由于对ie9兼容性不是很好，而之前的开发模式并没有摒弃ie用户，所以至今才开始了解flex弹性布局。简要介绍几种在前端中常用的几种布局模式：">
-<meta name="keywords" content="flex 弹性盒模型">
-<meta property="og:type" content="article">
-<meta property="og:title" content="flex">
-<meta property="og:url" content="http://yoursite.com/2018/01/02/flex/index.html">
+  <meta name="description" content="yanjun|闫俊|summer|HappyJeannie|Happjeannie|html|css|html5|css3|javascript|vue|webpack|node|java|chart|d3|响应式|h5">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Summer&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Summer&#39;s blog">
-<meta property="og:description" content="关于flex弹性布局在前端页面，尤其是在响应式布局中的应用是非常的简便，由于对ie9兼容性不是很好，而之前的开发模式并没有摒弃ie用户，所以至今才开始了解flex弹性布局。简要介绍几种在前端中常用的几种布局模式：">
+<meta property="og:description" content="yanjun|闫俊|summer|HappyJeannie|Happjeannie|html|css|html5|css3|javascript|vue|webpack|node|java|chart|d3|响应式|h5">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-13T15:48:02.282Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="flex">
-<meta name="twitter:description" content="关于flex弹性布局在前端页面，尤其是在响应式布局中的应用是非常的简便，由于对ie9兼容性不是很好，而之前的开发模式并没有摒弃ie用户，所以至今才开始了解flex弹性布局。简要介绍几种在前端中常用的几种布局模式：">
+<meta name="twitter:title" content="Summer&#39;s blog">
+<meta name="twitter:description" content="yanjun|闫俊|summer|HappyJeannie|Happjeannie|html|css|html5|css3|javascript|vue|webpack|node|java|chart|d3|响应式|h5">
   
     <link rel="alternate" href="/atom.xml" title="Summer&#39;s blog" type="application/atom+xml">
   
@@ -69,10 +67,12 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-flex" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/01/02/flex/" class="article-date">
-  <time datetime="2018-01-02T15:26:18.000Z" itemprop="datePublished">2018-01-02</time>
+    <a href="/2017/11/29/hello-world/" class="article-date">
+  <time datetime="2017-11-29T15:22:09.968Z" itemprop="datePublished">2017-11-29</time>
 </a>
     
   </div>
@@ -82,8 +82,8 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      flex
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/29/hello-world/">Hello World</a>
     </h1>
   
 
@@ -91,43 +91,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关于flex弹性布局在前端页面，尤其是在响应式布局中的应用是非常的简便，由于对ie9兼容性不是很好，而之前的开发模式并没有摒弃ie用户，所以至今才开始了解flex弹性布局。<br>简要介绍几种在前端中常用的几种布局模式：</p>
-<a id="more"></a>
-<h5 id="一、左侧固定宽度，右侧弹性宽度"><a href="#一、左侧固定宽度，右侧弹性宽度" class="headerlink" title="一、左侧固定宽度，右侧弹性宽度"></a>一、左侧固定宽度，右侧弹性宽度</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">....</span><br><span class="line">	&lt;div class=&quot;box&quot;&gt;</span><br><span class="line">		&lt;div class=&quot;left&quot;&gt;固定宽度&lt;/div&gt;</span><br><span class="line">		&lt;div class=&quot;right&quot;&gt;弹性宽度&lt;/div&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	&lt;style&gt;</span><br><span class="line">		.box&#123;</span><br><span class="line">			display: flex;</span><br><span class="line">			flex-flow: row;</span><br><span class="line">		&#125;</span><br><span class="line">		.left&#123;</span><br><span class="line">			width: 200px;</span><br><span class="line">		&#125;</span><br><span class="line">		.right&#123;</span><br><span class="line">			flex: 1;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/style&gt;</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span>	//新建一篇文章</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server	//启动本地服务器，在本地运行</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate    //生成静态页面</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy     //同步到github</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/02/flex/" data-id="cjf3cpiu20008rp5li7t5sc5v" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2017/11/29/hello-world/" data-id="cjf3cpiu7000drp5l0z5npl3n" class="article-share-link">分享</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex-弹性盒模型/">flex 弹性盒模型</a></li></ul>
-
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2018/01/03/Interview/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Interview
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/12/14/D3使用/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">D3使用</div>
-    </a>
-  
-</nav>
-
-  
 </article>
 
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; __('prev')</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 </section>
         
           <aside id="sidebar">
