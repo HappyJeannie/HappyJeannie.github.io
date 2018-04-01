@@ -14,7 +14,10 @@
 <meta property="og:description" content="一、WWW首先先介绍一些服务器端默认端口  21: ftp服务端口 443: https端口 1080: 代理端口 80:服务http服务器 3306: 服务于mySQL服务器从浏览器发起请求到的执行顺序如下图所示：具体步骤为: 浏览器发起请求 服务器在80端口接收请求 服务器响应请求 浏览器下载响应内容HTTP的主要作用就是指导浏览器和服务器如何沟通。  二、URL在访问一个网站的过程中，我们主">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/css/images/20180328/01.png">
-<meta property="og:updated_time" content="2018-04-01T14:22:53.000Z">
+<meta property="og:image" content="http://yoursite.com/css/images/20180328/02.png">
+<meta property="og:image" content="http://yoursite.com/css/images/20180328/03.png">
+<meta property="og:image" content="http://yoursite.com/css/images/20180328/04.png">
+<meta property="og:updated_time" content="2018-04-01T15:40:54.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP简介">
 <meta name="twitter:description" content="一、WWW首先先介绍一些服务器端默认端口  21: ftp服务端口 443: https端口 1080: 代理端口 80:服务http服务器 3306: 服务于mySQL服务器从浏览器发起请求到的执行顺序如下图所示：具体步骤为: 浏览器发起请求 服务器在80端口接收请求 服务器响应请求 浏览器下载响应内容HTTP的主要作用就是指导浏览器和服务器如何沟通。  二、URL在访问一个网站的过程中，我们主">
@@ -121,11 +124,52 @@
 </ul>
 <h5 id="三、DNS-Domain-Name-System，域名系统-amp-Hosts"><a href="#三、DNS-Domain-Name-System，域名系统-amp-Hosts" class="headerlink" title="三、DNS(Domain Name System，域名系统) &amp; Hosts"></a>三、DNS(Domain Name System，域名系统) &amp; Hosts</h5><p>DNS的作用是输入一个域名，然后会输出一个与域名对应的IP值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nslookup baidu.com      //在终端输入此命令，会返回对用域名的IP</span><br><span class="line">ping baidu.com          //可以在终端ping一下此域名，仍然可以返回对应IP</span><br></pre></td></tr></table></figure></p>
 <p>既然可以通过域名访问IP，那么我们就可以给某些域名指定IP：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/hosts        //编辑文件</span><br><span class="line">127.0.0.1       baidu.com   //在最后一行输入此内容后保存关闭</span><br><span class="line">ping baidu.com            //ping此网址，可以看到返回的IP为127.0.0.1</span><br></pre></td></tr></table></figure></p>
-<h5 id="四、请求和响应"><a href="#四、请求和响应" class="headerlink" title="四、请求和响应"></a>四、请求和响应</h5>
+<h5 id="四、请求和响应"><a href="#四、请求和响应" class="headerlink" title="四、请求和响应"></a>四、请求和响应</h5><h6 id="1、请求示例（GET）"><a href="#1、请求示例（GET）" class="headerlink" title="1、请求示例（GET）"></a>1、请求示例（GET）</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s -v -H &quot;Summer : coming&quot; -- &quot;https://www.baidu.com&quot;  //在终端输入</span><br></pre></td></tr></table></figure>
+<p>其中:</p>
+<ul>
+<li>curl的含义为transfer a URL</li>
+<li>-s 为不显示进度条</li>
+<li>-v 显示请求和响应，如果无-v，则只显示响应</li>
+<li>-H “Summer:coming” 添加了一个响应头</li>
+<li>–后是请求的网址</li>
+</ul>
+<p><img src="./../../../../css/images/20180328/02.png" alt="请求结果"></p>
+<p>显示的数据中，以*开头的为注释语句，可以忽略；<br>以 &gt; 开头的为请求内容，<br>以 &lt; 开头的为响应数据，<br>接下来解读一下请求内容和响应数据：</p>
+<ul>
+<li>GET / HTTP/1.1：Get方式，/ 为根目录，HTTP/1.1 协议和版本号</li>
+<li>Host: www.baidu.com：访问的域名</li>
+<li>User-Agent: curl/7.54.0：用的是什么环境发起的请求，此处为使用curl，版本为7.54.0发起的请求</li>
+<li>Accept: <em>/</em>：接受返回的任何内容</li>
+<li>Summer : coming：可加可不加的内容</li>
+</ul>
+<h6 id="2、请求示例（POST）"><a href="#2、请求示例（POST）" class="headerlink" title="2、请求示例（POST）"></a>2、请求示例（POST）</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -s -v -H &quot;Summer : coming&quot; -- &quot;https://www.baidu.com&quot;  //在终端输入，命令行1</span><br><span class="line">curl -X POST -d &quot;123455&quot; -s -v -H &quot;Summer : coming&quot; -- &quot;https://www.baidu.com&quot;   //命令行2</span><br></pre></td></tr></table></figure>
+<p>其中:</p>
+<ul>
+<li>-X POST :默认的请求方式为GET,此处使用指定POST方式请求数据</li>
+<li>-d “123455”：是指需要往请求地址中上传数据</li>
+</ul>
+<p>命令行1的输出结果：<br><img src="./../../../../css/images/20180328/03.png" alt="POST请求结果"></p>
+<p>命令行2的输出结果：<br><img src="./../../../../css/images/20180328/04.png" alt="POST请求结果带参数"></p>
+<p>显示的数据中，以*开头的为注释语句，可以忽略；<br>以 &gt; 开头的为请求内容，<br>以 &lt; 开头的为响应数据，<br>其中返回的为<br>接下来解读一下请求内容和响应数据：</p>
+<ul>
+<li>POST / HTTP/1.1：除请求方式不一致，其他与GET方式请求的内容一致</li>
+<li>Content-Length:6：为-d 后数据的长度</li>
+<li>Content-Type: application/x-www-form-urlencoded：上传数据的格式</li>
+</ul>
+<p>根据以上可以总结出，所有的请求格式：<br>1 动词 路径 协议/版本<br>2 Key1: value1<br>2 Key2: value2<br>2 Key3: value3<br>2 Content-Type: application/x-www-form-urlencoded<br>2 HOst: www.baidu.com<br>2 User-Agent: curl/7.54.0<br>3<br>4 要上传的数据</p>
+<ul>
+<li>即请求中最多包含四部分，最少三部分，包含三部分时无请求数据</li>
+<li>第三部分永远为一个回车</li>
+<li>所有动词包含：GET(获取) POST(新增，上传) PUT(整体更新) PATCH(部分更新) DELETE(删除) HEAD OPTIONS等</li>
+<li>路径包含<strong>查询参数</strong>，不包括<strong>锚点</strong></li>
+<li>不写路径默认为/</li>
+<li>第二部分Content-Type标注第四部分的数据格式<h5 id="五、-其他"><a href="#五、-其他" class="headerlink" title="五、  其他"></a>五、  其他</h5><h6 id="1、Get和POST区别"><a href="#1、Get和POST区别" class="headerlink" title="1、Get和POST区别"></a>1、Get和POST区别</h6>GET：获取内容，如打开页面，此方式也可添加-d来传数据，但是www.baidu.com不承认此种方法上传数据；再就是GET方式可以通过URL来传递数据，这就意味着数据暴露且浏览器对于URL的长度是有限制的，如果数据量较大，浏览器的限制会截取掉部分数据<br>POST：上传内容，如登录；且POST传递的数据大小相对于GET就大很多，不易暴露数据<h6 id="2、使用Chrome发请求"><a href="#2、使用Chrome发请求" class="headerlink" title="2、使用Chrome发请求"></a>2、使用Chrome发请求</h6>1)f12/鼠标右键查看 -&gt; Network<br>2)地址栏输入网址<br>3)在Network中，查看request Headers-&gt;view source-&gt;可查看到请求的第一/第二部分<br>4)POST请求查看需有登录操作，并且选中Preserve log(保留日志)，按上述操作即可查看到请求的第四部分内容</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/28/HTTP简介/" data-id="cjfb2bpvk0000rns653rijmp9" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/28/HTTP简介/" data-id="cjfgwhvrf00015es65656ivic" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
