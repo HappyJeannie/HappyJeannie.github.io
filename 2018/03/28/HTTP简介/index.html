@@ -5,22 +5,22 @@
   
   <title>HTTP简介 | Summer&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、WWW首先先介绍一些服务器端默认端口  21: ftp服务端口 443: https端口 1080: 代理端口 80:服务http服务器 3306: 服务于mySQL服务器从浏览器发起请求到的执行顺序如下图所示：具体步骤为: 浏览器发起请求 服务器在80端口接收请求 服务器响应请求 浏览器下载响应内容HTTP的主要">
+  <meta name="description" content="一、WWW首先先介绍一些服务器端默认端口">
 <meta name="keywords" content="HTTP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP简介">
 <meta property="og:url" content="http://yoursite.com/2018/03/28/HTTP简介/index.html">
 <meta property="og:site_name" content="Summer&#39;s blog">
-<meta property="og:description" content="一、WWW首先先介绍一些服务器端默认端口  21: ftp服务端口 443: https端口 1080: 代理端口 80:服务http服务器 3306: 服务于mySQL服务器从浏览器发起请求到的执行顺序如下图所示：具体步骤为: 浏览器发起请求 服务器在80端口接收请求 服务器响应请求 浏览器下载响应内容HTTP的主要作用就是指导浏览器和服务器如何沟通。  二、URL在访问一个网站的过程中，我们主">
+<meta property="og:description" content="一、WWW首先先介绍一些服务器端默认端口">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/css/images/20180328/01.png">
 <meta property="og:image" content="http://yoursite.com/css/images/20180328/02.png">
 <meta property="og:image" content="http://yoursite.com/css/images/20180328/03.png">
 <meta property="og:image" content="http://yoursite.com/css/images/20180328/04.png">
-<meta property="og:updated_time" content="2018-04-01T15:40:54.797Z">
+<meta property="og:updated_time" content="2018-04-01T16:13:03.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP简介">
-<meta name="twitter:description" content="一、WWW首先先介绍一些服务器端默认端口  21: ftp服务端口 443: https端口 1080: 代理端口 80:服务http服务器 3306: 服务于mySQL服务器从浏览器发起请求到的执行顺序如下图所示：具体步骤为: 浏览器发起请求 服务器在80端口接收请求 服务器响应请求 浏览器下载响应内容HTTP的主要作用就是指导浏览器和服务器如何沟通。  二、URL在访问一个网站的过程中，我们主">
+<meta name="twitter:description" content="一、WWW首先先介绍一些服务器端默认端口">
 <meta name="twitter:image" content="http://yoursite.com/css/images/20180328/01.png">
   
     <link rel="alternate" href="/atom.xml" title="Summer&#39;s blog" type="application/atom+xml">
@@ -97,6 +97,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h5 id="一、WWW"><a href="#一、WWW" class="headerlink" title="一、WWW"></a>一、WWW</h5><p>首先先介绍一些服务器端默认端口</p>
+<a id="more"></a>
 <ul>
 <li>21: ftp服务端口</li>
 <li>443: https端口</li>
@@ -134,13 +135,30 @@
 <li>–后是请求的网址</li>
 </ul>
 <p><img src="./../../../../css/images/20180328/02.png" alt="请求结果"></p>
-<p>显示的数据中，以*开头的为注释语句，可以忽略；<br>以 &gt; 开头的为请求内容，<br>以 &lt; 开头的为响应数据，<br>接下来解读一下请求内容和响应数据：</p>
+<p>显示的数据中，以*开头的为注释语句，可以忽略；<br>以 &gt; 开头的为请求内容，<br>以 &lt; 开头的为响应数据，<br>接下来解读一下请求内容：</p>
 <ul>
 <li>GET / HTTP/1.1：Get方式，/ 为根目录，HTTP/1.1 协议和版本号</li>
 <li>Host: www.baidu.com：访问的域名</li>
 <li>User-Agent: curl/7.54.0：用的是什么环境发起的请求，此处为使用curl，版本为7.54.0发起的请求</li>
 <li>Accept: <em>/</em>：接受返回的任何内容</li>
 <li>Summer : coming：可加可不加的内容</li>
+</ul>
+<p>接下来解读一下响应内容：</p>
+<ul>
+<li>1.HTTP/1.1 200 OK ：协议/版本 状态码(成功) OK</li>
+<li>2.Accept-Ranges: bytes</li>
+<li>2.Cache-Control: private, no-cache, no-store, proxy-revalidate, no-transform</li>
+<li>2.Connection: Keep-Alive</li>
+<li>2.Content-Length: 2443：返回页面长度</li>
+<li>2.Content-Type: text/html：返回的文件类型</li>
+<li>2.Date: Sun, 01 Apr 2018 15:50:19 GMT</li>
+<li>2.Etag: “588603e2-98b”</li>
+<li>2.Last-Modified: Mon, 23 Jan 2017 13:23:46 GMT</li>
+<li>2.Pragma: no-cache</li>
+<li>2.Server: bfe/1.0.8.18 ：百度外部服务器编号</li>
+<li>2.Set-Cookie: BDORZ=27315; max-age=86400; domain=.baidu.com; path=/</li>
+<li>3.</li>
+<li>4.返回的内容</li>
 </ul>
 <h6 id="2、请求示例（POST）"><a href="#2、请求示例（POST）" class="headerlink" title="2、请求示例（POST）"></a>2、请求示例（POST）</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -s -v -H &quot;Summer : coming&quot; -- &quot;https://www.baidu.com&quot;  //在终端输入，命令行1</span><br><span class="line">curl -X POST -d &quot;123455&quot; -s -v -H &quot;Summer : coming&quot; -- &quot;https://www.baidu.com&quot;   //命令行2</span><br></pre></td></tr></table></figure>
 <p>其中:</p>
@@ -150,11 +168,15 @@
 </ul>
 <p>命令行1的输出结果：<br><img src="./../../../../css/images/20180328/03.png" alt="POST请求结果"></p>
 <p>命令行2的输出结果：<br><img src="./../../../../css/images/20180328/04.png" alt="POST请求结果带参数"></p>
-<p>显示的数据中，以*开头的为注释语句，可以忽略；<br>以 &gt; 开头的为请求内容，<br>以 &lt; 开头的为响应数据，<br>其中返回的为<br>接下来解读一下请求内容和响应数据：</p>
+<p>显示的数据中，以*开头的为注释语句，可以忽略；<br>以 &gt; 开头的为请求内容，<br>以 &lt; 开头的为响应数据，<br>其中返回的为<br>接下来解读一下请求内容：</p>
 <ul>
 <li>POST / HTTP/1.1：除请求方式不一致，其他与GET方式请求的内容一致</li>
 <li>Content-Length:6：为-d 后数据的长度</li>
 <li>Content-Type: application/x-www-form-urlencoded：上传数据的格式</li>
+</ul>
+<p>解读一下响应内容：</p>
+<ul>
+<li>除返回的状态码不一致，为302，其他与GET方式一致，</li>
 </ul>
 <p>根据以上可以总结出，所有的请求格式：<br>1 动词 路径 协议/版本<br>2 Key1: value1<br>2 Key2: value2<br>2 Key3: value3<br>2 Content-Type: application/x-www-form-urlencoded<br>2 HOst: www.baidu.com<br>2 User-Agent: curl/7.54.0<br>3<br>4 要上传的数据</p>
 <ul>
@@ -163,13 +185,27 @@
 <li>所有动词包含：GET(获取) POST(新增，上传) PUT(整体更新) PATCH(部分更新) DELETE(删除) HEAD OPTIONS等</li>
 <li>路径包含<strong>查询参数</strong>，不包括<strong>锚点</strong></li>
 <li>不写路径默认为/</li>
-<li>第二部分Content-Type标注第四部分的数据格式<h5 id="五、-其他"><a href="#五、-其他" class="headerlink" title="五、  其他"></a>五、  其他</h5><h6 id="1、Get和POST区别"><a href="#1、Get和POST区别" class="headerlink" title="1、Get和POST区别"></a>1、Get和POST区别</h6>GET：获取内容，如打开页面，此方式也可添加-d来传数据，但是www.baidu.com不承认此种方法上传数据；再就是GET方式可以通过URL来传递数据，这就意味着数据暴露且浏览器对于URL的长度是有限制的，如果数据量较大，浏览器的限制会截取掉部分数据<br>POST：上传内容，如登录；且POST传递的数据大小相对于GET就大很多，不易暴露数据<h6 id="2、使用Chrome发请求"><a href="#2、使用Chrome发请求" class="headerlink" title="2、使用Chrome发请求"></a>2、使用Chrome发请求</h6>1)f12/鼠标右键查看 -&gt; Network<br>2)地址栏输入网址<br>3)在Network中，查看request Headers-&gt;view source-&gt;可查看到请求的第一/第二部分<br>4)POST请求查看需有登录操作，并且选中Preserve log(保留日志)，按上述操作即可查看到请求的第四部分内容</li>
+<li>第二部分Content-Type标注第四部分的数据格式</li>
 </ul>
+<p>所有的响应格式为：<br>1 协议/版本 状态码 状态解释<br>2 Key1: value1<br>2 Key2: value2<br>2 Key3: value3<br>2 Content-Length: 17931<br>2 Content-Length: text/html<br>3<br>4 要下载的内容</p>
+<ul>
+<li>即请求中最多包含四部分，最少三部分，包含三部分时无请求数据</li>
+<li>第三部分永远为一个回车</li>
+<li>所有动词包含：GET(获取) POST(新增，上传) PUT(整体更新) PATCH(部分更新) DELETE(删除) HEAD OPTIONS等</li>
+<li>路径包含<strong>查询参数</strong>，不包括<strong>锚点</strong></li>
+<li>不写路径默认为/</li>
+<li>第二部分Content-Type标注第四部分的数据格式</li>
+</ul>
+<h5 id="五、-其他"><a href="#五、-其他" class="headerlink" title="五、  其他"></a>五、  其他</h5><h6 id="1、Get和POST区别"><a href="#1、Get和POST区别" class="headerlink" title="1、Get和POST区别"></a>1、Get和POST区别</h6><p>GET：获取内容，如打开页面，此方式也可添加-d来传数据，但是www.baidu.com不承认此种方法上传数据；再就是GET方式可以通过URL来传递数据，这就意味着数据暴露且浏览器对于URL的长度是有限制的，如果数据量较大，浏览器的限制会截取掉部分数据<br>POST：上传内容，如登录；且POST传递的数据大小相对于GET就大很多，不易暴露数据</p>
+<h6 id="2、使用Chrome发请求"><a href="#2、使用Chrome发请求" class="headerlink" title="2、使用Chrome发请求"></a>2、使用Chrome发请求</h6><p>1)f12/鼠标右键查看 -&gt; Network<br>2)地址栏输入网址<br>3)在Network中，查看request Headers-&gt;view source-&gt;可查看到请求的第一/第二部分<br>4)POST请求查看需有登录操作，并且选中Preserve log(保留日志)，按上述操作即可查看到请求的第四部分内容</p>
+<h5 id="3、使用Chrome查看响应"><a href="#3、使用Chrome查看响应" class="headerlink" title="3、使用Chrome查看响应"></a>3、使用Chrome查看响应</h5><p>Network-&gt;Response-&gt;view source</p>
+<h5 id="4、常用状态码"><a href="#4、常用状态码" class="headerlink" title="4、常用状态码"></a>4、常用状态码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1xx：不常用</span><br><span class="line">2xx：表示成功，200普通成功，204创建成功</span><br><span class="line">3xx：无法请求到资源，301被请求的资源已永久移动到新位置，302请求的资源临时从不同的 URI响应请求，304这次内容和上次内容相同（上一次的为200）</span><br><span class="line">4xx：表示浏览器出错，404请求失败，请求所希望得到的资源未被在服务器上发现，即访问不存在路径或地址出错，403服务器已经理解请求，但是拒绝执行它。</span><br><span class="line">5xx：服务器出错，500服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。502作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收到无效的响应。</span><br></pre></td></tr></table></figure>
+<p>本文已转发至<a href="">简书</a>和<a href="">知乎</a>。欢迎阅读，如有错误，敬请指正。转载请注明出处。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/28/HTTP简介/" data-id="cjfgwhvrf00015es65656ivic" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/28/HTTP简介/" data-id="cjfgzfvtn0003c1s6ns8yuedf" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
