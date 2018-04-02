@@ -91,48 +91,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="一、网络和常用IP"><a href="#一、网络和常用IP" class="headerlink" title="一、网络和常用IP"></a>一、网络和常用IP</h5><p>HTTP协议的底层其实是由TCP协议(Transmission COntrol Protocol，传输控制协议)和IP协议构建的(Internet Protocol，网络协议)，二者合称TCP/IP。在此处我们不进行过多的了解，只需记住以下两点：<br>1、TCP和UDP的区别是什么？<br>TCP可靠、面向连接，相对UDP较慢；可靠是指发起一个请求，成功或者不成功都是知道的，<br>UDP不可靠，不面向连接、相对TCP较快。<br>2、TCP的三次握手指的是什么？<br>每次建立连接前，客户端和服务端都要进行三次对话才会开始正式传输内容，三次对话大概是这样：</p>
-<ul>
-<li>客户端：我要连接你了，可以么？</li>
-<li>服务端：嗯，我准备好了，连接我吧</li>
-<li>客户端：那我连接你咯</li>
-<li>开始后买呢的步骤</li>
-</ul>
-<p>了解更多，可以</p>
-<p>3、IP网络协议<br>只要在互联网中，那么你就会有一个IP。通俗上理解，IP分为[内网IP]和[外网IP]。具体如下图所示：<br><img src="./../../../../css/images/20180402/IP网络示意图.png" alt="IP网络结构示意图"><br>外网之间可以直接互相访问，内网之间可以直接互相访问，但是内网外网之间访问一定要通过路由，不可直接访问。<br>除了内网IP和外网IP之外有两个特殊IP需要强制记忆</p>
-<ul>
-<li>本地IP:127.0.0.1 本地IP永远表示设备自己。可以在终端ping 127.0.0.1，可发现响应速度非常快。默认情况下。hosts文件也会有一行127.0.0.1 localhost，意思就是localhost指向127.0.0.1，所以localhost也表示设备自己。</li>
-<li>0.0.0.0：不表示任何设备。这个IP不同地方有不同的含义，后期在补充介绍。</li>
-</ul>
-<h5 id="二、端口号"><a href="#二、端口号" class="headerlink" title="二、端口号"></a>二、端口号</h5><p>提供HTTP服务：使用80端口<br>提供HTTPS服务：使用443端口<br>提供FTP服务：使用21端口<br>一个端口只对应一个服务，以上只是大家约定俗称，可以重新定义。但是最好遵循越冬。<br>1、端口定义<br><a href="https://zh.wikipedia.org/wiki/TCP/UDP%E7%AB%AF%E5%8F%A3%E5%88%97%E8%A1%A8#0.E5.88.B01023.E5.8F.B7.E7.AB.AF.E5.8F.A3" target="_blank" rel="noopener">维基百科</a>把0到1023号端口对应的服务都进行说明了。<br>2、端口个数<br>每个机器共有65536（2的16次方减1）个端口。这些端口的使用有一些规定</p>
-<ul>
-<li>0到1023（2的10次方减1）号端口是留给系统使用的。只有具有管理员权限后才能使用这些窗口。</li>
-<li>其他端口给普通用户使用</li>
-<li>如果端口被占用则不能再占用此端口。需要先停掉正在占用的这个端口。</li>
-</ul>
-<h5 id="三、NodeJS实现一个服务器"><a href="#三、NodeJS实现一个服务器" class="headerlink" title="三、NodeJS实现一个服务器"></a>三、NodeJS实现一个服务器</h5><ul>
-<li>cd ~/Desktop;mkdir node-demo;cd node-demo//创建一个目录</li>
-<li>touch server.js           //创建文件</li>
-<li>编辑server.js</li>
-<li>在终端运行node server.js</li>
-<li>根据错误提示进行调试，成功之后会持续运行，若需要中断退出，ctrl+c即可</li>
-</ul>
-<p>1、无响应的服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">var http = require(&apos;http&apos;)</span><br><span class="line">var fs = require(&apos;fs&apos;)</span><br><span class="line">var url = require(&apos;url&apos;)    //以上为引入nodejs模块</span><br><span class="line">var port = process.argv[2]      </span><br><span class="line">process.argv.forEach(function(val,index,array)&#123;</span><br><span class="line">  console.log(index + &apos;:&apos; + val)</span><br><span class="line">&#125;)</span><br><span class="line">if(!port)&#123;</span><br><span class="line">  console.log(&apos;请指定端口？\n 像这样：node server.js 8888&apos;)</span><br><span class="line">  process.exit(1)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var server = http.createServer(function(request, response)&#123;   //建立一个服务</span><br><span class="line">  console.log(request)</span><br><span class="line">  var parsedUrl = url.parse(request.url, true)</span><br><span class="line">  var path = request.url </span><br><span class="line">  var query = &apos;&apos;</span><br><span class="line">  if(path.indexOf(&apos;?&apos;) &gt;= 0)&#123; query = path.substring(path.indexOf(&apos;?&apos;)) &#125;</span><br><span class="line">  var pathNoQuery = parsedUrl.pathname</span><br><span class="line">  var queryObject = parsedUrl.query</span><br><span class="line">  var method = request.method</span><br><span class="line">  console.log(&apos;得到 HTTP 路径\n&apos; + path)</span><br><span class="line">  console.log(&apos;查询字符串为\n&apos; + query)</span><br><span class="line">  console.log(&apos;不含查询字符串的路径为\n&apos; + pathNoQuery)</span><br><span class="line">&#125;)</span><br><span class="line">server.listen(port)</span><br><span class="line">console.log(&apos;监听 &apos; + port + &apos; 成功\n请在浏览器中打开 http://localhost:&apos; + port)</span><br></pre></td></tr></table></figure></p>
-<p>其中第5-7行，因为不明白process.argv到底是什么，所以输出一下，打印出来的结果为：<br><img src="./../../../../css/images/20180402/process.png" alt="process结果"><br>输出的结果为一个数组，数组第一个值表示的是node，即node文件位置，第二个是JavaScript文件的文件位置，第三个是发起此请求的端口号。<br>2、加入响应语句<br>在上面代码的第24行后继续输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">response.write(&apos;Hi&apos;)</span><br><span class="line">response.end()</span><br></pre></td></tr></table></figure></p>
-<p>另外打开一个终端，并输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s -v &quot;localhost:8888/abc?name=summer&quot;   //则会在此终端显示请求和响应的详细信息</span><br></pre></td></tr></table></figure></p>
-<p>3、路径设置<br>接下来，如果我们访问根目录的话则返回hi，否则返回404，我们需将2中的代码替换为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if(path == &apos;/&apos;)&#123;</span><br><span class="line">  response.write(&apos;hi\n&apos;)</span><br><span class="line">  response.end()</span><br><span class="line">&#125;else&#123;</span><br><span class="line">  response.statusCode = 404   //默认返回的状态码为200，此处已指定为404</span><br><span class="line">  response.end()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>4、增加/index路径，返回html页面<br>增加新的路径只需在上述的基础上增加一条判断语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">else if(path == &apos;/index&apos;)&#123;</span><br><span class="line">  //如果不设置Content-Type:text/html，则会将response.write()中的内容转换成字符串输出到浏览器，charset=utf-8是因为server.js文件是utf-8编码，这样的话中文也能完整输出，不会乱码</span><br><span class="line">  response.setHeader(&apos;Content-Type&apos;,&apos;text/html;charset=utf-8&apos;)</span><br><span class="line">  response.write(&apos;&lt;!Doctype&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;123&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&apos;)</span><br><span class="line">  response.end()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h5 id="四、HTML-amp-CSS-amp-JS-amp-JSON的本质"><a href="#四、HTML-amp-CSS-amp-JS-amp-JSON的本质" class="headerlink" title="四、HTML &amp; CSS &amp; JS &amp; JSON的本质"></a>四、HTML &amp; CSS &amp; JS &amp; JSON的本质</h5><p>1、不同文件对应的Content-Type</p>
-<ul>
-<li>css -&gt; text/css</li>
-<li>js -&gt; text/javascript</li>
-<li>html -&gt;text/html</li>
-</ul>
-
+        <h5 id="一、网络和常用IP"><a href="#一、网络和常用IP" class="headerlink" title="一、网络和常用IP"></a>一、网络和常用IP</h5><p>HTTP协议的底层其实是由TCP协议(Transmission COntrol Protocol，传输控制协议)和IP协议构建的(Internet Protocol，网络协议)，二者合称TCP/IP。在此处我们不进行过多的了解，只需记住以下两点：</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/04/02/NodeJS入门/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/02/NodeJS入门/" data-id="cjfhqj03t0008ja5lo857u6lr" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/02/NodeJS入门/" data-id="cjficjz170009hds6etq01dfb" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li></ul>
@@ -175,7 +143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/28/HTTP简介/" data-id="cjfhqj03p0003ja5lr4t3iz1s" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/28/HTTP简介/" data-id="cjficjz0w0001hds6jjlzfcu8" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
@@ -219,7 +187,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/26/bash-node编写简单脚本文件/" data-id="cjfhqj03u0009ja5lplktptat" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/26/bash-node编写简单脚本文件/" data-id="cjficjz18000bhds629kxelfl" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脚本/">脚本</a></li></ul>
@@ -263,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/25/终端常用命令介绍/" data-id="cjfhqj04b000pja5l7h935w69" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/25/终端常用命令介绍/" data-id="cjficjz1m000phds6wlklwass" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/终端/">终端</a></li></ul>
@@ -306,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/git环境搭建/" data-id="cjfhqj045000hja5lfcuqplsk" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/23/git环境搭建/" data-id="cjficjz1j000lhds6qj7l7paj" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -349,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/HEXO-Github搭建个人博客/" data-id="cjfhqj03m0001ja5lqfojudf8" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/23/HEXO-Github搭建个人博客/" data-id="cjficjz120004hds6rcsme4c8" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo-github/">hexo github</a></li></ul>
@@ -392,7 +360,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/22/git常用指令/" data-id="cjfhqj043000fja5l6xenhc97" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/22/git常用指令/" data-id="cjficjz1e000fhds692yafxlf" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -431,7 +399,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/19/前端入门知识总结/" data-id="cjfhqj04a000mja5lufroy1tu" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/19/前端入门知识总结/" data-id="cjficjz1g000hhds6z1n11sr6" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
@@ -474,7 +442,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/14/vue-project/" data-id="cjfhqj048000lja5lvfs8peqe" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/14/vue-project/" data-id="cjficjz1i000jhds66iq6dkzw" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
@@ -517,7 +485,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/13/es6常用特性/" data-id="cjfhqj040000bja5lxr8ruxqi" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/13/es6常用特性/" data-id="cjficjz150008hds6jvbzqz48" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
