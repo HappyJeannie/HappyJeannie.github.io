@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Summer&#39;s blog">
 <meta property="og:description" content="关于HTML在此就不进行过多的介绍了，暂时只介绍一些易混淆或概念不清楚的内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-03T02:50:24.921Z">
+<meta property="og:updated_time" content="2018-04-03T14:25:13.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML入门">
 <meta name="twitter:description" content="关于HTML在此就不进行过多的介绍了，暂时只介绍一些易混淆或概念不清楚的内容。">
@@ -99,46 +99,47 @@
 <li>在<a href="http://www.500d.me/" target="_blank" rel="noopener">五百丁</a>直接花钱购买Word模板</li>
 <li>如果还找不到好看的，可以去在 Google 搜索「frontend resume template」或者「frontend cv template」碰碰运气，找找灵感。</li>
 </ul>
-<h5 id="1、空元素"><a href="#1、空元素" class="headerlink" title="1、空元素"></a>1、空元素</h5><p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/%E7%A9%BA%E5%85%83%E7%B4%A0" target="_blank" rel="noopener">官方定义</a>：一个空元素（empty element）可能是 HTML，SVG，或者 MathML 里的一个不可能存在子节点（例如内嵌的元素或者元素内的文本）的element。<br>HTML，SVG 和 MathML 的规范都详细定义了每个元素能包含的具体内容（define very precisely what each element can contain）。许多组合是没有任何语义含义的，比如一个 <audio> 元素嵌套在一个 <hr> 元素里。<br>个人理解为，如p标签中是需要放入文本内容的，所以p不是空元素，但是link标签中是不能够放入内容的，就算加入内容也无效，link只能引入文件，所以link为空元素。<br>在HTML中有一下空元素：</audio></p>
-<ul>
-<li><area></li>
-<li><base></li>
-<li><br></li>
-<li><col></li>
-<li><colgroup></colgroup></li>
-<li><command></li>
-<li><embed></li>
-<li><hr></li>
-<li><img></li>
-<li><input></li>
-<li><keygen></li>
-<li><link></li>
-<li><meta></li>
-<li><param></li>
-<li><source></li>
-<li><track></li>
-<li><wbr></li>
-</ul>
+<h5 id="1、空元素"><a href="#1、空元素" class="headerlink" title="1、空元素"></a>1、空元素</h5><p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/%E7%A9%BA%E5%85%83%E7%B4%A0" target="_blank" rel="noopener">官方定义</a>：一个空元素（empty element）可能是 HTML，SVG，或者 MathML 里的一个不可能存在子节点（例如内嵌的元素或者元素内的文本）的element。<br>HTML，SVG 和 MathML 的规范都详细定义了每个元素能包含的具体内容（define very precisely what each element can contain）。许多组合是没有任何语义含义的，比如一个 <audio> 元素嵌套在一个 <hr> 元素里。<br>个人理解为，如p标签中是需要放入文本内容的，所以p不是空元素，但是link标签中是不能够放入内容的，就算加入内容也无效，link只能引入文件，所以link为空元素。<br>在HTML中有一下空元素：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;area&gt;</span><br><span class="line">&lt;base&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;col&gt;</span><br><span class="line">&lt;colgroup&gt;</span><br><span class="line">&lt;command&gt;</span><br><span class="line">&lt;embed&gt;</span><br><span class="line">&lt;hr&gt;</span><br><span class="line">&lt;img&gt;</span><br><span class="line">&lt;input&gt;</span><br><span class="line">&lt;keygen&gt;</span><br><span class="line">&lt;link&gt;</span><br><span class="line">&lt;meta&gt;</span><br><span class="line">&lt;param&gt;</span><br><span class="line">&lt;source&gt;</span><br><span class="line">&lt;track&gt;</span><br><span class="line">&lt;wbr&gt;</span><br></pre></td></tr></table></figure></audio></p>
 <h5 id="2、可放在head元素内的标签"><a href="#2、可放在head元素内的标签" class="headerlink" title="2、可放在head元素内的标签"></a>2、可放在head元素内的标签</h5><p>有效的<head> 元素包括 meta, link, title, style, script, noscript, and base。使用方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">  Set the character encoding for this document, so that</span><br><span class="line">  all characters within the UTF-8 space (such as emoji)</span><br><span class="line">  are rendered correctly.</span><br><span class="line">--&gt;</span><br><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Set the document&apos;s title --&gt;</span><br><span class="line">&lt;title&gt;Page Title&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Set the base URL for all relative URLs within the document --&gt;</span><br><span class="line">&lt;base href=&quot;http://example.com/page.html&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Link to an external CSS file --&gt;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Used for adding in-document CSS --&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">  /* ... */</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- JavaScript &amp; No-JavaScript tags --&gt;</span><br><span class="line">&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  // function(s) go here</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;noscript&gt;</span><br><span class="line">  &lt;!-- No JS alternative  --&gt;</span><br><span class="line">  如果用户的浏览器不支持script，则会显示noscript中的内容</span><br><span class="line">&lt;/noscript&gt;</span><br></pre></td></tr></table></figure></head></p>
 <h5 id="3、关于iframe"><a href="#3、关于iframe" class="headerlink" title="3、关于iframe"></a>3、关于iframe</h5><ul>
 <li>iframe 可以拥有一个 name，a 标签的 target 可以通过 name 指向这个 iframe</li>
 <li>现代前端开发中，iframe 很少用</li>
 <li>iframe 用于在当前页面里嵌入一个页面</li>
 </ul>
-<h5 id="4、声明meta"><a href="#4、声明meta" class="headerlink" title="4、声明meta"></a>4、声明meta</h5><p>声明meta有两种方式：</p>
+<h5 id="4、声明meta"><a href="#4、声明meta" class="headerlink" title="4、声明meta"></a>4、声明meta</h5><p>声明meta有两种方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot; &gt;</span><br></pre></td></tr></table></figure></p>
+<h5 id="5、可替换元素"><a href="#5、可替换元素" class="headerlink" title="5、可替换元素"></a>5、可替换元素</h5><p>CSS 里，可替换元素（replaced element）的展现不是由CSS来控制的。这些元素是一类 外观渲染独立于CSS的 外部对象。 典型的可替换元素有:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;img&gt;</span><br><span class="line">&lt;object&gt;</span><br><span class="line">&lt;video&gt; </span><br><span class="line">&lt;textarea&gt;</span><br><span class="line">&lt;input&gt;</span><br><span class="line">//某些元素只在一些特殊情况下表现为可替换元素，例如 </span><br><span class="line">&lt;audio&gt;</span><br><span class="line">&lt;canvas&gt;</span><br></pre></td></tr></table></figure></p>
+<p>和 表单元素，如 。 通过 CSS content 属性来插入的对象 被称作 匿名可替换元素（anonymous replaced elements）。</p>
+<p>CSS在某些情况下会对可替换元素做特殊处理，比如计算外边距和一些auto值。<br>拿图片来举例，在页面加载到img标签的时候，并不知道img的宽高，此时会去请求img的src，请求回图片的宽高如位进行css样式定义，则默认为图片宽高</p>
+<h5 id="6、iframe页面与a标签"><a href="#6、iframe页面与a标签" class="headerlink" title="6、iframe页面与a标签"></a>6、iframe页面与a标签</h5><p>1）eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">  &lt;title&gt;iframe&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    iframe&#123;</span><br><span class="line">      width: 400px;</span><br><span class="line">      height: 400px;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;iframe src=&quot;#&quot; frameborder=&quot;0&quot; name=&quot;test&quot;&gt;&lt;/iframe&gt;</span><br><span class="line">  &lt;a href=&quot;https://cn.vuejs.org/&quot; target=&quot;test&quot;&gt;Vue&lt;/a&gt;</span><br><span class="line">  &lt;a href=&quot;http://www.baidu.com&quot; target=&quot;test&quot;&gt;百度&lt;/a&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>其中，两个a标签都指向iframe，点击a标签则会在iframe中打开对应的页面<br>2）a标签属性</p>
 <ul>
-<li><meta charset="utf-8"></li>
-<li><meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-</li>
+<li>target=”_blank” 在空白页打开</li>
+<li>target=”_self” 在当前页面打开</li>
+<li>target=”_parent” 在父页面打开</li>
+<li>target=”_top” 在顶级页面打开，即一直找父页面直到找不到，然后在此页面打开</li>
+<li>download a标签内加download后会直接执行下载</li>
 </ul>
-<h5 id="5、可替换元素"><a href="#5、可替换元素" class="headerlink" title="5、可替换元素"></a>5、可替换元素</h5><p>CSS 里，可替换元素（replaced element）的展现不是由CSS来控制的。这些元素是一类 外观渲染独立于CSS的 外部对象。 典型的可替换元素有 <img>、 <object>、 <video> 和 表单元素，如<textarea>、 </textarea><input> 。 某些元素只在一些特殊情况下表现为可替换元素，例如 <audio> 和 <canvas> 。 通过 CSS content 属性来插入的对象 被称作 匿名可替换元素（anonymous replaced elements）。</canvas></audio></video></object></p>
-<p>CSS在某些情况下会对可替换元素做特殊处理，比如计算外边距和一些auto值。</p>
+<p>3）href属性<br>a标签的无协议地址：<br>1）中的代码，在a标签的href属性中，如何我们不添加协议https的话，即：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;//cn.vuejs.org/&quot; target=&quot;test&quot;&gt;Vue&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+<p>那么在访问此链接时，当前使用的是什么协议，此链接用的就是什么协议。如我们在本地打开页面，浏览器地址栏中开头显示是file://，所以此种情况下使用的协议为file。<br>1）中的代码，如果a标签内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;cn.vuejs.org&quot; target=&quot;test&quot;&gt;Vue&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+<p>那么在点击a标签的时候，会认为href指向的是相对于当前文件路径的文件。</p>
+<p>那么如果我们不使用file协议的话，如何使用//cn.vuejs.org来访问vue的官网呢？我们需要使用http协议，解决方法一是将代码上传到Github上，另外的方法是安装http-server。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cnpm install -g http-server</span><br></pre></td></tr></table></figure></p>
+<p>安装完成后，在终端输入http-server -c-1，这个会直接帮助我们搭建一个服务器，并且可通过<a href="http://127.0.0.1:8080或者http://192.168.1.20:8080直接访问桌面文件，其中-c-1表示不添加缓存。此为a标签的无协议地址。" target="_blank" rel="noopener">http://127.0.0.1:8080或者http://192.168.1.20:8080直接访问桌面文件，其中-c-1表示不添加缓存。此为a标签的无协议地址。</a></p>
+<p>javascript伪协议，写法为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">href=&quot;javascript: alert(1)&quot;     //则在点击a标签的时候会执行js代码</span><br></pre></td></tr></table></figure></p>
+<p>总的来说，a标签的href中可以写的内容为：</p>
+<ul>
+<li>//cn.vuejs.org </li>
+<li>#xxx ?name=123 ./xxx.html</li>
+<li>javascript:;</li>
+</ul>
+<h5 id="7、form表单"><a href="#7、form表单" class="headerlink" title="7、form表单"></a>7、form表单</h5><p>1）form表单默认是发起get请求，但是我们常用form表单做post请求，所以在form标签中我们可以直接声明请求方式，即：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;xxx&quot; method=&quot;post&quot;&gt;&lt;/form&gt;    //表单中只支持Get和Post方式</span><br></pre></td></tr></table></figure></p>
+<p>2)button<br>在form表单中，如果没有提交按钮，且只有一个未定义type值的button，那么button会被提升为提交按钮，默认type为submit<br>3）input标签<br>input的type比较多，常用的有：button、submit、text、password、checkbox、radio</p>
+<h5 id="8、HTML5常用的语义化标签"><a href="#8、HTML5常用的语义化标签" class="headerlink" title="8、HTML5常用的语义化标签"></a>8、HTML5常用的语义化标签</h5><p>很多标签在工作中都有涉及，不打算在进行介绍。但是对于HTML5中的语义化用的较少，打算在此处进行些介绍。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">nav       //定义导航，可将导航内容放在此标签内</span><br><span class="line">article   //定义独立的内容，可能的 article 实例为论坛帖子、报纸文章等。</span><br><span class="line">          //eg:&lt;article&gt;&lt;a href=&quot;http://www.apple.com&quot;&gt;Safari 5 //released&lt;/a&gt;&lt;br /&gt;7 Jun 2010. Just after the announcement //of the new iPhone 4 at WWDC, Apple announced the release //of Safari 5 for Windows and Mac......&lt;/article&gt;</span><br><span class="line">audio     //标签定义声音，比如音乐或其他音频流。</span><br><span class="line">aside     //定义其所处内容之外的内容</span><br><span class="line">          //eg:&lt;p&gt;Me and my family visited The Epcot center this //summer.&lt;/p&gt;&lt;aside&gt;</span><br><span class="line">          //&lt;h4&gt;Epcot Center&lt;/h4&gt;The Epcot Center is a theme park in //Disney World, Florida.&lt;/aside&gt;</span><br><span class="line">canvas    //定义图形，比如图表和其他图像</span><br><span class="line">datalist  //定义选项列表</span><br><span class="line">footer    //定义 section 或 document 的页脚。</span><br><span class="line">header    //定义文档的页眉（介绍信息）</span><br><span class="line">hgroup    //用于对网页或区段（section）的标题进行组合</span><br><span class="line">section   //定义文档中的节（section、区段）。比如章节、页眉、页脚或文档中的其他部分。</span><br><span class="line">video     //定义视频，比如电影片段或其他视频流</span><br></pre></td></tr></table></figure></p>
+<p>本文已转载至<a href="https://www.jianshu.com/p/4dae15899011" target="_blank" rel="noopener">简书</a>和<a href="https://zhuanlan.zhihu.com/p/35275814" target="_blank" rel="noopener">知乎</a>，如果错误，敬请指正。转载请注明出处。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/02/HTML入门/" data-id="cjfj2f20m0000w9xqizsy7h4j" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/02/HTML入门/" data-id="cjfjr9zkh00007rs61vddeqg8" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
