@@ -5,18 +5,18 @@
   
   <title>HTML入门 | Summer&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="介绍几个网站：  在dribbble.com 搜索cv或者resume 在五百丁直接花钱购买Word模板">
+  <meta name="description" content="关于HTML在此就不进行过多的介绍了，暂时只介绍一些易混淆或概念不清楚的内容。">
 <meta name="keywords" content="HTML">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTML入门">
 <meta property="og:url" content="http://yoursite.com/2018/04/02/HTML入门/index.html">
 <meta property="og:site_name" content="Summer&#39;s blog">
-<meta property="og:description" content="介绍几个网站：  在dribbble.com 搜索cv或者resume 在五百丁直接花钱购买Word模板">
+<meta property="og:description" content="关于HTML在此就不进行过多的介绍了，暂时只介绍一些易混淆或概念不清楚的内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-02T15:53:13.952Z">
+<meta property="og:updated_time" content="2018-04-03T02:50:24.921Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML入门">
-<meta name="twitter:description" content="介绍几个网站：  在dribbble.com 搜索cv或者resume 在五百丁直接花钱购买Word模板">
+<meta name="twitter:description" content="关于HTML在此就不进行过多的介绍了，暂时只介绍一些易混淆或概念不清楚的内容。">
   
     <link rel="alternate" href="/atom.xml" title="Summer&#39;s blog" type="application/atom+xml">
   
@@ -91,16 +91,54 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>介绍几个网站：</p>
+        <p>关于HTML在此就不进行过多的介绍了，暂时只介绍一些易混淆或概念不清楚的内容。</p>
+<a id="more"></a>
+<p>介绍几个网站：</p>
 <ul>
 <li>在dribbble.com 搜索cv或者resume</li>
 <li>在<a href="http://www.500d.me/" target="_blank" rel="noopener">五百丁</a>直接花钱购买Word模板</li>
+<li>如果还找不到好看的，可以去在 Google 搜索「frontend resume template」或者「frontend cv template」碰碰运气，找找灵感。</li>
 </ul>
+<h5 id="1、空元素"><a href="#1、空元素" class="headerlink" title="1、空元素"></a>1、空元素</h5><p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/%E7%A9%BA%E5%85%83%E7%B4%A0" target="_blank" rel="noopener">官方定义</a>：一个空元素（empty element）可能是 HTML，SVG，或者 MathML 里的一个不可能存在子节点（例如内嵌的元素或者元素内的文本）的element。<br>HTML，SVG 和 MathML 的规范都详细定义了每个元素能包含的具体内容（define very precisely what each element can contain）。许多组合是没有任何语义含义的，比如一个 <audio> 元素嵌套在一个 <hr> 元素里。<br>个人理解为，如p标签中是需要放入文本内容的，所以p不是空元素，但是link标签中是不能够放入内容的，就算加入内容也无效，link只能引入文件，所以link为空元素。<br>在HTML中有一下空元素：</audio></p>
+<ul>
+<li><area></li>
+<li><base></li>
+<li><br></li>
+<li><col></li>
+<li><colgroup></colgroup></li>
+<li><command></li>
+<li><embed></li>
+<li><hr></li>
+<li><img></li>
+<li><input></li>
+<li><keygen></li>
+<li><link></li>
+<li><meta></li>
+<li><param></li>
+<li><source></li>
+<li><track></li>
+<li><wbr></li>
+</ul>
+<h5 id="2、可放在head元素内的标签"><a href="#2、可放在head元素内的标签" class="headerlink" title="2、可放在head元素内的标签"></a>2、可放在head元素内的标签</h5><p>有效的<head> 元素包括 meta, link, title, style, script, noscript, and base。使用方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">  Set the character encoding for this document, so that</span><br><span class="line">  all characters within the UTF-8 space (such as emoji)</span><br><span class="line">  are rendered correctly.</span><br><span class="line">--&gt;</span><br><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Set the document&apos;s title --&gt;</span><br><span class="line">&lt;title&gt;Page Title&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Set the base URL for all relative URLs within the document --&gt;</span><br><span class="line">&lt;base href=&quot;http://example.com/page.html&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Link to an external CSS file --&gt;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Used for adding in-document CSS --&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">  /* ... */</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- JavaScript &amp; No-JavaScript tags --&gt;</span><br><span class="line">&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  // function(s) go here</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;noscript&gt;</span><br><span class="line">  &lt;!-- No JS alternative  --&gt;</span><br><span class="line">  如果用户的浏览器不支持script，则会显示noscript中的内容</span><br><span class="line">&lt;/noscript&gt;</span><br></pre></td></tr></table></figure></head></p>
+<h5 id="3、关于iframe"><a href="#3、关于iframe" class="headerlink" title="3、关于iframe"></a>3、关于iframe</h5><ul>
+<li>iframe 可以拥有一个 name，a 标签的 target 可以通过 name 指向这个 iframe</li>
+<li>现代前端开发中，iframe 很少用</li>
+<li>iframe 用于在当前页面里嵌入一个页面</li>
+</ul>
+<h5 id="4、声明meta"><a href="#4、声明meta" class="headerlink" title="4、声明meta"></a>4、声明meta</h5><p>声明meta有两种方式：</p>
+<ul>
+<li><meta charset="utf-8"></li>
+<li><meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+</li>
+</ul>
+<h5 id="5、可替换元素"><a href="#5、可替换元素" class="headerlink" title="5、可替换元素"></a>5、可替换元素</h5><p>CSS 里，可替换元素（replaced element）的展现不是由CSS来控制的。这些元素是一类 外观渲染独立于CSS的 外部对象。 典型的可替换元素有 <img>、 <object>、 <video> 和 表单元素，如<textarea>、 </textarea><input> 。 某些元素只在一些特殊情况下表现为可替换元素，例如 <audio> 和 <canvas> 。 通过 CSS content 属性来插入的对象 被称作 匿名可替换元素（anonymous replaced elements）。</canvas></audio></video></object></p>
+<p>CSS在某些情况下会对可替换元素做特殊处理，比如计算外边距和一些auto值。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/02/HTML入门/" data-id="cjfif00ee0001its6qk5cfyim" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/02/HTML入门/" data-id="cjfj2f20m0000w9xqizsy7h4j" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
