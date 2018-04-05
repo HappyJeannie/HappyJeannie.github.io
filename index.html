@@ -104,19 +104,21 @@
 </ul>
 <h5 id="二、如何引入CSS"><a href="#二、如何引入CSS" class="headerlink" title="二、如何引入CSS"></a>二、如何引入CSS</h5><p>1、行内样式 优先级最高<br>2、内联样式 优先级仅次于行内<br>3、外部样式 优先级最低<br>4、@import url() 样式表中引入其他样式表 优先级同上</p>
 <h5 id="三、布局与定位"><a href="#三、布局与定位" class="headerlink" title="三、布局与定位"></a>三、布局与定位</h5><p>1）div的高度是由其内部文档流元素高度总和决定的<br>2）文档流：文档内元素的流动方向，流动方向为从左往右，从上往下<br>3）font-size:100px，这个100px指的是这个字体里面最高的位置到最低的位置的距离，并且每种字体的建议行高都不一样，为了使文档元素不同字体相同文字的高度一致，可以对其设置line-height来控制其高度。但是在较大字号的时候高度还是会有不一致的情况。<br>4)在写css样式的时候尽量不要去定义元素的宽高，最好是由内向外写，先写padding，然后是border，最后是margin，这样写的话如果文本文字扩展的话不会导致页面文字被隐藏。<br>5）通过控制border来绘制一个三角形<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  border:10px solid transparent;</span><br><span class="line">  width:0px;</span><br><span class="line">  height:0px;</span><br><span class="line">  border-top-width:0px;</span><br><span class="line">  border-left-color:#f00;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>google搜索css tricks shaped可以查看以上相关的更多代码。</p>
+<p>google搜索css tricks shaped可以查看以上相关的更多代码。<br>6)CSS position包括：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sticky      //粘性定位,是相对定位和固定定位的混合。元素在跨越特定阈值前为相对定位，之后为固定定位。</span><br><span class="line">absolute    //生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。</span><br><span class="line">relative    //生成相对定位的元素，相对于其正常位置进行定位。</span><br><span class="line">fixed       //生成绝对定位的元素，相对于浏览器窗口进行定位。</span><br><span class="line">static      //默认值。没有定位，元素出现在正常的流中</span><br></pre></td></tr></table></figure></p>
+<p>sticky举例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#one &#123; position: sticky; top: 10px; &#125;</span><br><span class="line">//在 viewport 视口滚动到元素 top 距离小于 10px 之前，元素为相对定位。之后，元素将固定在与顶部距离 10px 的位置，直到 viewport 视口回滚到阈值以下。[详见](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position),不兼容IE。</span><br></pre></td></tr></table></figure></p>
 <h5 id="三、一些小tips"><a href="#三、一些小tips" class="headerlink" title="三、一些小tips"></a>三、一些小tips</h5><p>1）清除浮动<br>如果存在如下结构,其中li均左浮动，即样式为float:left。那么此时由于浮动的原因，ul的高度为0。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li&gt;1&lt;/ii&gt;</span><br><span class="line">  &lt;li&gt;2&lt;/ii&gt;</span><br><span class="line">  &lt;li&gt;3&lt;/ii&gt;</span><br><span class="line">  &lt;li&gt;4&lt;/ii&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure></p>
 <p>为解决此问题，我们需要清楚浮动，为ul定义的样式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.clearfix::before&#123;</span><br><span class="line">  content:&apos;&apos;;</span><br><span class="line">  display:block;</span><br><span class="line">  clear:both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>将此类名添加至ul上，可清除浮动。</p>
 <p>最后，推荐一些常用的网址，如：</p>
 <ul>
 <li><a href="https://alpha.wallhaven.cc/" target="_blank" rel="noopener">wallhaven</a>，可下载高清大图，如果是商业用途请慎用，以免引起不必要的纠纷</li>
+<li>(阿里巴巴图表库)(<a href="http://www.iconfont.cn/" target="_blank" rel="noopener">http://www.iconfont.cn/</a>) 可下载字体图标，可在线引用也可下载字体包进行引用</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/03/CSS入门/" data-id="cjfjspys90000a5s6ap6jufsg" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/03/CSS入门/" data-id="cjfmmnw800000k1s6ummszy6s" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -159,7 +161,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/02/HTML入门/" data-id="cjfjspysi0004a5s6gj71751v" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/02/HTML入门/" data-id="cjfmmnw860003k1s6vh5sv3t2" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
@@ -202,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/02/NodeJS入门/" data-id="cjfjspysn000ba5s6ktafh7d3" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/02/NodeJS入门/" data-id="cjfmmnw8b0009k1s6bc7a36jg" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li></ul>
@@ -245,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/28/HTTP简介/" data-id="cjfjspysj0005a5s652fnk613" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/28/HTTP简介/" data-id="cjfmmnw880005k1s6poxvbvgr" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
@@ -289,7 +291,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/26/bash-node编写简单脚本文件/" data-id="cjfjspyss000da5s6arthu1ko" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/26/bash-node编写简单脚本文件/" data-id="cjfmmnw8c000bk1s62nid7vuu" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脚本/">脚本</a></li></ul>
@@ -333,7 +335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/25/终端常用命令介绍/" data-id="cjfjspyt1000sa5s6eye5fkun" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/25/终端常用命令介绍/" data-id="cjfmmnw8l000qk1s6k51x76xx" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/终端/">终端</a></li></ul>
@@ -376,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/git环境搭建/" data-id="cjfjspysx000la5s69x8ls45j" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/23/git环境搭建/" data-id="cjfmmnw8i000lk1s6ghq4q0mm" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -419,7 +421,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/HEXO-Github搭建个人博客/" data-id="cjfjspysg0003a5s6o2web6gq" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/23/HEXO-Github搭建个人博客/" data-id="cjfmmnw870004k1s63l04zy6i" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo-github/">hexo github</a></li></ul>
@@ -462,7 +464,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/22/git常用指令/" data-id="cjfjspysw000ja5s6yktlj8cf" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/22/git常用指令/" data-id="cjfmmnw8g000hk1s65tvy8p67" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -501,7 +503,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/19/前端入门知识总结/" data-id="cjfjspyt0000qa5s6obl7b9po" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/19/前端入门知识总结/" data-id="cjfmmnw8y001ak1s6f651ldsi" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
