@@ -111,7 +111,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a &lt;- &#123;</span><br><span class="line">  &apos;0&apos; : 12,</span><br><span class="line">  &apos;1&apos; : 22,</span><br><span class="line">  &apos;2&apos; : 8,</span><br><span class="line">  &apos;3&apos; : 3,</span><br><span class="line">  &apos;4&apos; : 24,</span><br><span class="line">  &apos;length&apos; : 5</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5 id="二、五种排序算法"><a href="#二、五种排序算法" class="headerlink" title="二、五种排序算法"></a>二、五种排序算法</h5><p><a href="https://zh.wikipedia.org/zh-hans/%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">算法</a>主要具有一下特征：</p>
+<h5 id="二、排序算法分类"><a href="#二、排序算法分类" class="headerlink" title="二、排序算法分类"></a>二、排序算法分类</h5><p><a href="https://zh.wikipedia.org/zh-hans/%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">算法</a>主要具有一下特征：</p>
 <ul>
 <li>输入：一个算法必须有零个或以上输入量。</li>
 <li>输出：一个算法应有一个或以上输出量，输出量是算法计算的结果。</li>
@@ -131,13 +131,17 @@
 <li>动态规划法： 当问题的整体最优解就是由局部最优解组成的时候，经常采用的一种方法。</li>
 <li>贪婪算法：常见的近似求解思路。当问题的整体最优解不是（或无法证明是）由局部最优解组成，且对解的最有型没有要求时，可采用的一种方法。</li>
 <li>线性规划法</li>
-<li>简并法： 把一个问题通过逻辑或者数学推理、简化成与之等价或近似的、相对简单的模型，进而求解的方法。<h5 id="1）"><a href="#1）" class="headerlink" title="1）"></a>1）</h5><h5 id="2）"><a href="#2）" class="headerlink" title="2）"></a>2）</h5><h5 id="3）"><a href="#3）" class="headerlink" title="3）"></a>3）</h5><h5 id="4）"><a href="#4）" class="headerlink" title="4）"></a>4）</h5><h5 id="5）"><a href="#5）" class="headerlink" title="5）"></a>5）</h5></li>
+<li>简并法： 把一个问题通过逻辑或者数学推理、简化成与之等价或近似的、相对简单的模型，进而求解的方法。</li>
 </ul>
+<h5 id="三、常见排序算法介绍"><a href="#三、常见排序算法介绍" class="headerlink" title="三、常见排序算法介绍"></a>三、常见排序算法介绍</h5><p>以下均是按照升序进行排列：</p>
+<h5 id="1）冒泡排序"><a href="#1）冒泡排序" class="headerlink" title="1）冒泡排序"></a>1）冒泡排序</h5><p>流程图如下：<br><img src="./../../../../css/images/20180408/冒泡排序流程图.png" alt="冒泡排序流程图"><br>冒泡排序的思路是两两对比，如果后面的值大于前面的值，则两个互换位置。</p>
+<h5 id="2）选择排序"><a href="#2）选择排序" class="headerlink" title="2）选择排序"></a>2）选择排序</h5><p>流程图如下：<br><img src="./../../../../css/images/20180408/选择排序.png" alt="选择排序"><br>选择排序的思路是找出数组的最小值，将其与下标为0的值互换，然后从第二位开始，找出从第二位开始到数组最后一个值中最小的，将此时的最小值与数组第二个值的位置互换，以此类推。</p>
+<h5 id="3）快速排序"><a href="#3）快速排序" class="headerlink" title="3）快速排序"></a>3）快速排序</h5><h5 id="4）随机快速排序"><a href="#4）随机快速排序" class="headerlink" title="4）随机快速排序"></a>4）随机快速排序</h5><h5 id="5-木桶排序"><a href="#5-木桶排序" class="headerlink" title="5)木桶排序"></a>5)木桶排序</h5><p><img src="./../../../../css/images/20180408/木桶算法排序.png" alt="木桶算法排序"><br>木桶排序的思路首先设置本次排序有几个木桶bucketCount和这个数组的取值区间，即（最大值-最小值），并计算出每个取值区间的步长step=(max -min) / bucketCount。根据数组元素值的大小将数组分配到不同的木桶中，并且在放置的过程中确保放置进木桶的数组元素按照升序排列。整理完成后将木桶中数组连接起来即可得到排序好的数组。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/08/算法入门/" data-id="cjfq7eihf000ul35lg2k0rrpc" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/08/算法入门/" data-id="cjfquo7w1000u16s6bk1elzmm" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -180,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/07/CSS设置居中/" data-id="cjfq7eigm0001l35lvs6r74dl" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/07/CSS设置居中/" data-id="cjfquo7vc000116s6yqee5aqf" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -223,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/03/CSS入门/" data-id="cjfq7eigi0000l35lrixblg96" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/03/CSS入门/" data-id="cjfquo7v9000016s66rlblb8x" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -266,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/02/HTML入门/" data-id="cjfq7eigq0004l35lvqv45jr7" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/02/HTML入门/" data-id="cjfquo7vh000516s6a771jan5" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
@@ -309,7 +313,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/02/NodeJS入门/" data-id="cjfq7eih0000cl35ls14fa63a" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/02/NodeJS入门/" data-id="cjfquo7vt000d16s6525xtsul" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li></ul>
@@ -352,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/28/HTTP简介/" data-id="cjfq7eigt0008l35llawr3ecx" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/28/HTTP简介/" data-id="cjfquo7vk000816s6bq68ecqg" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
@@ -396,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/26/bash-node编写简单脚本文件/" data-id="cjfq7eih6000hl35li1vtscpa" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/26/bash-node编写简单脚本文件/" data-id="cjfquo7vu000f16s6te4nq9vv" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脚本/">脚本</a></li></ul>
@@ -440,7 +444,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/25/终端常用命令介绍/" data-id="cjfq7eihg000wl35l30jvz715" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/25/终端常用命令介绍/" data-id="cjfquo7w2000w16s6goj9iza4" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/终端/">终端</a></li></ul>
@@ -483,7 +487,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/git环境搭建/" data-id="cjfq7eihc000nl35l3ugpfe1x" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/23/git环境搭建/" data-id="cjfquo7vx000n16s6itwycqss" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -526,7 +530,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/HEXO-Github搭建个人博客/" data-id="cjfq7eigr0005l35lp1iefi1f" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/03/23/HEXO-Github搭建个人博客/" data-id="cjfquo7vg000416s6kutiukdp" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo-github/">hexo github</a></li></ul>
