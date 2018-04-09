@@ -13,10 +13,13 @@
 <meta property="og:site_name" content="Summer&#39;s blog">
 <meta property="og:description" content="常见的数据结构包含哈希表(Hash Table)、队列(Queue)、栈(Stack)、链表(Linked List)、树(Tree)。下面进行详细介绍：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-09T02:25:46.669Z">
+<meta property="og:image" content="http://yoursite.com/css/images/20180408/链表.png">
+<meta property="og:image" content="http://yoursite.com/css/images/20180408/二叉树与数组.png">
+<meta property="og:updated_time" content="2018-04-09T07:40:20.668Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构">
 <meta name="twitter:description" content="常见的数据结构包含哈希表(Hash Table)、队列(Queue)、栈(Stack)、链表(Linked List)、树(Tree)。下面进行详细介绍：">
+<meta name="twitter:image" content="http://yoursite.com/css/images/20180408/链表.png">
   
     <link rel="alternate" href="/atom.xml" title="Summer&#39;s blog" type="application/atom+xml">
   
@@ -118,11 +121,38 @@
 <li>可以用数组实现</li>
 </ul>
 <p>日常中常见的例子就是坐电梯，假设先上去的人都是站在最里面，那么在出电梯的时候肯定是后上去的先出去，先上去的后出去这种方式，即先进后出。<br>例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var stack = [];</span><br><span class="line">stack.push(&apos;1&apos;);</span><br><span class="line">stack.push(&apos;2&apos;);</span><br><span class="line">stack.push(&apos;3&apos;);</span><br><span class="line">//此时q队列中的顺序为[&apos;1&apos;,&apos;2&apos;,&apos;3&apos;]</span><br><span class="line">stack.pop()   //pop()为出栈方法，出栈的顺序是先进后出，所以此时出栈的是&apos;3&apos;，返回&apos;3&apos;</span><br><span class="line">stack.pop()   //&apos;2&apos;出栈，返回&apos;2&apos;</span><br></pre></td></tr></table></figure></p>
+<h5 id="六、链表"><a href="#六、链表" class="headerlink" title="六、链表"></a>六、链表</h5><p>在数组中我们删除第一个元素或者最后一个元素都很好实现，可使用shift()/pop()删除首位/末尾。但是如果我们删除中间的某一个元素如删除下标为3的内容，那么需要将后面到数组元素依次往前提，这样做会非常麻烦。所以链表出现了。<br>链表的结构如图所示：<br><img src="./../../../../css/images/20180408/链表.png" alt="链表"><br>其中a0的值包含value，next值指向a1，a1的next指向a2。如果我们需要删除中间元素，如删除a1，我们只需要将a0的next指向a2，即a0.netx = a2。与此同时出现了新的问题，如果我们想访问到第n个元素的话，需要使用a0.next.next.next……next。这样操作非常的复杂。<br>综上，数组适用于查询快速只删除头尾的情况，链表适用于查询少但是需要从中间删除的情况。<br>链表中的两个概念：</p>
+<ul>
+<li>head：链表中的第一个元素叫做head，如果没有head那么无法找到其他元素，如上图中的a0</li>
+<li>node：链表中的每一个节点，即上图中的a0,a1,a2</li>
+</ul>
+<h5 id="七、树-Tree"><a href="#七、树-Tree" class="headerlink" title="七、树(Tree)"></a>七、树(Tree)</h5><p>只要有层级结构就能够称之为树。浏览器打开的页面可以称之为树，页面中的DOM节点也可成为DOM树。<br>介绍几个概念：</p>
+<ul>
+<li>层数：根元素所在的层为第1层或者第0层，由第1层扩展来的多个分支称为第二层，其他以此类推</li>
+<li>深度：一共有多少层</li>
+<li>节点个数：无子节点的节点称为叶子节点</li>
+</ul>
+<p><strong>二叉树</strong><br>（从第0层开始）每个节点最多只有两个分之的树结构称为二叉树。二叉树的第i层至多拥有2^i个节点，总计拥有2^(i+1)-1个节点。</p>
+<p><strong>满二叉树</strong><br>每一层的节点都是满的。</p>
+<p><strong>完全二叉树</strong><br>在一棵二叉树中，除最后一层外，若其余层都是满的，并且最后一层或者是满的，或者是在最右边缺少连续若干节点，则此二叉树为完全二叉树。</p>
+<p>完全二叉树和满二叉树可以用数组实现。如完全二叉树是从上到下从左到右依次存储在数组中的，如图所示：<br><img src="./../../../../css/images/20180408/二叉树与数组.png" alt="二叉树与数组"></p>
+<h5 id="八、堆排序-Heap-Sort"><a href="#八、堆排序-Heap-Sort" class="headerlink" title="八、堆排序(Heap Sort)"></a>八、堆排序(Heap Sort)</h5><p>堆是结构同于完全二叉树，有一点不同，堆的父节点的值永远大于子节点的值。<br>介绍两个概念：<br><strong>最大堆：</strong></p>
+<ul>
+<li>最大堆中的最大元素值出现在根结点(堆顶)</li>
+<li>堆中每个父节点的元素值都大于等于其孩子节点（如存在）</li>
+</ul>
+<p><strong>最小堆</strong></p>
+<ul>
+<li>最小堆中的最小元素值出现在根结点（堆顶）</li>
+<li>堆中每个副节点的元素值都小于等于其孩子节点（如存在）</li>
+</ul>
+<p>其他：B树、红黑树、AVL树。</p>
+<p>个人原创，转载请注明出处。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/08/数据结构/" data-id="cjfqx0oqd000w3es62l3b4t59" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/08/数据结构/" data-id="cjfrvx6xf000ueo5lte8vqdmy" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
