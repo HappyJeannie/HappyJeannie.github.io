@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Summer&#39;s blog">
 <meta property="og:description" content="本次JS入门，做了一个导航页面，根据此页面来讲解JS相关知识。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-11T14:48:08.475Z">
+<meta property="og:updated_time" content="2018-04-12T09:10:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS入门">
 <meta name="twitter:description" content="本次JS入门，做了一个导航页面，根据此页面来讲解JS相关知识。">
@@ -106,16 +106,30 @@
 <h6 id="遍历操作"><a href="#遍历操作" class="headerlink" title="遍历操作"></a>遍历操作</h6><p>利用length属性和key方法，可以遍历所有的键。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(var i = 0;i&lt;localStorage.length;i++)&#123;</span><br><span class="line">  console.log(localStorage.key(i));   //其中key()方法是根据位置获得键值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h6 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h6><p>当存储的数据发生变化时，会触发storage事件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&apos;storage&apos;,function(e)&#123;</span><br><span class="line">  console.log(e.key);       //发生变化的键名</span><br><span class="line">  console.log(e.oldValue);  //更新前的值。如果该键为新增加，则这个属性为null。</span><br><span class="line">  console.log(e.newValue);  //更新后的值。如果该键被删除，则这个属性为null。</span><br><span class="line">  console.log(e.url);       //原始触发storage事件的那个网页的网址。</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>此处有一点需要<strong>注意</strong>，在页面刚打开时首先需要判断当前是否存在本地缓存，如不存在可直接使用其对应hash值，否则使用本地缓存替换hash值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var hash = &#123;&quot;0&quot;:0,&quot;1&quot;,1&#125;;</span><br><span class="line">hash = JSON.parse(localStorage.getItem[&apos;hash&apos;] || null)</span><br></pre></td></tr></table></figure></p>
+<h4 id="2、数据类型"><a href="#2、数据类型" class="headerlink" title="2、数据类型"></a>2、数据类型</h4><p>Javascript的数据类型有哪些？这个是前端面试过程中经常考察的问题之一。这个问题一定要搞清楚。<br>Javascript的数据类型目前来说共7类：</p>
+<ul>
+<li>Number : 整数和小数</li>
+<li>String ：字符串</li>
+<li>Boolean ：布尔值</li>
+<li>undefined ：未定义或者不存在</li>
+<li>Object ： 对象</li>
+<li>null ： 空值</li>
+<li>Symbol : 表示独一无二的值，暂时不进行过多介绍</li>
+</ul>
+<h4 id="3、null和undefined"><a href="#3、null和undefined" class="headerlink" title="3、null和undefined"></a>3、null和undefined</h4><p><strong>null</strong>与<strong>undefined</strong>都可以表示“没有”，含义非常相似。将一个变量赋值为undefined或null，语法效果几乎没区别。<br>在if语句中，他们都会被转换成false,并且null==undefined返回的值为true（null === undefined返回值为false，原因是类型不同）。<br>null在转为数字时会自动转换为0，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Number(null)      // 0</span><br><span class="line">Number(null)      //NaN</span><br><span class="line">5 + null          //5</span><br><span class="line">5 + undefined     //NaN</span><br></pre></td></tr></table></figure></p>
+<p>具体用法为：<br><strong>null</strong> : null表示空值，即该处的值现在为空。函数调用时，某个参数未设置任何值，这时就可以传入null，表示该参数为空。比如，某个函数接受引擎抛出的错误作为参数，如果运行过程中未出错，那么这个参数就会传入null，表示未发生错误。</p>
+<p><strong>undefined</strong>：表示未定义，介绍几个返回undefined的场景：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var i ;</span><br><span class="line">i;            //  undefined，变量声明了，但是未赋值</span><br><span class="line"></span><br><span class="line">function fun(x)&#123;</span><br><span class="line">  return x;</span><br><span class="line">&#125;</span><br><span class="line">fun();          //undefined，调用参数时，该提供的参数未提供，该参数等于undefined</span><br><span class="line"></span><br><span class="line">var obj = new Object();</span><br><span class="line">obj.p;          //undefined，对应属性未赋值</span><br><span class="line"></span><br><span class="line">function funct()&#123;&#125;</span><br><span class="line">funct();        //  undefined，函数没有返回值</span><br></pre></td></tr></table></figure></p>
+<h4 id="3、数值的进制"><a href="#3、数值的进制" class="headerlink" title="3、数值的进制"></a>3、数值的进制</h4><p>使用字面量（literal）直接表示一个数值时，JavaScript 对整数提供四种进制的表示方法：十进制、十六进制、八进制、二进制。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">十进制  ：没有前导0的数值。</span><br><span class="line">八进制  ：有前缀0o或0O的数值，或者有前导0、且只用到0-7的八个阿拉伯数字的数值。</span><br><span class="line">十六进制：有前缀0x或0X的数值。</span><br><span class="line">二进制  ：有前缀0b或0B的数值。</span><br></pre></td></tr></table></figure></p>
 <p>本文相关用例可参考我制作的<a href="https://happyjeannie.github.io/myBookmarks/index.html" target="_blank" rel="noopener">网址导航</a>。</p>
 <h4 id="推荐使用网址："><a href="#推荐使用网址：" class="headerlink" title="推荐使用网址："></a>推荐使用网址：</h4><ul>
 <li><a href="compressjpeg.com">压缩图片</a></li>
 </ul>
-<h4 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h4><p>[1] Web Storage：浏览器端数据储存机制 阮一峰 <a href="http://javascript.ruanyifeng.com/bom/webstorage.html#" target="_blank" rel="noopener">http://javascript.ruanyifeng.com/bom/webstorage.html#</a></p>
+<h4 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h4><p>[1] Web Storage：浏览器端数据储存机制 阮一峰 <a href="http://javascript.ruanyifeng.com/bom/webstorage.html#" target="_blank" rel="noopener">http://javascript.ruanyifeng.com/bom/webstorage.html#</a><br>[2] 数据类型 阮一峰 <a href="http://javascript.ruanyifeng.com/grammar/types.html" target="_blank" rel="noopener">http://javascript.ruanyifeng.com/grammar/types.html</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/10/JS入门/" data-id="cjfv7hvsf0009egs6tcr2z43g" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/10/JS入门/" data-id="cjfw80kpt0005e9xqty5q5091" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
@@ -125,6 +139,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/04/11/canvas入门/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          canvas入门
+        
+      </div>
+    </a>
   
   
     <a href="/2018/04/08/数据结构/" id="article-nav-older" class="article-nav-link-wrap">
@@ -148,7 +171,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex-弹性盒模型/">flex 弹性盒模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-github/">hexo github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据可视化-D3-js/">数据可视化 D3.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/终端/">终端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脚本/">脚本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex-弹性盒模型/">flex 弹性盒模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-github/">hexo github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据可视化-D3-js/">数据可视化 D3.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/终端/">终端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脚本/">脚本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li></ul>
     </div>
   </div>
 
@@ -158,7 +181,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/flex-弹性盒模型/" style="font-size: 10px;">flex 弹性盒模型</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo-github/" style="font-size: 10px;">hexo github</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/数据可视化-D3-js/" style="font-size: 10px;">数据可视化 D3.js</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/脚本/" style="font-size: 10px;">脚本</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+      <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Javascript/" style="font-size: 10px;">Javascript</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/flex-弹性盒模型/" style="font-size: 10px;">flex 弹性盒模型</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo-github/" style="font-size: 10px;">hexo github</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/数据可视化-D3-js/" style="font-size: 10px;">数据可视化 D3.js</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/脚本/" style="font-size: 10px;">脚本</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
     </div>
   </div>
 
@@ -180,6 +203,10 @@
       <ul>
         
           <li>
+            <a href="/2018/04/11/canvas入门/">canvas入门</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/10/JS入门/">JS入门</a>
           </li>
         
@@ -193,10 +220,6 @@
         
           <li>
             <a href="/2018/04/07/CSS设置居中/">CSS布局</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/03/CSS入门/">CSS入门</a>
           </li>
         
       </ul>
