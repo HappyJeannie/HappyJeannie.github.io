@@ -5,18 +5,18 @@
   
   <title>JS里的数据 | Summer&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、JSs数据类型JS有七种数据类型，分别是：String、Number、Boolean、Null、undefined、Object、Symbol(符号)。其中Object包含Array、Function。 1、NumberNumber分为十六进制、十进制、八进制、二进制。 十进制：12341           //">
+  <meta name="description" content="介绍一些JS的数据类型及其常用方法。">
 <meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS里的数据">
 <meta property="og:url" content="http://yoursite.com/2018/04/16/JS里的数据/index.html">
 <meta property="og:site_name" content="Summer&#39;s blog">
-<meta property="og:description" content="一、JSs数据类型JS有七种数据类型，分别是：String、Number、Boolean、Null、undefined、Object、Symbol(符号)。其中Object包含Array、Function。 1、NumberNumber分为十六进制、十进制、八进制、二进制。 十进制：12341           //11 + .1      //1.11.23e2      //1231.23E">
+<meta property="og:description" content="介绍一些JS的数据类型及其常用方法。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-16T15:00:41.037Z">
+<meta property="og:updated_time" content="2018-04-16T16:25:27.147Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS里的数据">
-<meta name="twitter:description" content="一、JSs数据类型JS有七种数据类型，分别是：String、Number、Boolean、Null、undefined、Object、Symbol(符号)。其中Object包含Array、Function。 1、NumberNumber分为十六进制、十进制、八进制、二进制。 十进制：12341           //11 + .1      //1.11.23e2      //1231.23E">
+<meta name="twitter:description" content="介绍一些JS的数据类型及其常用方法。">
   
     <link rel="alternate" href="/atom.xml" title="Summer&#39;s blog" type="application/atom+xml">
   
@@ -91,7 +91,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、JSs数据类型"><a href="#一、JSs数据类型" class="headerlink" title="一、JSs数据类型"></a>一、JSs数据类型</h3><p>JS有七种数据类型，分别是：String、Number、Boolean、Null、undefined、Object、Symbol(符号)。其中Object包含Array、Function。</p>
+        <p>介绍一些JS的数据类型及其常用方法。<br><a id="more"></a></p>
+<h3 id="一、JSs数据类型"><a href="#一、JSs数据类型" class="headerlink" title="一、JSs数据类型"></a>一、JSs数据类型</h3><p>JS有七种数据类型，分别是：String、Number、Boolean、Null、undefined、Object、Symbol(符号)。其中Object包含Array、Function。</p>
 <h4 id="1、Number"><a href="#1、Number" class="headerlink" title="1、Number"></a>1、Number</h4><p>Number分为十六进制、十进制、八进制、二进制。</p>
 <h5 id="十进制："><a href="#十进制：" class="headerlink" title="十进制："></a>十进制：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1           //1</span><br><span class="line">1 + .1      //1.1</span><br><span class="line">1.23e2      //123</span><br><span class="line">1.23E2      //123   科学计数法</span><br></pre></td></tr></table></figure>
 <h5 id="二进制"><a href="#二进制" class="headerlink" title="二进制"></a>二进制</h5><p>二进制以0b开头<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0b11      //转为十进制：3</span><br></pre></td></tr></table></figure></p>
@@ -112,11 +113,101 @@
 <h5 id="2）删除一个key"><a href="#2）删除一个key" class="headerlink" title="2）删除一个key"></a>2）删除一个key</h5><p>delete obj[‘name’]<br>obj[‘name’]       //  删除后此值为undefined，无value<br>‘name’ in obj     //  false，无key<br>obj[‘name’] = undefined   //  此种方法删除的话只会删除掉vaule值，但是key还在</p>
 <h5 id="3）读取键名for-in"><a href="#3）读取键名for-in" class="headerlink" title="3）读取键名for..in"></a>3）读取键名for..in</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(var key in obj)&#123;</span><br><span class="line">  console.log(key);   //name age gender children self....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="7、Symbol"><a href="#7、Symbol" class="headerlink" title="7、Symbol"></a>7、Symbol</h4><h3 id="二、其他"><a href="#二、其他" class="headerlink" title="二、其他"></a>二、其他</h3><h4 id="1-typeof"><a href="#1-typeof" class="headerlink" title="1)typeof"></a>1)typeof</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">typeof(string)      //&apos;string&apos;</span><br><span class="line">typeof(number)      //&apos;number&apos;</span><br><span class="line">typeof(boolean)      //&apos;boolean&apos;</span><br><span class="line">typeof(undefined)      //&apos;undefined&apos;</span><br><span class="line">typeof(null)      //&apos;object&apos;，这个比较特殊</span><br><span class="line">typeof(obj)      //&apos;object&apos;</span><br><span class="line">typeof(symbol)      //&apos;symbol&apos;</span><br><span class="line">//以上是js的类型</span><br><span class="line">typeof(fun)     //  function fun()&#123;&#125;，输出&apos;function&apos;，但是function并不是一个类型</span><br></pre></td></tr></table></figure>
+<h3 id="三、类型转换"><a href="#三、类型转换" class="headerlink" title="三、类型转换"></a>三、类型转换</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align:center">Number</th>
+<th style="text-align:center">String</th>
+<th style="text-align:center">Boolean</th>
+<th style="text-align:center">Symbol</th>
+<th style="text-align:center">null</th>
+<th style="text-align:center">undefined</th>
+<th style="text-align:right">Object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Number</td>
+<td style="text-align:center">——</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:right">toString()</td>
+</tr>
+<tr>
+<td>String</td>
+<td style="text-align:center">——</td>
+<td style="text-align:center">———-</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:right">toString()</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td style="text-align:center">——</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">———-</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:right">toString()</td>
+</tr>
+<tr>
+<td>Symbol</td>
+<td style="text-align:center">–xx–</td>
+<td style="text-align:center">—-xx—-</td>
+<td style="text-align:center">—-xx—-</td>
+<td style="text-align:center">—-xx—-</td>
+<td style="text-align:center">—-xx—-</td>
+<td style="text-align:center">—-xx—-</td>
+<td style="text-align:right">—-xx—-</td>
+</tr>
+<tr>
+<td>null</td>
+<td style="text-align:center">——</td>
+<td style="text-align:center">不可行，报错</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">———-</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:right">toString()</td>
+</tr>
+<tr>
+<td>undefined</td>
+<td style="text-align:center">——</td>
+<td style="text-align:center">不可行，报错</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">———-</td>
+<td style="text-align:right">toString()</td>
+</tr>
+<tr>
+<td>Object</td>
+<td style="text-align:center">——</td>
+<td style="text-align:center">可行,结果为对象</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:center">toString()</td>
+<td style="text-align:right">———-</td>
+</tr>
+</tbody>
+</table>
+<p>tips；</p>
+<ul>
+<li>非字符串类型变量加上空字符串即可转换为字符串类型。如var a = 1 + ‘’;//a的值为’1’</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/16/JS里的数据/" data-id="cjg22d0vh0008t95lh11jd01q" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/16/JS里的数据/" data-id="cjg2gapx9000d5rs6eipikazn" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
