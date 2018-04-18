@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>归档: 2018/4 | Summer&#39;s blog</title>
+  <title>JS常用API | Summer&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="yanjun|闫俊|summer|HappyJeannie|Happjeannie|html|css|html5|css3|javascript|vue|webpack|node|java|chart|d3|响应式|h5">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Summer&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/04/index.html">
+  <meta name="description" content="之前做项目一般都是使用jQuery，jQuery封装了很多方法包括选择器，使用起来非常方便。由此带来的问题是对于原生JS的API的了解与使用就变得特别少。这篇文章主要记录在项目中遇到的一些不熟悉的JS API。">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS常用API">
+<meta property="og:url" content="http://yoursite.com/2018/04/18/JS常用API/index.html">
 <meta property="og:site_name" content="Summer&#39;s blog">
-<meta property="og:description" content="yanjun|闫俊|summer|HappyJeannie|Happjeannie|html|css|html5|css3|javascript|vue|webpack|node|java|chart|d3|响应式|h5">
+<meta property="og:description" content="之前做项目一般都是使用jQuery，jQuery封装了很多方法包括选择器，使用起来非常方便。由此带来的问题是对于原生JS的API的了解与使用就变得特别少。这篇文章主要记录在项目中遇到的一些不熟悉的JS API。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-18T13:22:49.679Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Summer&#39;s blog">
-<meta name="twitter:description" content="yanjun|闫俊|summer|HappyJeannie|Happjeannie|html|css|html5|css3|javascript|vue|webpack|node|java|chart|d3|响应式|h5">
+<meta name="twitter:title" content="JS常用API">
+<meta name="twitter:description" content="之前做项目一般都是使用jQuery，jQuery封装了很多方法包括选择器，使用起来非常方便。由此带来的问题是对于原生JS的API的了解与使用就变得特别少。这篇文章主要记录在项目中遇到的一些不熟悉的JS API。">
   
     <link rel="alternate" href="/atom.xml" title="Summer&#39;s blog" type="application/atom+xml">
   
@@ -67,215 +69,60 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/18/JS常用API/" class="archive-article-date">
-  <time datetime="2018-04-18T08:55:49.000Z" itemprop="datePublished">4月 18</time>
+        <section id="main"><article id="post-JS常用API" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/18/JS常用API/" class="article-date">
+  <time datetime="2018-04-18T08:55:49.000Z" itemprop="datePublished">2018-04-18</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/18/JS常用API/">JS常用API</a>
+    <h1 class="article-title" itemprop="name">
+      JS常用API
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/17/JS里的对象/" class="archive-article-date">
-  <time datetime="2018-04-17T07:01:23.000Z" itemprop="datePublished">4月 17</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/17/JS里的对象/">JS里的对象</a>
-    </h1>
-  
+        <p>之前做项目一般都是使用jQuery，jQuery封装了很多方法包括选择器，使用起来非常方便。由此带来的问题是对于原生JS的API的了解与使用就变得特别少。这篇文章主要记录在项目中遇到的一些不熟悉的JS API。</p>
+<a id="more"></a>
+<h4 id="1、document-getElementById"><a href="#1、document-getElementById" class="headerlink" title="1、document.getElementById"></a>1、document.getElementById</h4><p>这个API用于获取页面内有id的DOM。在如今的浏览器中会把id所对应的DOM当成window的全局变量，所以，如果给一个DOM定一个id，那么在获取DOM节点是可以直接以此id为全局变量，如果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//结构</span><br><span class="line">&lt;header id=&quot;header&quot;&gt;&lt;/header&gt;</span><br><span class="line">//JS</span><br><span class="line">header.textContent = &quot;header&quot;;</span><br></pre></td></tr></table></figure></p>
+<h4 id="2、querySelector-querySelectorAll"><a href="#2、querySelector-querySelectorAll" class="headerlink" title="2、querySelector/querySelectorAll"></a>2、querySelector/querySelectorAll</h4><p>一般我们使用JS选择DOM常用的方法是documen.getElementById(id)、document.ElementsByTagName(tag)、document.getELementByClassName(name)这几种写法，如果DOM结构比较深需要层层深入去查询，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&apos;main&apos;).getElementsByTagName(&apos;ul&apos;)....getElementByClassName(&apos;class&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>这种写法比较复杂。而querySelector()选择其的使用方法和jQuery很像。可以直接进行多层选择，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.querySelector(&apos;#main ul class&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>并且querySelector()能够兼容到IE8。</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/16/JS里的数据/" class="archive-article-date">
-  <time datetime="2018-04-16T08:03:44.000Z" itemprop="datePublished">4月 16</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/16/JS里的数据/">JS里的数据</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/11/canvas入门/" class="archive-article-date">
-  <time datetime="2018-04-11T14:49:26.000Z" itemprop="datePublished">4月 11</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/18/JS常用API/" data-id="cjg4wxvs900096e5l3wyp9sfs" class="article-share-link">分享</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/11/canvas入门/">canvas入门</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/10/JS入门/" class="archive-article-date">
-  <time datetime="2018-04-10T07:08:52.000Z" itemprop="datePublished">4月 10</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/10/JS入门/">JS入门</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/17/JS里的对象/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS里的对象</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/08/数据结构/" class="archive-article-date">
-  <time datetime="2018-04-08T14:20:36.000Z" itemprop="datePublished">4月 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/08/数据结构/">数据结构</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/08/算法入门/" class="archive-article-date">
-  <time datetime="2018-04-08T02:43:22.000Z" itemprop="datePublished">4月 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/08/算法入门/">算法入门</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/07/CSS设置居中/" class="archive-article-date">
-  <time datetime="2018-04-07T03:29:27.000Z" itemprop="datePublished">4月 7</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/07/CSS设置居中/">CSS布局</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/03/CSS入门/" class="archive-article-date">
-  <time datetime="2018-04-03T15:01:57.000Z" itemprop="datePublished">4月 3</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/03/CSS入门/">CSS入门</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/02/HTML入门/" class="archive-article-date">
-  <time datetime="2018-04-02T15:36:53.000Z" itemprop="datePublished">4月 2</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/02/HTML入门/">HTML入门</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2018/04/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/04/page/2/">__('next') &raquo;</a>
-  </nav>
 </section>
         
           <aside id="sidebar">
