@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>函数 | Summer&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这篇文章需要重点记忆，面试的过程中经常会涉及到此篇文章中的问题。">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数">
+<meta property="og:url" content="http://yoursite.com/2018/04/21/函数/index.html">
+<meta property="og:site_name" content="Summer&#39;s blog">
+<meta property="og:description" content="这篇文章需要重点记忆，面试的过程中经常会涉及到此篇文章中的问题。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/fun/call.png">
+<meta property="og:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/fun/this.png">
+<meta property="og:updated_time" content="2018-04-22T15:48:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="函数">
+<meta name="twitter:description" content="这篇文章需要重点记忆，面试的过程中经常会涉及到此篇文章中的问题。">
+<meta name="twitter:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/fun/call.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Summer&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Summer&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A front-end developer‘s knowledge home</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/21/函数/" class="article-date">
+  <time datetime="2018-04-21T15:44:19.000Z" itemprop="datePublished">2018-04-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      函数
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这篇文章需要重点记忆，面试的过程中经常会涉及到此篇文章中的问题。</p>
+<a id="more"></a>
+<h3 id="一、函数的五种声明方式"><a href="#一、函数的五种声明方式" class="headerlink" title="一、函数的五种声明方式"></a>一、函数的五种声明方式</h3><h4 id="1-具名函数"><a href="#1-具名函数" class="headerlink" title="1) 具名函数"></a>1) 具名函数</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function fn(参数1，参数2)&#123;</span><br><span class="line">  return undefined;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 其中function为关键字,fn为函数名，</p>
+<h4 id="2）匿名函数"><a href="#2）匿名函数" class="headerlink" title="2）匿名函数"></a>2）匿名函数</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let x = function(参数1,参数2)&#123;</span><br><span class="line">  return undefined;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 使用时直接调用变量:x(1,3);</p>
+<h4 id="3）具名函数赋值"><a href="#3）具名函数赋值" class="headerlink" title="3）具名函数赋值"></a>3）具名函数赋值</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let x = function y(arg1,arg2)&#123;</span><br><span class="line">  return undefined;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-window-Function函数对象"><a href="#4-window-Function函数对象" class="headerlink" title="4)window.Function函数对象"></a>4)window.Function函数对象</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Function(&apos;x&apos;,&apos;y&apos;,&apos;return x+y&apos;);</span><br></pre></td></tr></table></figure>
+<p>x,y均为参数，第三个参数为函数体。所有的内容都可以以字符串的方式拼起来，并且可以加入变量，以下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let n = 1;</span><br><span class="line">let f = new Function(&apos;x&apos;,&apos;y&apos;,&apos;return x+&apos;+n+&apos;+y&apos;);</span><br><span class="line">f(1,2);           //  此时输出4</span><br></pre></td></tr></table></figure></p>
+<h4 id="5-ES6箭头函数"><a href="#5-ES6箭头函数" class="headerlink" title="5)ES6箭头函数"></a>5)ES6箭头函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let sum = (x,y) =&gt; &#123;</span><br><span class="line">  return x+y;</span><br><span class="line">&#125;</span><br><span class="line">sum(1,2);       //  返回3</span><br></pre></td></tr></table></figure>
+<p>如果花括号内只有一句话的时候，且返回的不是一个对象时可以这么写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let sum = (x,y) =&gt; x+y</span><br><span class="line">sum(1,2);         //  返回3</span><br></pre></td></tr></table></figure></p>
+<p>如果箭头函数参数只有一个，写法可以如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let sum = n =&gt; n*n</span><br><span class="line">sum(2);     //  返回4</span><br></pre></td></tr></table></figure></p>
+<p>以上。箭头函数是匿名函数，没有名字，需要赋值到一个变量上。</p>
+<hr>
+<p>关于函数有一个属性用于获取函数的名字，即name，介绍下每种函数声明方式下获取的name值是什么，只需强制记忆就可以：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function f1()&#123;&#125;</span><br><span class="line">let f2 = function()&#123;&#125;</span><br><span class="line">let f3 = functionf4()&#123;&#125;</span><br><span class="line">let f5 = new Function(&apos;x&apos;,&apos;y&apos;,&apos;return x+y&apos;);</span><br><span class="line"></span><br><span class="line">f1.name;        //  输出&quot;f1&quot;</span><br><span class="line">f2.name;        //  输出&quot;f2&quot;</span><br><span class="line">f3.name;        //  输出&quot;f4&quot;</span><br><span class="line">f5.name;        //  输出&quot;anonymous&quot;，是匿名的意思</span><br></pre></td></tr></table></figure></p>
+<h3 id="二、如何调用函数"><a href="#二、如何调用函数" class="headerlink" title="二、如何调用函数"></a>二、如何调用函数</h3><p> <img src="https://happyjeannie.github.io/Demo/jsDemo/img/fun/call.png" alt="call"><br> 以上，在声明了一个函数之后，会将其参数放置到某个属性中，我们暂时认为是params，函数主体会放置在tbody中，其<strong>proto</strong>指向Object.prototype，Object.prototype包含一个call()方法，此方法会调用函数体中的tbody。而函数调用就是执行call()方法。<br> 为加深理解，我们直接做出一个函数出来：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let f = &#123;&#125;;</span><br><span class="line">f.params = [&apos;x&apos;,&apos;y&apos;];</span><br><span class="line">f.fbody = &apos;console.log(&quot;fff&quot;)&apos;;</span><br><span class="line">f.call = function()&#123;</span><br><span class="line">    return window.eval(f.tbody);        //  eval()将传入的字符串将代码执行，尽量少用</span><br><span class="line">&#125;</span><br><span class="line">f.call()                           //  输出fff</span><br></pre></td></tr></table></figure></p>
+<p> 以上，f是一个函数对象，f.call()是执行这个对象的函数体。<br> 其中f(1,2)和f.call(undefined,1,2)二者执行的效果一致，而call()方法的调用才是函数的真正调用，为硬核，hardcored。第一种方法为语法糖。<br> 函数是一个对象，可以执行代码。</p>
+<h3 id="三、this和arguments"><a href="#三、this和arguments" class="headerlink" title="三、this和arguments"></a>三、this和arguments</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f.call(undefined,1,2);</span><br></pre></td></tr></table></figure>
+<p>根据《二、如何调用函数》中的示例，在调用函数的过程中，以上述代码为例，undefined就是this，’1,2’就是arguments。即call的第一个参数可以用this得到，call的后面的参数可以用arguments得到。<br>我们通过函数调用可以输出下this和arguments：<br> <img src="https://happyjeannie.github.io/Demo/jsDemo/img/fun/this.png" alt="this"><br> 其中arguments为一个伪数组(长得像数组，但是其<strong>proto</strong>不是Array.prototype)。</p>
+<h3 id="四、作用域"><a href="#四、作用域" class="headerlink" title="四、作用域"></a>四、作用域</h3><h3 id="五、闭包"><a href="#五、闭包" class="headerlink" title="五、闭包"></a>五、闭包</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/21/函数/" data-id="cjgal7wx80014ifs6wy0cfael" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/20/JS标准库/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS标准库(一)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex-弹性盒模型/">flex 弹性盒模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-github/">hexo github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据可视化-D3-js/">数据可视化 D3.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/终端/">终端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脚本/">脚本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/flex-弹性盒模型/" style="font-size: 10px;">flex 弹性盒模型</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/hexo-github/" style="font-size: 10px;">hexo github</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/数据可视化-D3-js/" style="font-size: 10px;">数据可视化 D3.js</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/脚本/" style="font-size: 10px;">脚本</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/21/函数/">函数</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/20/JS标准库/">JS标准库(一)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/18/JS常用API/">JS常用API</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/17/JS里的对象/">JS里的对象</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/16/JS里的数据/">JS里的数据</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Summer<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
