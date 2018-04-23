@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>DOM API | Summer&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="DOM的全称是Document Object Model(文档对象模型)。DOM是一棵树(tree)，树上有Node，Node分为Document(html)、Element(元素)和Text(文本)，其他不重要。">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM API">
+<meta property="og:url" content="http://yoursite.com/2018/04/23/DOM-API/index.html">
+<meta property="og:site_name" content="Summer&#39;s blog">
+<meta property="og:description" content="DOM的全称是Document Object Model(文档对象模型)。DOM是一棵树(tree)，树上有Node，Node分为Document(html)、Element(元素)和Text(文本)，其他不重要。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/dom/object.png">
+<meta property="og:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/dom/node.png">
+<meta property="og:updated_time" content="2018-04-23T13:15:06.682Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM API">
+<meta name="twitter:description" content="DOM的全称是Document Object Model(文档对象模型)。DOM是一棵树(tree)，树上有Node，Node分为Document(html)、Element(元素)和Text(文本)，其他不重要。">
+<meta name="twitter:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/dom/object.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Summer&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Summer&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A front-end developer‘s knowledge home</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-DOM-API" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/23/DOM-API/" class="article-date">
+  <time datetime="2018-04-23T03:09:58.000Z" itemprop="datePublished">2018-04-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DOM API
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>DOM的全称是Document Object Model(文档对象模型)。<br>DOM是一棵树(tree)，树上有Node，Node分为Document(html)、Element(元素)和Text(文本)，其他不重要。</p>
+<a id="more"></a>
+<p>看以下图示：<br><img src="https://happyjeannie.github.io/Demo/jsDemo/img/dom/object.png" alt="object"><br>以上是文档和对象对比图，二者通过model建立关系。Node节点示意图：<br><img src="https://happyjeannie.github.io/Demo/jsDemo/img/dom/node.png" alt="node"><br>Node也是一个对象，其原型指向Object.prototype。<br>页面上所有标签都有对应的构造函数，如果页面中有注释，以上还会存在一个Comment构造函数，其原型指向Node构造函数。<br>Dom的主要功能是使页面中的节点通过构造函数生成对象。</p>
+<hr>
+<h3 id="一、Node接口"><a href="#一、Node接口" class="headerlink" title="一、Node接口"></a>一、Node接口</h3><h4 id="1、属性："><a href="#1、属性：" class="headerlink" title="1、属性："></a>1、属性：</h4><ul>
+<li>childNodes        //会返回包括回车/空格在内的子元素，节点类型为text，及获取子节点</li>
+<li>firstChild        //获取第一个元素，包含空格/回车</li>
+<li>innerText</li>
+<li>lastChild</li>
+<li>nextSibling</li>
+<li>nodeName</li>
+<li>nodeType</li>
+<li>nodeValue</li>
+<li>outerText</li>
+<li>ownerDocument</li>
+<li>parentElement</li>
+<li>parentNode</li>
+<li>previousSibling</li>
+<li>textContent<br>这里说明以下Node节点的几种类型：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>常量</th>
+<th style="text-align:center">值</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node.ELEMENT_NODE</td>
+<td style="text-align:center">1</td>
+<td style="text-align:right">一个元素节点，如&lt;\div&gt;和&lt;\p&gt;</td>
+</tr>
+<tr>
+<td>Node.TEXT</td>
+<td style="text-align:center">3</td>
+<td style="text-align:right">Element或者Attr中的实际文字</td>
+</tr>
+<tr>
+<td>Node.PROCESSING_INSTRUCTION_NODE</td>
+<td style="text-align:center">7</td>
+<td style="text-align:right">一个用于XML文档的ProcessingInstruction，例如&lt;?xml-stylesheet .. ?&gt; 声明</td>
+</tr>
+<tr>
+<td>Node.COMMENT_NODE</td>
+<td style="text-align:center">8</td>
+<td style="text-align:right">一个 Comment节点</td>
+</tr>
+<tr>
+<td>Node.DOCUMENT_NODE</td>
+<td style="text-align:center">9</td>
+<td style="text-align:right">一个Document节点</td>
+</tr>
+<tr>
+<td>Node.DOCUMENT_TYPE_NODE</td>
+<td style="text-align:center">10</td>
+<td style="text-align:right">描述文档类型的DocumentType节点，如&lt;!DOCTYPE html&gt;就是用于HTML5的</td>
+</tr>
+<tr>
+<td>Node.DOCUMENT_FRAGMENT_NODE</td>
+<td style="text-align:center">11</td>
+<td style="text-align:right">一个DocumentFragment节点</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h4><ul>
+<li>appendChild()         //添加子元素</li>
+<li>cloneNOde()           //复制一个节点，如果使用时cloneNode(true)则会克隆其全部子元素，否则只克隆当前标签，默认为false</li>
+<li>contains()            //判断一个元素是否包含另外一个元素</li>
+<li>hasChildNodes()       //判断一个元素是否有子元素</li>
+<li>insertBefore()        //将xxx插入到此节点前面</li>
+<li>isEqualNode()         //是否是相等的节点，这个只是两个节点看起来一样</li>
+<li>isSameNode()          //是否是相同的节点，这两个节点必须是同一个才为true</li>
+<li>removeChild()         //移除后， 此节点不会在页面中显示，但是仍保留在内存中</li>
+<li>replaceNode()         //替换节点</li>
+<li>normalize()           //常规化</li>
+</ul>
+<p>以上，重点掌握innerText和textContent的区别，以及nodeType的不同类型。<br>1） innerText是IE开发出来的API，textContent是FF开发出来的API<br>2) textContent会获取所有内容，包括<code>&lt;style&gt;</code>和<code>&lt;script&gt;</code>标签及其内容<br>3） innerText会意识到样式，不会返回隐藏文本，textContent会返回<br>4）因为innerText受css样式影响，他会触发重排，而textConent不会，所以textContet获取会比较快<br>5）与textConent不同的是，在IEIE(&lt;IE11)中对innerText进行修改，不仅会移除当前元素的节点，还会永久的破坏所有后代文本节点</p>
+<h3 id="二、Document接口"><a href="#二、Document接口" class="headerlink" title="二、Document接口"></a>二、Document接口</h3><h4 id="1、属性"><a href="#1、属性" class="headerlink" title="1、属性"></a>1、属性</h4><ul>
+<li>anchors           //返回当前文档中的所有锚点元素，不过目前已经被弃用。由于向后兼容，只会返回拥有name属性的a元素，而不是那些拥有id的a元素</li>
+<li>body              //获取body元素</li>
+<li>characterSet      //获取字符编码，如document.characterSet会返回”UTF-8”</li>
+<li>childElementCount //获取子元素个数，如document.childElementCount返回1，因为document下是html元素，只有一个</li>
+<li>children          //只返回标签元素，即获取子标签，注意与childNodes区别</li>
+<li>doctype</li>
+<li>documentElement   //html元素，文档对象的根元素</li>
+<li>domain            //获取域名</li>
+<li>head</li>
+<li>hidden            //文档是否被隐藏</li>
+<li>images            //获取页面中所有image标签</li>
+<li>links             //获取页面中所有a标签</li>
+<li>location          //获取当前页面路径相关的所有信息包括域名、协议、路径、端口等</li>
+<li>onxxxxxxx         //获取当前页面所有事件，如onclick、onmouseleave等等</li>
+<li>origin</li>
+<li>plugins           //可用于判断是否开启flash插件</li>
+<li>readyState        //返回页面状态，如果已经加载完，则返回”complete”</li>
+<li>referrer          //引荐者，即是从哪个页面跳转过来的，可在请求头中查询到</li>
+<li>scripts</li>
+<li>scrollingElement  //正在滚动的元素，即用户正在哪个元素上滚动</li>
+<li>styleSheets</li>
+<li>title</li>
+<li>visibilityState</li>
+<li>firstElementChild //返回第一个标签元素<h4 id="2、方法-1"><a href="#2、方法-1" class="headerlink" title="2、方法"></a>2、方法</h4></li>
+<li>close()         //关闭文档</li>
+<li>createDocumentFragment()</li>
+<li>createElement()</li>
+<li>createTextNode()</li>
+<li>execCommand()     //执行命令，即：用户在页面选中文字，在控制台输入document.execCommand(‘copy’);则会输出选中文字内容，需检查浏览器兼容性</li>
+<li>exitFullscreen()</li>
+<li>getElementById()</li>
+<li>getElementsByClassName()</li>
+<li>getElementsByName()</li>
+<li>getElementsByTagName()</li>
+<li>getSelection()      //获取用户选中文本</li>
+<li>hasFocus()</li>
+<li>open()</li>
+<li>querySelector()</li>
+<li>querySelectorAll()</li>
+<li>registerElement()</li>
+<li>write()       //写</li>
+<li>writeln()     //写一行，会出现空格</li>
+</ul>
+<h3 id="三、Tips"><a href="#三、Tips" class="headerlink" title="三、Tips"></a>三、Tips</h3><h4 id="1、目前，DOM通用的国际标准版本是DOM3"><a href="#1、目前，DOM通用的国际标准版本是DOM3" class="headerlink" title="1、目前，DOM通用的国际标准版本是DOM3"></a>1、目前，DOM通用的国际标准版本是DOM3</h4><h4 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/23/DOM-API/" data-id="cjgbnyhwc0000n35l10685n7h" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/21/函数/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">函数</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MarkDown/">MarkDown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex-弹性盒模型/">flex 弹性盒模型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-github/">hexo github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据可视化-D3-js/">数据可视化 D3.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/终端/">终端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脚本/">脚本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/MarkDown/" style="font-size: 10px;">MarkDown</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/flex-弹性盒模型/" style="font-size: 10px;">flex 弹性盒模型</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/hexo-github/" style="font-size: 10px;">hexo github</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/数据可视化-D3-js/" style="font-size: 10px;">数据可视化 D3.js</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/终端/" style="font-size: 10px;">终端</a> <a href="/tags/脚本/" style="font-size: 10px;">脚本</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/23/DOM-API/">DOM API</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/21/函数/">函数</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/20/JS标准库/">JS标准库(一)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/18/JS常用API/">JS常用API</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/17/JS里的对象/">JS里的对象</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Summer<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

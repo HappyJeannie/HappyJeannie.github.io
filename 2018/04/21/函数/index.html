@@ -15,7 +15,9 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/fun/call.png">
 <meta property="og:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/fun/this.png">
-<meta property="og:updated_time" content="2018-04-22T15:48:51.000Z">
+<meta property="og:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/fun/stack01.png">
+<meta property="og:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/fun/作用域.png">
+<meta property="og:updated_time" content="2018-04-23T03:26:25.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="函数">
 <meta name="twitter:description" content="这篇文章需要重点记忆，面试的过程中经常会涉及到此篇文章中的问题。">
@@ -113,11 +115,27 @@
 <p> 以上，f是一个函数对象，f.call()是执行这个对象的函数体。<br> 其中f(1,2)和f.call(undefined,1,2)二者执行的效果一致，而call()方法的调用才是函数的真正调用，为硬核，hardcored。第一种方法为语法糖。<br> 函数是一个对象，可以执行代码。</p>
 <h3 id="三、this和arguments"><a href="#三、this和arguments" class="headerlink" title="三、this和arguments"></a>三、this和arguments</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f.call(undefined,1,2);</span><br></pre></td></tr></table></figure>
 <p>根据《二、如何调用函数》中的示例，在调用函数的过程中，以上述代码为例，undefined就是this，’1,2’就是arguments。即call的第一个参数可以用this得到，call的后面的参数可以用arguments得到。<br>我们通过函数调用可以输出下this和arguments：<br> <img src="https://happyjeannie.github.io/Demo/jsDemo/img/fun/this.png" alt="this"><br> 其中arguments为一个伪数组(长得像数组，但是其<strong>proto</strong>不是Array.prototype)。</p>
-<h3 id="四、作用域"><a href="#四、作用域" class="headerlink" title="四、作用域"></a>四、作用域</h3><h3 id="五、闭包"><a href="#五、闭包" class="headerlink" title="五、闭包"></a>五、闭包</h3>
+<h3 id="四、call-stack调用栈"><a href="#四、call-stack调用栈" class="headerlink" title="四、call stack调用栈"></a>四、call stack调用栈</h3><p> 这个我也说不太明白，直接看例子吧。stack调用栈主要是先进后出。<br><strong>例子一：普通调用</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> function a()&#123;</span><br><span class="line">  console.log(&apos;a&apos;)</span><br><span class="line">  return &apos;a&apos;  </span><br><span class="line">&#125;</span><br><span class="line">function b()&#123;</span><br><span class="line">  console.log(&apos;b&apos;)</span><br><span class="line">  return &apos;b&apos;</span><br><span class="line">&#125;</span><br><span class="line">function c()&#123;</span><br><span class="line">  console.log(&apos;c&apos;)</span><br><span class="line">  return &apos;c&apos;</span><br><span class="line">&#125;</span><br><span class="line">a.call()</span><br><span class="line">b.call()</span><br><span class="line">c.call()</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://happyjeannie.github.io/Demo/jsDemo/img/fun/stack01.png" alt="stack"><br>前面三个function是函数声明。后面a.call()、b.call()、c.call()是函数调用，这三条语句会依次执行。执行的顺序如上图所示：<br>首先执行a.call()并放入栈中，紧接着执行console.log(‘a’),此语句执行完成后在栈的队列被销毁然后执行紧接着的语句return ‘a’，这个只返回数据不会在栈中出现，那么接下来就是销毁a.call()。然后执行b.call()，执行顺序跟以上类似。<br><strong>例子二：嵌套调用</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123;</span><br><span class="line">    console.log(&apos;a1&apos;)</span><br><span class="line">    b.call()</span><br><span class="line">    console.log(&apos;a2&apos;)</span><br><span class="line">  return &apos;a&apos;  </span><br><span class="line">&#125;</span><br><span class="line">function b()&#123;</span><br><span class="line">    console.log(&apos;b1&apos;)</span><br><span class="line">    c.call()</span><br><span class="line">    console.log(&apos;b2&apos;)</span><br><span class="line">    return &apos;b&apos;</span><br><span class="line">&#125;</span><br><span class="line">function c()&#123;</span><br><span class="line">    console.log(&apos;c&apos;)</span><br><span class="line">    return &apos;c&apos;</span><br><span class="line">&#125;</span><br><span class="line">a.call()</span><br><span class="line">console.log(&apos;end&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>以上代码在栈中执行的顺序是：<br>-&gt;a.call()<br>-&gt; a.call() console.log(‘a1’)<br>-&gt; a.call() -&gt;a.call() b.call()<br>-&gt; a.call() b.call() console.log(‘b1’)<br>-&gt; a.call() b.call()<br>-&gt; a.call() b.call() c.call()<br>-&gt; a.call() b.call() c.call() console.log(‘c’)<br>-&gt; a.call() b.call() c.call()<br>-&gt; a.call() b.call()<br>-&gt; a.call() b.call() console.log(‘b2’)<br>-&gt; a.call() b.call()<br>-&gt; a.call()<br>-&gt; a.call() console.log(‘a2’)<br>-&gt; a.call()<br>-&gt; 空<br>-&gt; console.log(‘end’)<br>-&gt; 空(完)<br><strong>例子三：递归调用</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function sum(n)&#123;</span><br><span class="line">    if(n==1)&#123;</span><br><span class="line">        return 1</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return n + sum.call(undefined, n-1)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">sum.call(undefined,5)</span><br></pre></td></tr></table></figure></p>
+<p>以上代码在栈中执行的顺序是：<br>1)-&gt; sum.call(undefined,5)<br>2)-&gt; sum.call(undefined,5) n==1<br>3)-&gt; sum.call(undefined,5)<br>4)-&gt; sum.call(undefined,5) n+sum.call(undefined,n-1)<br>5)-&gt; sum.call(undefined,5)<br>6)-&gt; sum.call(undefined,5) sum.call(undefined,n-1)<br>7)-&gt; sum.call(undefined,5) sum.call(undefined,n-1) n-1<br>8)-&gt; sum.call(undefined,5) sum.call(undefined,n-1)<br>9)-&gt; sum.call(undefined,5) sum.call(undefined,n-1) n == 1循环值第二步<br>10)当n==1时，能够返回值了，再一步一步退出栈</p>
+<h3 id="四、作用域"><a href="#四、作用域" class="headerlink" title="四、作用域"></a>四、作用域</h3><h4 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h4><ul>
+<li>按照语法树，就近原则</li>
+<li>我们只能确定变量是哪个变量，但是不能确定变量的值<br>看以下代码及对应图示：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">function f1()&#123;</span><br><span class="line">  var a = 2;</span><br><span class="line">  f2.call();</span><br><span class="line">  console.log(a);</span><br><span class="line">  function f2()&#123;</span><br><span class="line">    var a = 3;</span><br><span class="line">    console.log(a);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">f1.call();</span><br><span class="line">console.log(a);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://happyjeannie.github.io/Demo/jsDemo/img/fun/作用域.png" alt="作用域"><br>根据上图所示，根据就近原则，在f2()内输出a的值为3，f1()中a的值为2，在全局作用域内a的值为1；</p>
+<h4 id="2、常见面试题"><a href="#2、常见面试题" class="headerlink" title="2、常见面试题"></a>2、常见面试题</h4><p><strong>面试题一</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var a = 1</span><br><span class="line">function f1()&#123;</span><br><span class="line">    alert(a) // 是多少</span><br><span class="line">    var a = 2</span><br><span class="line">&#125;</span><br><span class="line">f1.call()</span><br></pre></td></tr></table></figure></p>
+<p>此时输出2，这个地方考的是变量提升。在任何一个函数作用域内，会优先将此作用域下的所有变量提升到最前面，再执行其他语句。所以此时f1()内的代码实际上应该是：”var a = 2;alert(a);”，即此时弹出2。<br><strong>面试题二</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var a = 1</span><br><span class="line">function f1()&#123;</span><br><span class="line">    var a = 2</span><br><span class="line">    f2.call()</span><br><span class="line">&#125;</span><br><span class="line">function f2()&#123;</span><br><span class="line">    console.log(a) // 是多少</span><br><span class="line">&#125;</span><br><span class="line">f1.call()</span><br></pre></td></tr></table></figure></p>
+<p>根据就近原则，输出1，因为f2()时全局作用域下的方法，其输出的a值应该是全局作用域下的变量a。<br><strong>面试题三</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var liTags = document.querySelectorAll(&apos;li&apos;)</span><br><span class="line">for(var i = 0; i&lt;liTags.length; i++)&#123;</span><br><span class="line">    liTags[i].onclick = function()&#123;</span><br><span class="line">        console.log(i) // 点击第3个 li 时，打印 2 还是打印 6？</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出2。以上语句只是绑定事件，绑定事件结束时循环已经结束，且此时i的值为2。所以无论点击哪个li都会输出2。</p>
+<h3 id="五、闭包"><a href="#五、闭包" class="headerlink" title="五、闭包"></a>五、闭包</h3><p> 如果一个函数，使用了它范围外的变量，那么(这个函数+这个变量)就叫做闭包。举例：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">functon f()&#123;</span><br><span class="line">    console.log(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p> 以上就是一个闭包。其实闭包就是JS函数作用域的副产品。基本上懂函数作用域，闭包也就差不多懂了。这里就先介绍到这里，后续再进行详细介绍。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/21/函数/" data-id="cjgal7wx80014ifs6wy0cfael" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/21/函数/" data-id="cjgbnyhxd0013n35ljc5klbvp" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
@@ -127,6 +145,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/04/23/DOM-API/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          DOM API
+        
+      </div>
+    </a>
   
   
     <a href="/2018/04/20/JS标准库/" id="article-nav-older" class="article-nav-link-wrap">
@@ -182,6 +209,10 @@
       <ul>
         
           <li>
+            <a href="/2018/04/23/DOM-API/">DOM API</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/21/函数/">函数</a>
           </li>
         
@@ -195,10 +226,6 @@
         
           <li>
             <a href="/2018/04/17/JS里的对象/">JS里的对象</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/16/JS里的数据/">JS里的数据</a>
           </li>
         
       </ul>
