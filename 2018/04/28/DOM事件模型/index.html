@@ -3,20 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>es6常用特性 | Summer&#39;s blog</title>
+  <title>DOM事件模型 | Summer&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录一下常用的es6语法。">
-<meta name="keywords" content="es6">
+  <meta name="description" content="目前DOM标准有DOM1、DOM2、DOM3、DOM4，其中DOM4为草案，尚未推行，主要使用的是DOM3标准。">
+<meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="es6常用特性">
-<meta property="og:url" content="http://yoursite.com/2018/03/13/es6常用特性/index.html">
+<meta property="og:title" content="DOM事件模型">
+<meta property="og:url" content="http://yoursite.com/2018/04/28/DOM事件模型/index.html">
 <meta property="og:site_name" content="Summer&#39;s blog">
-<meta property="og:description" content="记录一下常用的es6语法。">
+<meta property="og:description" content="目前DOM标准有DOM1、DOM2、DOM3、DOM4，其中DOM4为草案，尚未推行，主要使用的是DOM3标准。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-22T03:50:42.920Z">
+<meta property="og:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/domEvent/01.png">
+<meta property="og:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/domEvent/02.png">
+<meta property="og:updated_time" content="2018-04-28T07:49:05.669Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="es6常用特性">
-<meta name="twitter:description" content="记录一下常用的es6语法。">
+<meta name="twitter:title" content="DOM事件模型">
+<meta name="twitter:description" content="目前DOM标准有DOM1、DOM2、DOM3、DOM4，其中DOM4为草案，尚未推行，主要使用的是DOM3标准。">
+<meta name="twitter:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/domEvent/01.png">
   
     <link rel="alternate" href="/atom.xml" title="Summer&#39;s blog" type="application/atom+xml">
   
@@ -69,10 +72,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-es6常用特性" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-DOM事件模型" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/03/13/es6常用特性/" class="article-date">
-  <time datetime="2018-03-13T15:42:07.000Z" itemprop="datePublished">2018-03-13</time>
+    <a href="/2018/04/28/DOM事件模型/" class="article-date">
+  <time datetime="2018-04-28T03:43:53.000Z" itemprop="datePublished">2018-04-28</time>
 </a>
     
   </div>
@@ -83,7 +86,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      es6常用特性
+      DOM事件模型
     </h1>
   
 
@@ -91,19 +94,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>记录一下常用的es6语法。</p>
+        <p>目前DOM标准有DOM1、DOM2、DOM3、DOM4，其中DOM4为草案，尚未推行，主要使用的是DOM3标准。</p>
 <a id="more"></a>
-<p>前面还有三部分</p>
-<h5 id="一、原有字面量加强"><a href="#一、原有字面量加强" class="headerlink" title="一、原有字面量加强"></a>一、原有字面量加强</h5><p>1、不需要new出来的变量都为自面量（literal）,如1、2、3、4、5、6、7、8、9、10、空对象、空数组，能够一眼看出来结构的变量。（阮一峰uniode和javascript详解）<br>2、String.fromCodePoint(0x2F804) // 你<br>“你”.codePointAt(0).toString() // 0x2F804<br>3、正则表达式 粘滞匹配/字面量添加Unicode支持<br>4、如果对正则感兴趣，可查询“30分钟正则表达式”</p>
-<h5 id="二、对象加强"><a href="#二、对象加强" class="headerlink" title="二、对象加强"></a>二、对象加强</h5><p>js新类型介绍：<br>目前基本数据类型：string num bool undefined null object(array,function.date.regex),es6增加symbol,但目前用的较少。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var race = &#123;</span><br><span class="line">    a:</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="一、DOM1"><a href="#一、DOM1" class="headerlink" title="一、DOM1"></a>一、DOM1</h3><p>DOM1分为DOM核心(Object Model Core)和HTML的DOM(Object Model HTML)，DOM1是对DOM0的归纳整理概括，<br>DOM1支持的事件有：blur、click、focus、select这几个事件。</p>
+<h3 id="二、DOM2"><a href="#二、DOM2" class="headerlink" title="二、DOM2"></a>二、DOM2</h3><p>DOM2包括DOM核心、视图、事件、样式、遍历范围和HTML。DOM2中的事件标准已经非常完善，在DOM3中并未对此进行修改，所以至今针对DOM的事件是以DOM2事件标准为基准的。<br>这里主要讲一下DOM Level2的事件标准。<br>在开始之前，来看一段代码：<br><img src="https://happyjeannie.github.io/Demo/jsDemo/img/domEvent/01.png" alt="DOM"><br>以上的事件绑定，对于行内事件绑定B、C是正确的，对于JS代码中的事件绑定，事件一是正确的。<br>在行内绑定事件中，onclick=”要绑定的事件”，一旦用户点击，浏览器就eval(“要执行的代码”)。其中：<br><code>eval(&quot;print&quot;)</code>只会将print方法打印出来。<br><code>eval(&quot;print()&quot;)</code>会执行print()方法内的语句<br><code>eval(&quot;print.call()&quot;)</code>的相当于eval(“print()”)<br>在JS代码中的事件绑定，一旦用户点击，那么浏览器就执行：x.onclick.call(this,arguments,{…})即点击后应该执行一个方法，<br><code>x.onclick=print</code>直接将方法赋值到点击事件上，可执行<br><code>y.onclick=print()</code> print()执行完无返回值，则返回undefined，所以此时<code>y.onclick = undfined</code>，所以错误<br><code>z.onclick=print.call()</code>同上<br>以上是DOM Level1的事件绑定方法，下面正式介绍DOM Level2的事件绑定</p>
+<h4 id="1、click事件绑定"><a href="#1、click事件绑定" class="headerlink" title="1、click事件绑定"></a>1、click事件绑定</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">......</span><br><span class="line">&lt;button id=xxx&gt;&lt;/button&gt;</span><br><span class="line">......</span><br><span class="line">//======JS======</span><br><span class="line">xxx.onclick = function()&#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">&#125;</span><br><span class="line">xxx.onclick = function()&#123;</span><br><span class="line">  console.log(2);</span><br><span class="line">&#125;</span><br><span class="line">//以上事件绑定中，点击按钮只会输出`2` ,后面的点击事件会覆盖前面的点击事件，此处onclick为属性，唯一，后面重复定义只会覆盖前面的值</span><br><span class="line">//以下是DOM2写法</span><br><span class="line">xxx.addEventListener(&apos;click&apos;,function()&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><code>addEventListener</code>绑定事件可以多次触发，先绑定先触发，后绑定后触发，执行顺序类似于栈的执行顺序，先进先出后进后出，即先定义先执行后定义后执行。<br>如果绑定多事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function f1()&#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">&#125;</span><br><span class="line">function f2()&#123;</span><br><span class="line">  console.log(2);</span><br><span class="line">&#125;</span><br><span class="line">xxx.addEventListener(&apos;click&apos;,f1);</span><br><span class="line">xxx.addEventListener(&apos;click&apos;,f2);</span><br><span class="line">xxx.removeEventListener(&apos;click&apos;,f1);      //移除事件</span><br></pre></td></tr></table></figure></p>
+<h4 id="2、事件冒泡与捕获"><a href="#2、事件冒泡与捕获" class="headerlink" title="2、事件冒泡与捕获"></a>2、事件冒泡与捕获</h4><p>看代码：<br><img src="https://happyjeannie.github.io/Demo/jsDemo/img/domEvent/02.png" alt="capture"><br>以上，如果第三个参数是false，则事件的传递是按照冒泡传递的，即从下到上；如果第三个参数为true，那么事件的传递是按照捕获的方式，即从上到下。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/13/es6常用特性/" data-id="cjgjz7qxk000xdbs65titaloz" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/28/DOM事件模型/" data-id="cjgjz7qwv0009dbs60laep2k1" class="article-share-link">分享</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
 
     </footer>
   </div>
@@ -111,19 +116,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/03/14/vue-project/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          vue project
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/01/03/Interview/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/04/24/jQuery实现轮播/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Interview</div>
+      <div class="article-nav-title">jQuery实现轮播</div>
     </a>
   
 </nav>
