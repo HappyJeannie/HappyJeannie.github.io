@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/fun/this.png">
 <meta property="og:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/fun/stack01.png">
 <meta property="og:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/fun/作用域.png">
-<meta property="og:updated_time" content="2018-04-23T03:26:25.765Z">
+<meta property="og:updated_time" content="2018-05-02T09:56:57.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="函数">
 <meta name="twitter:description" content="这篇文章需要重点记忆，面试的过程中经常会涉及到此篇文章中的问题。">
@@ -130,12 +130,12 @@
 <p>根据就近原则，输出1，因为f2()时全局作用域下的方法，其输出的a值应该是全局作用域下的变量a。<br><strong>面试题三</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var liTags = document.querySelectorAll(&apos;li&apos;)</span><br><span class="line">for(var i = 0; i&lt;liTags.length; i++)&#123;</span><br><span class="line">    liTags[i].onclick = function()&#123;</span><br><span class="line">        console.log(i) // 点击第3个 li 时，打印 2 还是打印 6？</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>输出2。以上语句只是绑定事件，绑定事件结束时循环已经结束，且此时i的值为2。所以无论点击哪个li都会输出2。</p>
 <h3 id="五、闭包"><a href="#五、闭包" class="headerlink" title="五、闭包"></a>五、闭包</h3><p> 如果一个函数，使用了它范围外的变量，那么(这个函数+这个变量)就叫做闭包。举例：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">functon f()&#123;</span><br><span class="line">    console.log(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p> 以上就是一个闭包。其实闭包就是JS函数作用域的副产品。基本上懂函数作用域，闭包也就差不多懂了。这里就先介绍到这里，后续再进行详细介绍。</p>
+<p> 详情参考<a href="">面试题汇总</a>中的Javascript篇第二问。<br> 以上就是一个闭包。其实闭包就是JS函数作用域的副产品。基本上懂函数作用域，闭包也就差不多懂了。这里就先介绍到这里，后续再进行详细介绍。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/21/函数/" data-id="cjgjz7qy0001hdbs6kgt26rgc" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/04/21/函数/" data-id="cjgogbags001kn15ln24mgfo6" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
