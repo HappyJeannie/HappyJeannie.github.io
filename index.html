@@ -323,7 +323,7 @@
                 
               
 
-              <time title="创建时间：2018-05-08 15:26:42 / 修改时间：15:27:03" itemprop="dateCreated datePublished" datetime="2018-05-08T15:26:42+08:00">2018-05-08</time>
+              <time title="创建时间：2018-05-08 15:26:42 / 修改时间：23:39:09" itemprop="dateCreated datePublished" datetime="2018-05-08T15:26:42+08:00">2018-05-08</time>
             
 
             
@@ -362,11 +362,14 @@
 
       
         
-          
-            <h3 id="四、优化"><a href="#四、优化" class="headerlink" title="四、优化"></a>四、优化</h3><h4 id="1、持续轮播"><a href="#1、持续轮播" class="headerlink" title="1、持续轮播"></a>1、持续轮播</h4><p>以上完成的轮播看起来没什么问题，但是在轮播播放的过程中如果我们切换到了其他页面的话，也就是轮播页面处于用户看不到的情况下，隔几秒钟再去看轮播页面会发现轮播已经乱了。这是为什么呢？主要原因是像<code>setInterval</code>、<code>setTimeout</code>这类函数在页面执行中，如果当前页面不处于用户可视范围内的话，会自动降低循环频率。解决此问题的方案为：为<code>document</code>添加<code>visibilitychange</code>事件，监听当前页面是否隐藏，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">document.addEventListener(&apos;visibilitychange&apos;,function()&#123;</span><br><span class="line">  console.log(document.hidden);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>此事件监听触发的条件为：切换屏幕、浏览器各个tab页之间的切换。</p>
-
-          
+          <p>优化《jQuery实现轮播(一)》中实现的效果，并添加按钮可实现前后图片手动切换。最最重要的是，让这个轮播更加符合大众审美。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/08/jQuery实现轮播-二/#更多" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
