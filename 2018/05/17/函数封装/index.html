@@ -111,7 +111,7 @@
 <meta property="og:description" content="根据之前做的项目总结概括一些关于函数封装、模块化、闭包、 MVC 相关的知识点。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/jsAPI/demo.png">
-<meta property="og:updated_time" content="2018-05-19T15:25:50.539Z">
+<meta property="og:updated_time" content="2018-05-20T15:48:38.164Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="函数封装">
 <meta name="twitter:description" content="根据之前做的项目总结概括一些关于函数封装、模块化、闭包、 MVC 相关的知识点。">
@@ -339,7 +339,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-19 23:25:50" itemprop="dateModified" datetime="2018-05-19T23:25:50+08:00">2018-05-19</time>
+                <time title="修改时间：2018-05-20 23:48:38" itemprop="dateModified" datetime="2018-05-20T23:48:38+08:00">2018-05-20</time>
               
             
           </span>
@@ -388,6 +388,28 @@
 <li>将页面再入过程中 loading 相关的 js 存储到文件 <code>./js/loading.js</code></li>
 </ul>
 <p>以上就是模块化的实现过程。</p>
+<h3 id="二、立即执行函数"><a href="#二、立即执行函数" class="headerlink" title="二、立即执行函数"></a>二、立即执行函数</h3><p>继续优化上述代码。根据标题一中的代码可知，我们已经将不同的模块放进到不同的 JS 文件中并分别引入到页面中。看似对代码完成解耦，但是仍旧存在一个问题：每个 JS 文件中的变量大部分为全局变量，如使用 var 声明的变量，如果后期维护引入相同变量名的变量，将会引起报错。那么全局变量存在风险，我们就使用局部变量进行代替。</p>
+<p>在 ES6 中，以下写法为局部变量写法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  let a = 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是需要注意，如果使用 var 进行变量声明，由于 var 存在变量提升， a 的声明会被提到 <code>{}</code> 之外而称为全局变量。我们知道，在一个函数内部声明的变量，无论是使用 var 还是 let 进行声明，都是局部变量，以 <code>./js/init-swiper.js</code> 为例，我们将轮播初始化的代码封装到一个函数中,并执行这个函数。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function xxx&#123;</span><br><span class="line">  //轮播</span><br><span class="line">  var mySwiper = new Swiper (&apos;.swiper-container&apos;, &#123;</span><br><span class="line">    loop: true,</span><br><span class="line">    pagination: &#123;</span><br><span class="line">      el: &apos;.swiper-pagination&apos;,</span><br><span class="line">    &#125;,</span><br><span class="line">    navigation: &#123;</span><br><span class="line">      nextEl: &apos;.swiper-button-next&apos;,</span><br><span class="line">      prevEl: &apos;.swiper-button-prev&apos;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;) </span><br><span class="line">&#125;</span><br><span class="line">xxx.call();</span><br></pre></td></tr></table></figure></p>
+<p>以上，已经规避了 mySwiper 这个全局变量，但是同时又产生了新的全局变量 xxx ，为了避免这个问题，我们需要定义一个匿名函数，然后直接调用此函数： <code>(function(){}).call()</code> 。<br>总结以上：</p>
+<ul>
+<li>不使用全局变量，使用局部变量</li>
+<li>ES5 里面只有函数内有局部变量</li>
+<li>声明一个 function xxx()，然后调用此方法： xxx.call()</li>
+<li>但是此时 xxx 为全局变量（全局函数）</li>
+<li>所以不能给函数命名，只能使用匿名函数： <code>function(){}.call()</code></li>
+<li>以上语法有报错，可以改写为： <code>!function(){}.call()</code> 或 <code>(function(){}).call()</code> ，其中 <code>!</code> 可替换为 <code>+</code> 或 <code>-</code></li>
+</ul>
+<h3 id="三、闭包的使用"><a href="#三、闭包的使用" class="headerlink" title="三、闭包的使用"></a>三、闭包的使用</h3><p>以上代码实现了全局变量到局部变量的修改，保证了各个模块之间的变量就算是重命名也不会出现问题。那新的问题又出现了，如果我们就是希望两个模块之间能够完成数据通讯怎么办呢？闭包是一个不错的选择。<br>看如下用例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">//==========index.html======</span><br><span class="line">&lt;script src=&quot;module1.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;module2.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">//============module1.js============</span><br><span class="line">!function()&#123;</span><br><span class="line">  let person = &#123;</span><br><span class="line">    name:&apos;summer&apos;,</span><br><span class="line">    age:18</span><br><span class="line">  &#125;</span><br><span class="line">  window.growUp = function()&#123;</span><br><span class="line">    person.age += 1;</span><br><span class="line">    return person.age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;.call()</span><br><span class="line">//============module2.js============</span><br><span class="line">!function()&#123;</span><br><span class="line">  let age = window.growUp();</span><br><span class="line">  console.log(age);</span><br><span class="line">&#125;.call()</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>以上， module1.js 中 <code>window.growUp</code> 和 <code>person</code> 构成闭包。闭包主要用来隐藏数据细节，其中 person 的 age 不能修改，只能通过 window.growUp 来不断增加。</p>
+<p>综上：</p>
+<ul>
+<li>立即执行函数使得 person 无法被外部访问</li>
+<li>闭包使得匿名函数可以操作 person</li>
+<li>window.growUp 保存匿名函数的地址</li>
+<li>任何地方都可以使用 window.growUp </li>
+</ul>
+<p>=》 任何地方都可以使用 window.growUp 操作 person ，但是不能直接访问 person</p>
 <hr>
 <h5 id="推荐几个网站："><a href="#推荐几个网站：" class="headerlink" title="推荐几个网站："></a>推荐几个网站：</h5><ul>
 <li>图片素材网： <a href="https://unsplash.com/" target="_blank" rel="noopener">https://unsplash.com/</a></li>
@@ -605,7 +627,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、-MVC-模型"><span class="nav-number">1.</span> <span class="nav-text">一、 MVC 模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、-模块化"><span class="nav-number">1.1.</span> <span class="nav-text">1、 模块化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#推荐几个网站："><span class="nav-number">1.1.1.</span> <span class="nav-text">推荐几个网站：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、-MVC-模型"><span class="nav-number">1.</span> <span class="nav-text">一、 MVC 模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、-模块化"><span class="nav-number">1.1.</span> <span class="nav-text">1、 模块化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、立即执行函数"><span class="nav-number">2.</span> <span class="nav-text">二、立即执行函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、闭包的使用"><span class="nav-number">3.</span> <span class="nav-text">三、闭包的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#推荐几个网站："><span class="nav-number">3.0.1.</span> <span class="nav-text">推荐几个网站：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
