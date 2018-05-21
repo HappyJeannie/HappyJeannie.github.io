@@ -111,7 +111,7 @@
 <meta property="og:description" content="根据之前做的项目总结概括一些关于函数封装、模块化、闭包、 MVC 相关的知识点。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/jsAPI/demo.png">
-<meta property="og:updated_time" content="2018-05-20T16:59:25.509Z">
+<meta property="og:updated_time" content="2018-05-21T16:24:23.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="函数封装">
 <meta name="twitter:description" content="根据之前做的项目总结概括一些关于函数封装、模块化、闭包、 MVC 相关的知识点。">
@@ -339,7 +339,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-21 00:59:25" itemprop="dateModified" datetime="2018-05-21T00:59:25+08:00">2018-05-21</time>
+                <time title="修改时间：2018-05-22 00:24:23" itemprop="dateModified" datetime="2018-05-22T00:24:23+08:00">2018-05-22</time>
               
             
           </span>
@@ -421,6 +421,29 @@
 <li>任何地方都可以使用 window.growUp </li>
 </ul>
 <p>=》 任何地方都可以使用 window.growUp 操作 person ，但是不能直接访问 person</p>
+<h3 id="四、数据操作"><a href="#四、数据操作" class="headerlink" title="四、数据操作"></a>四、数据操作</h3><p>现在我们做的页面基本上为静态页面，为了便于开发，实现对数据库数据增删改查操作，我们使用 <a href="https://leancloud.cn/" target="_blank" rel="noopener">LeanCloud</a> 作为服务端数据库，来完成前后端的交互。具体如何注册、登录、入门等不再赘述，官网上文档写的非常清楚。</p>
+<p>LeanCloud 具有以下功能：</p>
+<ul>
+<li>登录注册、手机验证码功能（收费）</li>
+<li>存储任意信息</li>
+<li>读取任意信息</li>
+<li>搜索任意信息</li>
+<li>删除任意信息</li>
+<li>更新任意信息</li>
+<li>…等等</li>
+</ul>
+<p>具体操作如下：</p>
+<ul>
+<li>1、新增 resume-message 应用，并在库中创建表 Message</li>
+<li>2、通过 CDN 加速将引入 <code>&lt;script src=&quot;//cdn1.lncld.net/static/js/3.6.8/av-min.js&quot;&gt;&lt;/script&gt;</code> ，引入完成后，在浏览器中打开首页 -&gt; 控制台 -&gt; 输入 AV 即可打印出相关对象信息</li>
+<li>3、初始化，在页面中增加 js ，内容为：<code>var APP_ID = &#39;0r7UeXa1LVbwKLzTKIKvxueQ-gzGzoHsz&#39;; var APP_KEY = &#39;ELk4KGSA1TR3oAd091pwWi9m&#39;; AV.init({ appId: APP_ID,  appKey: APP_KEY });</code></li>
+<li>4、实例化： <code>var Message = AV.Object.extend(&#39;Message&#39;); var message = new Message(); message.save({ words: &#39;Hello World!&#39; }).then(function(object) { alert(&#39;LeanCloud Rocks!&#39;); })</code></li>
+<li>5、刷新页面后，到 LeanCloud 中刷新表 Message ，可见表 Message 有一条新增数据</li>
+</ul>
+<h4 id="1、使用-LeanCloud"><a href="#1、使用-LeanCloud" class="headerlink" title="1、使用 LeanCloud"></a>1、使用 LeanCloud</h4><p>根据以上操作，我们对<a href="https://github.com/HappyJeannie/resume" target="_blank" rel="noopener">简历</a>文件中新增 <code>./js/message.js</code> ，并引入到 index.html 中，其代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">!function()&#123;</span><br><span class="line">  var APP_ID = &apos;0r7UeXa1LVbwKLzTKIKvxueQ-gzGzoHsz&apos;;</span><br><span class="line">  var APP_KEY = &apos;ELk4KGSA1TR3oAd091pwWi9m&apos;;</span><br><span class="line"></span><br><span class="line">  AV.init(&#123;</span><br><span class="line">    appId: APP_ID,</span><br><span class="line">    appKey: APP_KEY</span><br><span class="line">  &#125;);</span><br><span class="line">  //创建表</span><br><span class="line">  var Message = AV.Object.extend(&apos;Message&apos;);</span><br><span class="line">  //创建表中的一条数据</span><br><span class="line">  var message = new Message();</span><br><span class="line">  //存储一条数据到表中</span><br><span class="line">  message.save(&#123;</span><br><span class="line">    words: &apos;Hello World!&apos;</span><br><span class="line">  &#125;).then(function(object) &#123;//保存成功的回调</span><br><span class="line">    alert(&apos;LeanCloud Rocks!&apos;);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;.call()</span><br></pre></td></tr></table></figure></p>
+<h4 id="2、增加页面结构"><a href="#2、增加页面结构" class="headerlink" title="2、增加页面结构"></a>2、增加页面结构</h4><p>在 index.html 文件中，增加留言部分，器结构为：</p>
+<pre><code>
+</code></pre><p>appId :0r7UeXa1LVbwKLzTKIKvxueQ-gzGzoHsz<br>app key:ELk4KGSA1TR3oAd091pwWi9m<br>master key:MXUfO4h3wctyWMQajmxJ2sRA</p>
 <h2 id="以上操作用到的代码请参考：-https-github-com-HappyJeannie-resume"><a href="#以上操作用到的代码请参考：-https-github-com-HappyJeannie-resume" class="headerlink" title="以上操作用到的代码请参考： https://github.com/HappyJeannie/resume"></a>以上操作用到的代码请参考： <a href="https://github.com/HappyJeannie/resume" target="_blank" rel="noopener">https://github.com/HappyJeannie/resume</a></h2><h5 id="推荐几个网站："><a href="#推荐几个网站：" class="headerlink" title="推荐几个网站："></a>推荐几个网站：</h5><ul>
 <li>图片素材网： <a href="https://unsplash.com/" target="_blank" rel="noopener">https://unsplash.com/</a></li>
 </ul>
@@ -637,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、-MVC-模型"><span class="nav-number">1.</span> <span class="nav-text">一、 MVC 模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、-模块化"><span class="nav-number">1.1.</span> <span class="nav-text">1、 模块化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、MVC-中的-View"><span class="nav-number">1.2.</span> <span class="nav-text">2、MVC 中的 View</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、MVC-中的-Controller"><span class="nav-number">1.3.</span> <span class="nav-text">3、MVC 中的 Controller</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、立即执行函数"><span class="nav-number">2.</span> <span class="nav-text">二、立即执行函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、闭包的使用"><span class="nav-number">3.</span> <span class="nav-text">三、闭包的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以上操作用到的代码请参考：-https-github-com-HappyJeannie-resume"><span class="nav-number"></span> <span class="nav-text">以上操作用到的代码请参考： https://github.com/HappyJeannie/resume</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#推荐几个网站："><span class="nav-number">0.0.1.</span> <span class="nav-text">推荐几个网站：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、-MVC-模型"><span class="nav-number">1.</span> <span class="nav-text">一、 MVC 模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、-模块化"><span class="nav-number">1.1.</span> <span class="nav-text">1、 模块化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、MVC-中的-View"><span class="nav-number">1.2.</span> <span class="nav-text">2、MVC 中的 View</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、MVC-中的-Controller"><span class="nav-number">1.3.</span> <span class="nav-text">3、MVC 中的 Controller</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、立即执行函数"><span class="nav-number">2.</span> <span class="nav-text">二、立即执行函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、闭包的使用"><span class="nav-number">3.</span> <span class="nav-text">三、闭包的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、数据操作"><span class="nav-number">4.</span> <span class="nav-text">四、数据操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、使用-LeanCloud"><span class="nav-number">4.1.</span> <span class="nav-text">1、使用 LeanCloud</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、增加页面结构"><span class="nav-number">4.2.</span> <span class="nav-text">2、增加页面结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以上操作用到的代码请参考：-https-github-com-HappyJeannie-resume"><span class="nav-number"></span> <span class="nav-text">以上操作用到的代码请参考： https://github.com/HappyJeannie/resume</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#推荐几个网站："><span class="nav-number">0.0.1.</span> <span class="nav-text">推荐几个网站：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
