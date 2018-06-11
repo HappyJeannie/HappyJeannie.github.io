@@ -102,25 +102,27 @@
 
 
 
-  <meta name="description" content="记录一下常用的es6语法。">
+  <meta name="description" content="面向对象我也不知道该从哪里开始说比较好，还是以《我的简历》 的代码为例子加以说明理解吧。">
 <meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6常用特性">
-<meta property="og:url" content="http://yoursite.com/2018/03/13/es6常用特性/index.html">
+<meta property="og:title" content="面向对象">
+<meta property="og:url" content="http://yoursite.com/2018/05/28/面向对象/index.html">
 <meta property="og:site_name" content="Summer&#39;s blog">
-<meta property="og:description" content="记录一下常用的es6语法。">
+<meta property="og:description" content="面向对象我也不知道该从哪里开始说比较好，还是以《我的简历》 的代码为例子加以说明理解吧。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-04T03:33:35.000Z">
+<meta property="og:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/OOP/catalog.png">
+<meta property="og:updated_time" content="2018-06-11T01:29:13.954Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6常用特性">
-<meta name="twitter:description" content="记录一下常用的es6语法。">
+<meta name="twitter:title" content="面向对象">
+<meta name="twitter:description" content="面向对象我也不知道该从哪里开始说比较好，还是以《我的简历》 的代码为例子加以说明理解吧。">
+<meta name="twitter:image" content="https://happyjeannie.github.io/Demo/jsDemo/img/OOP/catalog.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/13/es6常用特性/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/28/面向对象/"/>
 
 
 
@@ -130,7 +132,7 @@
   };
 </script>
 
-  <title>ES6常用特性 | Summer's blog</title>
+  <title>面向对象 | Summer's blog</title>
   
 
 
@@ -278,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/13/es6常用特性/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/28/面向对象/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Summer">
@@ -295,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ES6常用特性
+          <h1 class="post-title" itemprop="name headline">面向对象
               
             
           </h1>
@@ -320,7 +322,7 @@
                 
               
 
-              <time title="创建时间：2018-03-13 23:42:07" itemprop="dateCreated datePublished" datetime="2018-03-13T23:42:07+08:00">2018-03-13</time>
+              <time title="创建时间：2018-05-28 01:06:07" itemprop="dateCreated datePublished" datetime="2018-05-28T01:06:07+08:00">2018-05-28</time>
             
 
             
@@ -337,7 +339,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-04 11:33:35" itemprop="dateModified" datetime="2018-05-04T11:33:35+08:00">2018-05-04</time>
+                <time title="修改时间：2018-06-11 09:29:13" itemprop="dateModified" datetime="2018-06-11T09:29:13+08:00">2018-06-11</time>
               
             
           </span>
@@ -370,9 +372,17 @@
       
 
       
-        <p>记录一下常用的es6语法。</p>
+        <p>面向对象我也不知道该从哪里开始说比较好，还是以<a href="https://happyjeannie.github.io/resume/index.html" target="_blank" rel="noopener">《我的简历》</a> 的代码为例子加以说明理解吧。</p>
 <a id="more"></a>
-<h3 id="一、let-const"><a href="#一、let-const" class="headerlink" title="一、let/const"></a>一、let/const</h3><h3 id="二、字符串模版"><a href="#二、字符串模版" class="headerlink" title="二、字符串模版"></a>二、字符串模版</h3><h3 id="三、箭头函数"><a href="#三、箭头函数" class="headerlink" title="三、箭头函数"></a>三、箭头函数</h3><h3 id="四、Class"><a href="#四、Class" class="headerlink" title="四、Class"></a>四、Class</h3><h3 id="五、Module"><a href="#五、Module" class="headerlink" title="五、Module"></a>五、Module</h3><h3 id="六、map-set"><a href="#六、map-set" class="headerlink" title="六、map/set"></a>六、map/set</h3><h3 id="七、Promise"><a href="#七、Promise" class="headerlink" title="七、Promise"></a>七、Promise</h3>
+<h3 id="一、先修改下代码吧，不知道该用什么标题"><a href="#一、先修改下代码吧，不知道该用什么标题" class="headerlink" title="一、先修改下代码吧，不知道该用什么标题"></a>一、先修改下代码吧，不知道该用什么标题</h3><p>讲真，每次想标题真是绞尽脑汁…</p>
+<p>目前《我的简历》的代码目录结构如下图所示：</p>
+<p><img src="https://happyjeannie.github.io/Demo/jsDemo/img/OOP/catalog.png" alt="目录结构"></p>
+<p>其中，JS 文件夹中包含 init-swiper.js ，这个文件是用来初始化轮播图的 js ， message.js 是用来处理留言信息的 js ，等等。其他就不一一的详细介绍。翻看其中代码发现每个 js 的代码结构都很类似，都分别包括视图层( view ) 、 控制层 ( controller ) 和 模型层 ( model ) 。由此可见其实每个文件的代码结构还是非常类似的，基友这种情况，我们决定尝试着给这几个 js 文件做一下类似封装的操作。</p>
+<h4 id="1、封装-View-层"><a href="#1、封装-View-层" class="headerlink" title="1、封装 View 层"></a>1、封装 View 层</h4><p>我们在 js 目录下新建 base 文件夹，并新建文件 View.js ，其代码为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.View = function(selector)&#123;</span><br><span class="line">  return document.querySelector(selector);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在 index.html 中引入 View.js ，由于 View 方法直接绑定在了 window 上，所以在使用 MVC 结构写法的 js 代码中，可以将视图层变量 <code>let view = document.querySelelctor(***)</code> 改写为 <code>View(***)</code> 即可。 View 层封装完毕。</p>
+<h4 id="2、封装-Model-层"><a href="#2、封装-Model-层" class="headerlink" title="2、封装 Model 层"></a>2、封装 Model 层</h4><p>新建 ./js/base/Model.js 文件。其代码为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">window.Model = function(options)&#123;</span><br><span class="line">  let resourceName = options.resourceName;</span><br><span class="line">  return &#123;</span><br><span class="line">    init : function()&#123;</span><br><span class="line">      var APP_ID = &apos;0r7UeXa1LVbwKLzTKIKvxueQ-gzGzoHsz&apos;;</span><br><span class="line">      var APP_KEY = &apos;ELk4KGSA1TR3oAd091pwWi9m&apos;;</span><br><span class="line">      AV.init(&#123;appId: APP_ID,appKey: APP_KEY&#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    fetch : function()&#123;</span><br><span class="line">      //存数据</span><br><span class="line">      var query = new AV.Query(resourceName);</span><br><span class="line">      return query.find();</span><br><span class="line">    &#125;,</span><br><span class="line">    save:function(object)&#123;</span><br><span class="line">      //创建表</span><br><span class="line">      let Message = AV.Object.extend(resourceName);</span><br><span class="line">      //创建表中的一条数据</span><br><span class="line">      let message = new Message();</span><br><span class="line">      //存储一条数据到表中</span><br><span class="line">      return message.save(object)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>model 层主要用于对数据的操作，即通过接口对数据进行增删改查。就这个简历项目而言，我们所有的数据操作都是多 LeanCloud 中的数据进行增、查操作，所以在进行数据相关操作时，需要将要操作的表名以 key : value 的参数形式传入调用中。以上，在 index.html 中引入此文件，并在需要实例化 Model 的地方改为： <code>Model({resourceName : &#39;Message&#39;})</code> （ 此处以 message.js ） 文件为例子。再依次修改其他文件即可。不可置否，这样定义、引用确实使代码清爽了很多。</p>
+<h4 id="3、封装-Controller-层"><a href="#3、封装-Controller-层" class="headerlink" title="3、封装 Controller 层"></a>3、封装 Controller 层</h4>
       
     </div>
 
@@ -405,8 +415,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/03/Interview/" rel="next" title="Interview">
-                <i class="fa fa-chevron-left"></i> Interview
+              <a href="/2018/05/18/代理/" rel="next" title="代理">
+                <i class="fa fa-chevron-left"></i> 代理
               </a>
             
           </div>
@@ -414,10 +424,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/14/vue-project/" rel="prev" title="vue project">
-                vue project <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -585,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、let-const"><span class="nav-number">1.</span> <span class="nav-text">一、let/const</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、字符串模版"><span class="nav-number">2.</span> <span class="nav-text">二、字符串模版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、箭头函数"><span class="nav-number">3.</span> <span class="nav-text">三、箭头函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、Class"><span class="nav-number">4.</span> <span class="nav-text">四、Class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、Module"><span class="nav-number">5.</span> <span class="nav-text">五、Module</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、map-set"><span class="nav-number">6.</span> <span class="nav-text">六、map/set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、Promise"><span class="nav-number">7.</span> <span class="nav-text">七、Promise</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、先修改下代码吧，不知道该用什么标题"><span class="nav-number">1.</span> <span class="nav-text">一、先修改下代码吧，不知道该用什么标题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、封装-View-层"><span class="nav-number">1.1.</span> <span class="nav-text">1、封装 View 层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、封装-Model-层"><span class="nav-number">1.2.</span> <span class="nav-text">2、封装 Model 层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、封装-Controller-层"><span class="nav-number">1.3.</span> <span class="nav-text">3、封装 Controller 层</span></a></li></ol></li></ol></div>
             
 
           </div>
