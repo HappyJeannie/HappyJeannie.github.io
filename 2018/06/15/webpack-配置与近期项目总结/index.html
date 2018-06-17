@@ -102,29 +102,25 @@
 
 
 
-  <meta name="description" content="介绍一些简单的算法、排序及流程图。">
-<meta name="keywords" content="算法">
+  <meta name="description" content="最近使用 webpack 打包工具，配合 nginx 做了个活动页。记录下本次项目中的问题，就当笔记用了。">
+<meta name="keywords" content="webpack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法入门">
-<meta property="og:url" content="http://yoursite.com/2018/04/08/算法入门/index.html">
+<meta property="og:title" content="webpack 配置与近期项目总结">
+<meta property="og:url" content="http://yoursite.com/2018/06/15/webpack-配置与近期项目总结/index.html">
 <meta property="og:site_name" content="Summer&#39;s blog">
-<meta property="og:description" content="介绍一些简单的算法、排序及流程图。">
+<meta property="og:description" content="最近使用 webpack 打包工具，配合 nginx 做了个活动页。记录下本次项目中的问题，就当笔记用了。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/css/images/20180408/冒泡排序流程图.png">
-<meta property="og:image" content="http://yoursite.com/css/images/20180408/选择排序.png">
-<meta property="og:image" content="http://yoursite.com/css/images/20180408/木桶算法排序.png">
-<meta property="og:updated_time" content="2018-04-10T06:36:34.195Z">
+<meta property="og:updated_time" content="2018-06-17T12:25:44.299Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法入门">
-<meta name="twitter:description" content="介绍一些简单的算法、排序及流程图。">
-<meta name="twitter:image" content="http://yoursite.com/css/images/20180408/冒泡排序流程图.png">
+<meta name="twitter:title" content="webpack 配置与近期项目总结">
+<meta name="twitter:description" content="最近使用 webpack 打包工具，配合 nginx 做了个活动页。记录下本次项目中的问题，就当笔记用了。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/08/算法入门/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/15/webpack-配置与近期项目总结/"/>
 
 
 
@@ -134,7 +130,7 @@
   };
 </script>
 
-  <title>算法入门 | Summer's blog</title>
+  <title>webpack 配置与近期项目总结 | Summer's blog</title>
   
 
 
@@ -282,7 +278,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/08/算法入门/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/15/webpack-配置与近期项目总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Summer">
@@ -299,7 +295,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算法入门
+          <h1 class="post-title" itemprop="name headline">webpack 配置与近期项目总结
               
             
           </h1>
@@ -324,7 +320,7 @@
                 
               
 
-              <time title="创建时间：2018-04-08 10:43:22" itemprop="dateCreated datePublished" datetime="2018-04-08T10:43:22+08:00">2018-04-08</time>
+              <time title="创建时间：2018-06-15 08:46:06" itemprop="dateCreated datePublished" datetime="2018-06-15T08:46:06+08:00">2018-06-15</time>
             
 
             
@@ -341,7 +337,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-04-10 14:36:34" itemprop="dateModified" datetime="2018-04-10T14:36:34+08:00">2018-04-10</time>
+                <time title="修改时间：2018-06-17 20:25:44" itemprop="dateModified" datetime="2018-06-17T20:25:44+08:00">2018-06-17</time>
               
             
           </span>
@@ -374,55 +370,17 @@
       
 
       
-        <p>介绍一些简单的算法、排序及流程图。</p>
+        <p>最近使用 webpack 打包工具，配合 nginx 做了个活动页。记录下本次项目中的问题，就当笔记用了。</p>
 <a id="more"></a>
-<h5 id="一、伪代码"><a href="#一、伪代码" class="headerlink" title="一、伪代码"></a>一、伪代码</h5><p>1）结构化编程<br><a href="https://zh.wikipedia.org/zh-hans/%E7%BB%93%E6%9E%84%E5%8C%96%E7%BC%96%E7%A8%8B" target="_blank" rel="noopener">官方定义</a>,综合来说，满足以下三个条件一般是为结构化编程：</p>
-<ul>
-<li>语句一行一行执行</li>
-<li>有条件控制语句 if…else…</li>
-<li>有循环控制语句while(exp) do…</li>
-</ul>
-<p>2）伪代码<br>伪代码的特点是不用纠结于语法的细节，语法是自己定的，其次可以体会语言设计者的想法，语法是自己定的。举例如下：</p>
-<ul>
-<li>a &lt;- 1      //表示将1拷贝给a</li>
-<li><p>条件控制语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if xxx</span><br><span class="line">  1</span><br><span class="line">elseif yyy</span><br><span class="line">  2</span><br><span class="line">else</span><br><span class="line">  3</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>循环语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">n = 0</span><br><span class="line">while n &lt; 10</span><br><span class="line">  print n</span><br><span class="line">  n &lt;- n+1</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>length表示一个容器，’length’表示字符串，length &lt;- ‘length’表示将字符串放到容器中，举例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a &lt;- &#123;</span><br><span class="line">  &apos;0&apos; : 12,</span><br><span class="line">  &apos;1&apos; : 22,</span><br><span class="line">  &apos;2&apos; : 8,</span><br><span class="line">  &apos;3&apos; : 3,</span><br><span class="line">  &apos;4&apos; : 24,</span><br><span class="line">  &apos;length&apos; : 5</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="二、排序算法分类"><a href="#二、排序算法分类" class="headerlink" title="二、排序算法分类"></a>二、排序算法分类</h5><p><a href="https://zh.wikipedia.org/zh-hans/%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">算法</a>主要具有一下特征：</p>
-<ul>
-<li>输入：一个算法必须有零个或以上输入量。</li>
-<li>输出：一个算法应有一个或以上输出量，输出量是算法计算的结果。</li>
-<li>明确性：算法的描述必须无歧义，以保证算法的实际执行结果是精确地匹配要求或期望，通常要求实际运行结果是确定的。</li>
-<li>有限性：依据图灵的定义，一个算法是能够被任何图灵完备系统模拟的一串运算，而图灵机只有有限个状态、有限个输入符号和有限个转移函数（指令）。而一些定义更规定算法必须在有限个步骤内完成任务。</li>
-<li>有效性：又称可行性。能够实现，算法中描述的操作都是可以通过已经实现的基本运算执行有限次来实现。</li>
-</ul>
-<p><strong>数据结构</strong>就是数据的机构，出现数据结构主要是因为：</p>
-<ul>
-<li>我们要解决一个跟数据相关的问题</li>
-<li>分析这个问题，想出对应的数据结构</li>
-<li>分析数据结构，想出算法</li>
-</ul>
-<p><strong>数据结构和算法相互依存，不可分割。学习完排序算法就能了解常见的数据结构。</strong><br>算法的主要分类为：</p>
-<ul>
-<li>分治法：把一个问题分区成相互独立的多个部分分别来求解的思路。这种求解思路带来的好处之一就是便于进行并行计算。简而言之就是分而治之。</li>
-<li>动态规划法： 当问题的整体最优解就是由局部最优解组成的时候，经常采用的一种方法。</li>
-<li>贪婪算法：常见的近似求解思路。当问题的整体最优解不是（或无法证明是）由局部最优解组成，且对解的最有型没有要求时，可采用的一种方法。</li>
-<li>线性规划法</li>
-<li>简并法： 把一个问题通过逻辑或者数学推理、简化成与之等价或近似的、相对简单的模型，进而求解的方法。</li>
-</ul>
-<h5 id="三、常见排序算法介绍"><a href="#三、常见排序算法介绍" class="headerlink" title="三、常见排序算法介绍"></a>三、常见排序算法介绍</h5><p>以下均是按照升序进行排列：</p>
-<h5 id="1）冒泡排序"><a href="#1）冒泡排序" class="headerlink" title="1）冒泡排序"></a>1）冒泡排序</h5><p>流程图如下：<br><img src="./../../../../css/images/20180408/冒泡排序流程图.png" alt="冒泡排序流程图"><br>冒泡排序的思路是两两对比，如果后面的值大于前面的值，则两个互换位置。</p>
-<h5 id="2）选择排序"><a href="#2）选择排序" class="headerlink" title="2）选择排序"></a>2）选择排序</h5><p>流程图如下：<br><img src="./../../../../css/images/20180408/选择排序.png" alt="选择排序"><br>选择排序的思路是找出数组的最小值，将其与下标为0的值互换，然后从第二位开始，找出从第二位开始到数组最后一个值中最小的，将此时的最小值与数组第二个值的位置互换，以此类推。</p>
-<h5 id="3）快速排序"><a href="#3）快速排序" class="headerlink" title="3）快速排序"></a>3）快速排序</h5><h5 id="4）随机快速排序"><a href="#4）随机快速排序" class="headerlink" title="4）随机快速排序"></a>4）随机快速排序</h5><h5 id="5-木桶排序"><a href="#5-木桶排序" class="headerlink" title="5)木桶排序"></a>5)木桶排序</h5><p><img src="./../../../../css/images/20180408/木桶算法排序.png" alt="木桶算法排序"><br>木桶排序的思路首先设置本次排序有几个木桶bucketCount和这个数组的取值区间，即（最大值-最小值），并计算出每个取值区间的步长step=(max -min) / bucketCount。根据数组元素值的大小将数组分配到不同的木桶中，并且在放置的过程中确保放置进木桶的数组元素按照升序排列。整理完成后将木桶中数组连接起来即可得到排序好的数组。</p>
-<p><a href="https://visualgo.net/bn/sorting" target="_blank" rel="noopener">排序可视化</a>可参考这个网站查看。</p>
-
+<h3 id="一、webpack-配置"><a href="#一、webpack-配置" class="headerlink" title="一、webpack 配置"></a>一、webpack 配置</h3><p>本次项目采用传统前后端分离模式，就是后端提供接口，前端写静态、查询接口就可以了，然后是基于微信公众号开发的 h5 活动页。话说在使用决定使用 webpack 之前，我对 webpack 的期望就只是能够完成前端代码的打包就可以，并且以前使用 webpack 也只是在 vue 全家桶中使用的，具体涉及到配置什么的完全没有关心过，因为是拿来即用不需要考虑特别多。然而啊，出来混迟早是要还的，用了还想不学会简直是想的美。</p>
+<p>废话不多说，接下来直接介绍下我一步一步构建起来的配置。在此强调一点，任何不懂请详细看官方文档，请详细看官方文档！有些文档是英文，可以借助谷歌翻译、有道翻译等，这样能避免百度出来的各种不靠谱答案。亲测！！</p>
+<p>这次我们直接使用 webpack 的最新版本 4.12.0 ，并搭配 webpack-cli 使用，版本为 3.0.6 。</p>
+<h4 id="1、项目初始化"><a href="#1、项目初始化" class="headerlink" title="1、项目初始化"></a>1、项目初始化</h4><p>新建一个文件夹 webpack 并在当前文件夹下初始化项目，打开终端，依次执行 <code>npm init</code> 、<code>npm install --save-dev webpack-cli webpack</code>，以上依赖包安装完成后，增加项目目录如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">|-- webpack</span><br><span class="line">  |-- node_modules              // 各种依赖包</span><br><span class="line">  |-- libs                      // 各个页面公用的插件</span><br><span class="line">  |-- utils                     // 各个页面通用的一些方法汇总</span><br><span class="line">  |-- assets                    // 各个页面通用资源</span><br><span class="line">    |-- css</span><br><span class="line">      |-- reset.css</span><br><span class="line">    |-- img</span><br><span class="line">      |-- xxx.png</span><br><span class="line">  |-- src                       // 页面资源</span><br><span class="line">    |-- index                   // 首页</span><br><span class="line">      |-- css                 </span><br><span class="line">        |-- index.less</span><br><span class="line">      |-- js</span><br><span class="line">        |-- index.js</span><br><span class="line">      |-- img</span><br><span class="line">        |-- xxx.png</span><br><span class="line">      |-- index.html</span><br><span class="line">    |-- award                   // 奖励</span><br><span class="line">    |-- login                   // 登录</span><br><span class="line">    |-- register                // 注册</span><br><span class="line">  |-- package.json              // 项目构建信息的文件</span><br><span class="line">  |-- README.md</span><br></pre></td></tr></table></figure></p>
+<h4 id="2、增加-webpack-配置文件"><a href="#2、增加-webpack-配置文件" class="headerlink" title="2、增加 webpack 配置文件"></a>2、增加 webpack 配置文件</h4><p>在项目根目录增加文件 <code>webpack.config.js</code> ，基本配置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  entry:&apos;./src/index/js/index.js&apos;,</span><br><span class="line">  output:&#123;</span><br><span class="line">    filename:&apos;bundle.js&apos;,</span><br><span class="line">    path:path.resolve(__dirname,&apos;dist&apos;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上，入口文件为 src/index/js/index.js ，最后会打包输出到根目录下 dist 文件目录下的 bundle.js 。此时在 package.json 文件中的 scripts 中添加一条指令 <code>&quot;build&quot; : &quot;webpack&quot;</code>，保存后在终端运行指令 <code>npm run build</code>，此时会在根目录生成 dist 目录并打包出文件 bundle.js 。 ok ，至此，我们已经能够完美实现 js 打包。</p>
+<h4 id="3、html-页面打包"><a href="#3、html-页面打包" class="headerlink" title="3、html 页面打包"></a>3、html 页面打包</h4><p>在第二步的操作中，虽然我们完成了 js 源码的打包，但是打包到的目录中并没有 html 文件，也就是我们的视图层并没有完成一并打包。此处，我们需要安装 html-webpack-plugin ，在终端执行 <code>npm install --save-dev html-webpack-plugin</code> ，在 webpack-config.js 中引入此依赖，增加代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line">const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);       // 引入依赖包</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  entry:&apos;./src/index/js/index.js&apos;,</span><br><span class="line">  output:&#123;</span><br><span class="line">    filename:&apos;bundle.js&apos;,</span><br><span class="line">    path:path.resolve(__dirname,&apos;dist&apos;)</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins:[                                                   // 引入的依赖包在此进行配置</span><br><span class="line">    new HtmlWebpackPlugin(&#123;</span><br><span class="line">      filename:&apos;index.html&apos;,                                  // 输出的文件名称</span><br><span class="line">      template:&apos;./src/index/index.html&apos;,                      // 打包的文件地址</span><br><span class="line">      minify:true,                                            // 是否压缩，默认值为 false</span><br><span class="line">      chunks:[]                                               // 引入其他插件，数组形式</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>删除 dist 目录，在终端执行 <code>npm run build</code> 则会在 dist 目录下生成 bundle.js 文件和 index.html ，并且 index.html 中默认引入 bundle.js 文件。</p>
+<h3 id="二、nginx-配置实现接口调用"><a href="#二、nginx-配置实现接口调用" class="headerlink" title="二、nginx 配置实现接口调用"></a>二、nginx 配置实现接口调用</h3><h3 id="三、微信内置浏览器存在的坑"><a href="#三、微信内置浏览器存在的坑" class="headerlink" title="三、微信内置浏览器存在的坑"></a>三、微信内置浏览器存在的坑</h3><h3 id="四、关于跨域请求数据的问题"><a href="#四、关于跨域请求数据的问题" class="headerlink" title="四、关于跨域请求数据的问题"></a>四、关于跨域请求数据的问题</h3>
       
     </div>
 
@@ -442,7 +400,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/算法/" rel="tag"># 算法</a>
+            <a href="/tags/webpack/" rel="tag"># webpack</a>
           
         </div>
       
@@ -455,8 +413,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/07/CSS设置居中/" rel="next" title="CSS布局">
-                <i class="fa fa-chevron-left"></i> CSS布局
+              <a href="/2018/06/14/在-ES5-中如何用函数模拟一个类？/" rel="next" title="在 ES5 中如何用函数模拟一个类？">
+                <i class="fa fa-chevron-left"></i> 在 ES5 中如何用函数模拟一个类？
               </a>
             
           </div>
@@ -465,8 +423,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/08/数据结构/" rel="prev" title="数据结构">
-                数据结构 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/15/JS-高级基础知识（一）/" rel="prev" title="JS 高级基础知识（一）">
+                JS 高级基础知识（一） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -637,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、伪代码"><span class="nav-number">1.</span> <span class="nav-text">一、伪代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、排序算法分类"><span class="nav-number">2.</span> <span class="nav-text">二、排序算法分类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三、常见排序算法介绍"><span class="nav-number">3.</span> <span class="nav-text">三、常见排序算法介绍</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1）冒泡排序"><span class="nav-number">4.</span> <span class="nav-text">1）冒泡排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2）选择排序"><span class="nav-number">5.</span> <span class="nav-text">2）选择排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3）快速排序"><span class="nav-number">6.</span> <span class="nav-text">3）快速排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4）随机快速排序"><span class="nav-number">7.</span> <span class="nav-text">4）随机快速排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-木桶排序"><span class="nav-number">8.</span> <span class="nav-text">5)木桶排序</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、webpack-配置"><span class="nav-number">1.</span> <span class="nav-text">一、webpack 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、项目初始化"><span class="nav-number">1.1.</span> <span class="nav-text">1、项目初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、增加-webpack-配置文件"><span class="nav-number">1.2.</span> <span class="nav-text">2、增加 webpack 配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、html-页面打包"><span class="nav-number">1.3.</span> <span class="nav-text">3、html 页面打包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、nginx-配置实现接口调用"><span class="nav-number">2.</span> <span class="nav-text">二、nginx 配置实现接口调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、微信内置浏览器存在的坑"><span class="nav-number">3.</span> <span class="nav-text">三、微信内置浏览器存在的坑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、关于跨域请求数据的问题"><span class="nav-number">4.</span> <span class="nav-text">四、关于跨域请求数据的问题</span></a></li></ol></div>
             
 
           </div>
