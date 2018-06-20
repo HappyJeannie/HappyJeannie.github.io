@@ -102,17 +102,18 @@
 
 
 
-  <meta name="description" content="yanjun|闫俊|summer|HappyJeannie|Happjeannie|html|css|html5|css3|javascript|vue|webpack|node|java|chart|d3|响应式|h5">
+  <meta name="description" content="基础不能够在基础的 JS 高级知识，反正有时候我觉得有点难。好吧，我就是废话了，想凑齐一行字，内容不多，随便看看吧。">
+<meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS 高级基础知识（一）">
 <meta property="og:url" content="http://yoursite.com/2018/06/15/JS-高级基础知识（一）/index.html">
 <meta property="og:site_name" content="Summer&#39;s blog">
-<meta property="og:description" content="yanjun|闫俊|summer|HappyJeannie|Happjeannie|html|css|html5|css3|javascript|vue|webpack|node|java|chart|d3|响应式|h5">
+<meta property="og:description" content="基础不能够在基础的 JS 高级知识，反正有时候我觉得有点难。好吧，我就是废话了，想凑齐一行字，内容不多，随便看看吧。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-15T00:47:16.993Z">
+<meta property="og:updated_time" content="2018-06-20T11:02:40.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS 高级基础知识（一）">
-<meta name="twitter:description" content="yanjun|闫俊|summer|HappyJeannie|Happjeannie|html|css|html5|css3|javascript|vue|webpack|node|java|chart|d3|响应式|h5">
+<meta name="twitter:description" content="基础不能够在基础的 JS 高级知识，反正有时候我觉得有点难。好吧，我就是废话了，想凑齐一行字，内容不多，随便看看吧。">
 
 
 
@@ -323,6 +324,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-20 19:02:40" itemprop="dateModified" datetime="2018-06-20T19:02:40+08:00">2018-06-20</time>
+              
+            
           </span>
 
           
@@ -353,7 +370,37 @@
       
 
       
-        
+        <p>基础不能够在基础的 JS 高级知识，反正有时候我觉得有点难。好吧，我就是废话了，想凑齐一行字，内容不多，随便看看吧。</p>
+<a id="more"></a>
+<h3 id="一、new-实例化"><a href="#一、new-实例化" class="headerlink" title="一、new 实例化"></a>一、new 实例化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function fn()&#123;</span><br><span class="line">    console.log(this)</span><br><span class="line">&#125;</span><br><span class="line">new fn()</span><br></pre></td></tr></table></figure>
+<p>以上，new fn() 会执行 fn，并打印出 this，请问这个 this 有哪些属性？这个 this 的原型有哪些属性？</p>
+<ul>
+<li>在执行 new fn() 的时候并没有传入任何参数，所以这个实例化 fn() 没有任何自有属性</li>
+<li>function fn() 并没有定义任何共有属性，所以默认 `fn.prototype = {constructor:’fn’}</li>
+<li>new fn() 执行后，其结构为：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  __prototype__:&#123;</span><br><span class="line">    constructor:&apos;fn&apos;,</span><br><span class="line">    __prototype__:&#123;</span><br><span class="line">      ......( 因为 fn 本身就是对象，所以会默认继承对象的原型 )</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>关于打印的 <code>this</code> ，就是 <code>new fn()</code> 本身，<code>new fn().__prototype === Function.prototype</code> ，<code>Function.prototype.__prototype__ === Object.prototype</code> 。 <code>this</code> 无自有属性，<code>this</code> 的原型就是 <code>new fn().__prototype__</code></li>
+</ul>
+<h3 id="二、JSON-和-JavaScript-是什么关系？JSON-和-JavaScript-的区别有哪些？"><a href="#二、JSON-和-JavaScript-是什么关系？JSON-和-JavaScript-的区别有哪些？" class="headerlink" title="二、JSON 和 JavaScript 是什么关系？JSON 和 JavaScript 的区别有哪些？"></a>二、JSON 和 JavaScript 是什么关系？JSON 和 JavaScript 的区别有哪些？</h3><ul>
+<li><strong>关系</strong>： <code>JSON</code> 是一门抄袭/借鉴 <code>JavaScript</code> 的语言，同时也是一种数据交互格式，<code>JSON</code> 是 <code>JavaScript</code> 的子集（或者说 <code>JSON</code> 只抄袭了一部分 <code>JavaScript</code> 语法，而且没有新增任何原创的语法</li>
+<li><strong>区别</strong>：<code>JSON</code> 不支持函数、<code>undefined</code>、变量、引用、单引号字符串、对象的 <code>key</code> 不支持单引号也不支持不加引号、没有内置的 <code>Date</code> 、<code>Math</code> 、<code>RegExp</code> 等。而 <code>JavaScript</code> 全都支持。</li>
+</ul>
+<h3 id="三、前端-MVC-是什么？请用代码大概说明-MVC-三个对象分别有哪些重要属性和方法。"><a href="#三、前端-MVC-是什么？请用代码大概说明-MVC-三个对象分别有哪些重要属性和方法。" class="headerlink" title="三、前端 MVC 是什么？请用代码大概说明 MVC 三个对象分别有哪些重要属性和方法。"></a>三、前端 MVC 是什么？请用代码大概说明 MVC 三个对象分别有哪些重要属性和方法。</h3><p>前端 MVC 是一种设计模式，他将前端代码分为三个层次：模型层( M : Model，主要用于处理数据的增删改查操作 ) 、视图层( V : View ，主要用于展示数据) 、控制器( C : Controller ，主要用于与用户交互 )。当用户与前端页面产生交互时，控制器中绑定的事件被触发，被触发的事件通过模型层去请求后端数据，拿到后端数据处理结果后，将得到的数据通过视图层展示给用户。</p>
+<p>MVC 三个对象的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">window.Model = function(options)&#123;</span><br><span class="line">    let name = options.name;</span><br><span class="line">    return &#123;</span><br><span class="line">        init:function()&#123;&#125;,</span><br><span class="line">        fetch:function()&#123;&#125;,</span><br><span class="line">        save:function()&#123;&#125;,</span><br><span class="line">        del:function()&#123;&#125;,</span><br><span class="line">        edit:function()&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于 Model 层，主要是用来处理数据的，通过传参 options 将需要处理的表名传递进来，调用此方法后，会返回一个对象，对象可包括的基础方法有 init() ：初始化、fetch() 获取数据、save() 保存数据、del() 删除数据、edit() 修改数据，Model 层可根据具体业务的不同可对其属性方法进行定义。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.View = function(selector)&#123;</span><br><span class="line">    return document.querySelector(selector)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于 View 层，主要是用于获取 DOM 节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">window.Controller = function(options)&#123;</span><br><span class="line">    let init = options.init;</span><br><span class="line">   this.bindEvents = options.bindEvents;</span><br><span class="line">   let obj = &#123;</span><br><span class="line">        view : null,</span><br><span class="line">        model : null,</span><br><span class="line">        init : function(view,model)&#123;</span><br><span class="line">            this.view = veiw;</span><br><span class="line">            this.model = model || &#123;&#125;;</span><br><span class="line">            if(model)&#123;</span><br><span class="line">                this.model.init();</span><br><span class="line">            &#125;</span><br><span class="line">            init.call(view,model);</span><br><span class="line">            this. bindEvents();</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   for(var key in options)&#123;</span><br><span class="line">       if(key != &apos;init&apos; || key != bindEvents)&#123;</span><br><span class="line">           obj[key] = options[key];</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">    return obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于 Controller 层，包含属性 view 、model 、init() 和 bindEvents()。在 init() 中需要传入 model 和 view ，默认会将传参直接赋值到当前对象的 model 和 view 属性上，并执行事件绑定。由于不同控制器在初始化时可能还需要执行其他事件以及 bindEvents() 不同，所以，在实例化时需要通过 optios 将其自定义的初始化事件、绑定事件、其他事件传入，并赋值到对象 obj 上，最终返回 obj 。在 init() 中，对 model 参数做了一个非空验证，有的 MVC 结构代码中是没有 Model 层的，所以对于没有 Model 层的控制器，直接跳过对 this.model 和 this.model.init() 的执行。</p>
+<h3 id="四、介绍下-Promise-并创建一个-Promise-实例"><a href="#四、介绍下-Promise-并创建一个-Promise-实例" class="headerlink" title="四、介绍下 Promise 并创建一个 Promise 实例"></a>四、介绍下 Promise 并创建一个 Promise 实例</h3><p>最近的项目使用 Promise 封装了一下 HTTP 请求：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">window.zwhttp = function(&#123;url,data&#125;)&#123;</span><br><span class="line">    return new Promise(resolve,reject)&#123;</span><br><span class="line">        let http = new XMLHttpRequest();</span><br><span class="line">        http.onreadystatechange = function()&#123;</span><br><span class="line">            if(http.readyState === 4)&#123;</span><br><span class="line">                if(http.status &gt;=200 &amp;&amp; http.status &lt; 300)&#123;</span><br><span class="line">                    resolve.call(this,JSON.parse(http.responseText))</span><br><span class="line">                &#125;else if(http.status &gt;=400)&#123;</span><br><span class="line">                    reject.call(this,http)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        http.open(&apos;post&apos;,url);</span><br><span class="line">        request.send(JSON.stringify(data));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上，定义了一个全局的 zwhttp 方法，并传入参数 url 和 data ，方法返回一个 Promise 对象，但 Promise 中的 http 请求成功后会执行 resolve 方法，请求失败的话会执行 reject 方法。</p>
+<p>使用方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">zwhttp(&apos;/api&apos;,&#123;a:1,b:2&#125;)</span><br><span class="line">.then(</span><br><span class="line">    (res) =&gt; &#123;</span><br><span class="line">        //请求成功执行代码</span><br><span class="line">    &#125;,</span><br><span class="line">    (res) =&gt; &#123;</span><br><span class="line">        //请求失败执行的代码</span><br><span class="line">    &#125;</span><br><span class="line">))</span><br></pre></td></tr></table></figure></p>
+<p>Promise 可以减少地狱回调出现的概率，规范化代码，能够增加代码的可维护行和可读性。</p>
+<h3 id="五、原型链的问题"><a href="#五、原型链的问题" class="headerlink" title="五、原型链的问题"></a>五、原型链的问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var object = &#123;&#125;</span><br><span class="line">object.__proto__ ===  Object.prototype  </span><br><span class="line"></span><br><span class="line">var fn = function()&#123;&#125;</span><br><span class="line">fn.__proto__ === Function.prototype  </span><br><span class="line">fn.__proto__.__proto__ === Object.prototype </span><br><span class="line"></span><br><span class="line">var array = []</span><br><span class="line">array.__proto__ === Array.prototype </span><br><span class="line">array.__proto__.__proto__ === Object.prototype </span><br><span class="line"></span><br><span class="line">Function.__proto__ ===  Function.prototype  </span><br><span class="line">Array.__proto__ === Function.prototype </span><br><span class="line">Object.__proto__ === Function.prototype </span><br><span class="line"></span><br><span class="line">true.__proto__ === Boolean.prototype </span><br><span class="line"></span><br><span class="line">Function.prototype.__proto__ === Object.prototype</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -370,6 +417,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
       
 
       
@@ -442,8 +495,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -539,6 +601,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、new-实例化"><span class="nav-number">1.</span> <span class="nav-text">一、new 实例化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、JSON-和-JavaScript-是什么关系？JSON-和-JavaScript-的区别有哪些？"><span class="nav-number">2.</span> <span class="nav-text">二、JSON 和 JavaScript 是什么关系？JSON 和 JavaScript 的区别有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、前端-MVC-是什么？请用代码大概说明-MVC-三个对象分别有哪些重要属性和方法。"><span class="nav-number">3.</span> <span class="nav-text">三、前端 MVC 是什么？请用代码大概说明 MVC 三个对象分别有哪些重要属性和方法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、介绍下-Promise-并创建一个-Promise-实例"><span class="nav-number">4.</span> <span class="nav-text">四、介绍下 Promise 并创建一个 Promise 实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、原型链的问题"><span class="nav-number">5.</span> <span class="nav-text">五、原型链的问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
