@@ -102,25 +102,25 @@
 
 
 
-  <meta name="description" content="This is my first time to create a blog to wirte down">
-<meta name="keywords" content="MarkDown">
+  <meta name="description" content="本文主要讲一下 Vue Router 的实现原理、路由的作用以及在项目中如何应用。">
+<meta name="keywords" content="Vue vue-router">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MarkDown">
-<meta property="og:url" content="http://yoursite.com/2017/11/30/MarkDown/index.html">
+<meta property="og:title" content="Vue 之 路由">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/Vue-之-路由/index.html">
 <meta property="og:site_name" content="Summer&#39;s blog">
-<meta property="og:description" content="This is my first time to create a blog to wirte down">
+<meta property="og:description" content="本文主要讲一下 Vue Router 的实现原理、路由的作用以及在项目中如何应用。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-30T03:08:35.171Z">
+<meta property="og:updated_time" content="2018-08-13T07:33:07.438Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MarkDown">
-<meta name="twitter:description" content="This is my first time to create a blog to wirte down">
+<meta name="twitter:title" content="Vue 之 路由">
+<meta name="twitter:description" content="本文主要讲一下 Vue Router 的实现原理、路由的作用以及在项目中如何应用。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/30/MarkDown/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/13/Vue-之-路由/"/>
 
 
 
@@ -130,7 +130,7 @@
   };
 </script>
 
-  <title>MarkDown | Summer's blog</title>
+  <title>Vue 之 路由 | Summer's blog</title>
   
 
 
@@ -278,7 +278,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/30/MarkDown/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/13/Vue-之-路由/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Summer">
@@ -295,7 +295,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MarkDown
+          <h1 class="post-title" itemprop="name headline">Vue 之 路由
               
             
           </h1>
@@ -320,7 +320,7 @@
                 
               
 
-              <time title="创建时间：2017-11-30 11:05:02 / 修改时间：11:08:35" itemprop="dateCreated datePublished" datetime="2017-11-30T11:05:02+08:00">2017-11-30</time>
+              <time title="创建时间：2018-08-13 13:37:14 / 修改时间：15:33:07" itemprop="dateCreated datePublished" datetime="2018-08-13T13:37:14+08:00">2018-08-13</time>
             
 
             
@@ -358,7 +358,30 @@
       
 
       
-        <h4 id="This-is-my-first-time-to-create-a-blog-to-wirte-down"><a href="#This-is-my-first-time-to-create-a-blog-to-wirte-down" class="headerlink" title="This is my first time to create a blog to wirte down"></a>This is my first time to create a blog to wirte down</h4>
+        <p>本文主要讲一下 Vue Router 的实现原理、路由的作用以及在项目中如何应用。</p>
+<a id="more"></a>
+<h3 id="一、什么是路由"><a href="#一、什么是路由" class="headerlink" title="一、什么是路由"></a>一、什么是路由</h3><p>Vue Router 是 Vue 官方的路由管理器，它和 Vue 的核心深度集成，用于构建 SPA（单页面应用），是 SPA 的路径管理器。再通俗一点 ，<code>vue-router</code> 是 webApp 链接路径管理系统。</p>
+<h3 id="二、路由的作用"><a href="#二、路由的作用" class="headerlink" title="二、路由的作用"></a>二、路由的作用</h3><p>Vue 的单页应用是基于路由和组件的，路由用于设定访问路径，并将路径和组件映射起来。</p>
+<p>传统的页面应用，使用一些超级链接实现页面切换和跳转。在 <code>vue-router</code>单页应用中，则是路径之间的切换也是组件之间的切换。路由模块的本质是 <strong>建立起 url 与页面之间的映射关系</strong>。</p>
+<h3 id="三、实现原理"><a href="#三、实现原理" class="headerlink" title="三、实现原理"></a>三、实现原理</h3><p>单页应用中，在加载一个页面时，不会加载整个页面，只会更新某个指定容器中的内容，即更新视图而不去重新请求页面。<code>vue-router</code> 在实现单页面应用中提供了两种方式： Hash 模式和 History 模式。</p>
+<h4 id="1、Hash-模式"><a href="#1、Hash-模式" class="headerlink" title="1、Hash 模式"></a>1、Hash 模式</h4><p><code>vue-router</code> 默认 hash 模式 —— 使用 URL 的 hash 来模拟一个完整的 URL，于是当 URL 改变时，页面不会重新加载。类似于：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.xxx.com/#/login</span><br></pre></td></tr></table></figure></p>
+<p>这种后面的 Hash 变化并不会导致浏览器向服务器发送请求，浏览器不发出请求，页面就不会刷新。并且，每次 hash 值的变化都会触发 <code>hashchange</code> 事件，通过这个事件我们可以知道 hash 值发生了哪些变化。所以我们可以监听 <code>hashchange</code> 事件，从而实现视图的切换：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&apos;hashchange&apos;,()=&gt;&#123;</span><br><span class="line">  // hash 变化了，执行的操作</span><br><span class="line">  console.log(&apos;hash change&apos;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="2、History-模式"><a href="#2、History-模式" class="headerlink" title="2、History 模式"></a>2、History 模式</h4><p>使用 History 模式时，页面 url 会像正常的 url 一样能够访问。由于 HTML5 新增的 API <code>pushState</code> 、 <code>replaceState</code> ，通过这两个 API 可以改变 URL 并且不会发送请求。同时 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/onpopstate" target="_blank" rel="noopener"><code>popstate</code></a> 事件能够监听路由变化。实现方式与 <code>hashchange</code> 类似。</p>
+<p>与 Hash 模式不同的是， History 在刷新页面或直接访问某个路由的时候，如果服务端没有配置此页面那么将会返回 404 。</p>
+<h4 id="3、跳转方式"><a href="#3、跳转方式" class="headerlink" title="3、跳转方式"></a>3、跳转方式</h4><ul>
+<li>链接跳转 <code>&lt;router-link to=&quot;/&quot;&gt;&lt;/router-link&gt;</code></li>
+<li>JS 跳转 ： <code>this.$router.push(&#39;/login&#39;)</code></li>
+<li>直接修改路径</li>
+</ul>
+<h3 id="四、Vue-如何实现路由"><a href="#四、Vue-如何实现路由" class="headerlink" title="四、Vue 如何实现路由"></a>四、Vue 如何实现路由</h3><h4 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h4><ul>
+<li>CDN 引入： <code>&lt;script src=&quot;https://unpkg.com/vue-router/dist/vue-router.js&quot;&gt;&lt;/script&gt;</code></li>
+<li>npm 安装 ： <code>npm install vue-router</code></li>
+</ul>
+<p>如果在模块化工程中引入，那么需要通过 <code>Vue.use()</code> 明确地安装路由功能。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;;</span><br><span class="line">import VueRouter from &apos;vue-router&apos;</span><br><span class="line"></span><br><span class="line">Vue.use(VueRouter)</span><br></pre></td></tr></table></figure></p>
+<h4 id="2、使用"><a href="#2、使用" class="headerlink" title="2、使用"></a>2、使用</h4><h5 id="1-页面跳转："><a href="#1-页面跳转：" class="headerlink" title="1) 页面跳转："></a>1) 页面跳转：</h5><p><strong>HTML</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/vue-router/dist/vue-router.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">  &lt;h1&gt;Hello App!&lt;/h1&gt;</span><br><span class="line">  &lt;p&gt;</span><br><span class="line">    &lt;router-link to=&quot;/foo&quot;&gt;Go to Foo&lt;/router-link&gt;</span><br><span class="line">    &lt;router-link to=&quot;/bar&quot;&gt;Go to Bar&lt;/router-link&gt;</span><br><span class="line">  &lt;/p&gt;</span><br><span class="line">  &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>JS</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const Foo = &#123; template: &apos;&lt;div&gt;foo&lt;/div&gt;&apos; &#125;</span><br><span class="line">const Bar = &#123; template: &apos;&lt;div&gt;bar&lt;/div&gt;&apos; &#125;</span><br><span class="line"></span><br><span class="line">const routes = [</span><br><span class="line">  &#123; path: &apos;/foo&apos;, component: Foo &#125;,</span><br><span class="line">  &#123; path: &apos;/bar&apos;, component: Bar &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">  routes </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  el:&quot;#app&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>以上，是最简单的实现路由跳转的功能</p>
+
       
     </div>
 
@@ -378,7 +401,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MarkDown/" rel="tag"># MarkDown</a>
+            <a href="/tags/Vue-vue-router/" rel="tag"># Vue vue-router</a>
           
         </div>
       
@@ -391,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/29/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/08/09/Vue-之-组件通信/" rel="next" title="Vue 之 组件通信">
+                <i class="fa fa-chevron-left"></i> Vue 之 组件通信
               </a>
             
           </div>
@@ -400,10 +423,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/14/D3使用/" rel="prev" title="D3使用">
-                D3使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -579,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#This-is-my-first-time-to-create-a-blog-to-wirte-down"><span class="nav-number">1.</span> <span class="nav-text">This is my first time to create a blog to wirte down</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、什么是路由"><span class="nav-number">1.</span> <span class="nav-text">一、什么是路由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、路由的作用"><span class="nav-number">2.</span> <span class="nav-text">二、路由的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、实现原理"><span class="nav-number">3.</span> <span class="nav-text">三、实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、Hash-模式"><span class="nav-number">3.1.</span> <span class="nav-text">1、Hash 模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、History-模式"><span class="nav-number">3.2.</span> <span class="nav-text">2、History 模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、跳转方式"><span class="nav-number">3.3.</span> <span class="nav-text">3、跳转方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、Vue-如何实现路由"><span class="nav-number">4.</span> <span class="nav-text">四、Vue 如何实现路由</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、安装"><span class="nav-number">4.1.</span> <span class="nav-text">1、安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、使用"><span class="nav-number">4.2.</span> <span class="nav-text">2、使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-页面跳转："><span class="nav-number">4.2.1.</span> <span class="nav-text">1) 页面跳转：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
