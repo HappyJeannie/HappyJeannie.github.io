@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="一些平时用不到但是重要的东西。记录一下。">
+<meta name="keywords" content="JavaScript 继承">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS 模拟继承">
+<meta property="og:url" content="http://yoursite.com/2018/08/14/JS-模拟继承/index.html">
+<meta property="og:site_name" content="Summer&#39;s blog">
+<meta property="og:description" content="一些平时用不到但是重要的东西。记录一下。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-14T08:31:16.697Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS 模拟继承">
+<meta name="twitter:description" content="一些平时用不到但是重要的东西。记录一下。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/14/JS-模拟继承/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>JS 模拟继承 | Summer's blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Summer's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">A front-end developer‘s knowledge home</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/14/JS-模拟继承/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Summer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Summer's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS 模拟继承
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-14 08:39:21 / 修改时间：16:31:16" itemprop="dateCreated datePublished" datetime="2018-08-14T08:39:21+08:00">2018-08-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一些平时用不到但是重要的东西。记录一下。</p>
+<a id="more"></a>
+<h3 id="一、继承"><a href="#一、继承" class="headerlink" title="一、继承"></a>一、继承</h3><h4 id="1、什么是继承？"><a href="#1、什么是继承？" class="headerlink" title="1、什么是继承？"></a>1、什么是继承？</h4><p>继承，是面向对象软件技术中的一个概念，如果一个类别 A 继承自另一个类别 B ，就把这个 A 称为 “ B 的子类”，把 B 称为 “ A 的父类”。继承可以使子类具有父类的各种属性和方法，而不需要再次编写相同的代码。</p>
+<p>目前的编程主要分成三个流派：面向对象编程、函数式编程、其他。其中，面向对象编程中，有很多术语比如：类、对象（实例）、方法（函数）、继承（引用）、接口、协议、多态、反射等等。函数式编程中的术语包括：算子、 lambda 、柯里化、高阶函数、纯函数、副作用等等。其实他们只是将同一个东西使用不同的方式进行实现。</p>
+<p>JS 下有 window ，window 下有 window.Object() 、 window.Array() 、 window.Function() 函数，分别是用来创建对象、数组、函数，这三个函数分别有原型属性 Object.prototype(对象) 、 Array.prototype (对象)、 Function.prototype(对象)。此时，我们实例化一个对象 <code>let a = new Object()</code> ，那么 <code>a.toString()</code> 的时候，由于对象 a 上没有 toString() 方法，则会去 a 的原型 <code>a.__proto__</code> 上去寻找 toString() 方法，此时，这个对象拥有原型上的方法，看上去是 a 继承了原型上的方法，但是根据继承的定义，即继承是发生在类与类之间的，所以此处并不存在继承的关系。a 能够访问 toString() 是因为成员属性的关系，即原型链。</p>
+<p>那 Array.prototype 和 Object.prototype 有什么关系呢？我们都知道，不管是 Array 还是 Function ，他们的 <code>prototype.__proto__</code> 都指向 Oject.prototype ，即 <code>Array.prototype.__proto__ === Object.prototype</code>。</p>
+<p>那在 JS 里什么叫做继承？</p>
+<p>我们都知道，实现类的继承需要子类和父类，但是在 JS 中无类的概念，所以我们用子类函数和父类函数进行代替。根据以上例子，我们假设 Array 就是子类函数， Object 就是父类函数。那此时继承是子类构造出来的对象直接拥有父类的属性。举例来说：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let a = new 子类();</span><br><span class="line">a 拥有父类对象的属性</span><br><span class="line">子类继承了父类</span><br></pre></td></tr></table></figure></p>
+<p>我们以 Array 举例来说，<code>let arr = new Array()</code>，此时 arr 拥有方法 arr.push() 、 arr.pop() 等，全部继承自 <code>Arry.prototype</code>。 关系为：<code>arr.__proto__ === Array.prototype</code>，<code>Array.prototype.__proto__ === Object.prototype</code>，<code>Object.prototype.__proto__ === null</code>，当获取 arr.valueOf() 的值的时候，由于 Array 原型上没有 valueOf() 方法，所以就直接去 Object 的原型上去查找。所以在 JS 中，继承的实质就是两次的原型搜索。</p>
+<h4 id="2、ES5-实现"><a href="#2、ES5-实现" class="headerlink" title="2、ES5 实现"></a>2、ES5 实现</h4><p>在 ES6 出现前，尽管没有类的概念，我们还是能够通过原型链实现继承的功能。看代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function Human()&#123;</span><br><span class="line">  // Humane 类 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在 ES5 中，能产生对象的东西即为类。当我们实例化一个 Human 的时候，即 <code>var person = new Human()</code> 时，我们在控制台打印输出 person 可见其原型是 Object.prototype 。此时，可以认为 Human 是一个类。<br>下面写一个 Demo :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function Human(name)&#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Human.prototype.run = function()&#123;</span><br><span class="line">  console.log(&apos;Human run&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Man(name)&#123;</span><br><span class="line">  Human.call(this,name);</span><br><span class="line">  this.gender = &apos;男&apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Man.prototype.fight = function()&#123;</span><br><span class="line">  console.log(&apos;Man fight&apos;)</span><br><span class="line">&#125;</span><br><span class="line">Man.prototype.__proto__ = Human.prototype;</span><br><span class="line"></span><br><span class="line">let person = new Man(&apos;Summer&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>首先定义一个 Human 类，Human 类具有属性 name ，并且原型上具有方法 run 。 定义一个 Man 类， Man 具有属性 gender ，并且原型上具有方法 fight 。首先进行属性继承， Man 继承 Human 的 name ，只需要在 Man 中调用 Human ，并且传入 this 和 name 值即可。要继承 Human 的 run 方法，我门要做的是使 Man.prototype 的原型指向 Human 的原型，即 <code>Man.prototype.__proto__ = Human.prototype</code>。<br>注意：</p>
+<ul>
+<li>只有构造函数有 prototype 属性，作用是存放共有属性的地址</li>
+</ul>
+<p>以上有一个很重要的问题，IE 不支持 <code>Man.prototype.__proto__ = Human.prototype( 其实不支持的是 xxx.__proto__写法 )</code> 的写法。解决方法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var f = function()&#123;&#125;</span><br><span class="line">f.prototype = Human.prototype</span><br><span class="line">Man.prototype = new f();</span><br></pre></td></tr></table></figure></p>
+<p>这样一来，<code>Man,prototype.__proto__ === f.__proto__ === f.prototype === Human.prototype</code>。此处不可以直接使用 <code>Man.prototype.__proto__ = new Human()</code> 进行原型链的继承，因为 Human 中有属性 name ，而我们只想使用他的原型，所以此处引入了一个空的对象 f ，为了去掉 Human 的 name 书香，这样通过这个空的对象，我们就能使 <code>Man.prototype.__proto__</code> 指向了 <code>Human.prototype</code>。</p>
+<p>这里讲一下当 new 一个对象的时候<code>let obj = new Fn()</code>都做了什么：</p>
+<ul>
+<li>产生一个空对象</li>
+<li>this = 空对象</li>
+<li><code>this.__proto__=Fn.prototype</code></li>
+<li>执行 Fn.call(this,arguments)</li>
+<li>return this</li>
+</ul>
+<h4 id="3、ES6-实现"><a href="#3、ES6-实现" class="headerlink" title="3、ES6 实现"></a>3、ES6 实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Human(name)&#123;</span><br><span class="line">  constructor(name)&#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  run()&#123;</span><br><span class="line">    console.log(&apos;Human run&apos;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Man extends Human&#123;</span><br><span class="line">  constructor(name)&#123;</span><br><span class="line">    super(name)</span><br><span class="line">    this.gender = &apos;男&apos;</span><br><span class="line">  &#125;</span><br><span class="line">  fight()&#123;</span><br><span class="line">    console.log(&apos;Man fight&apos;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ES6 的继承，我们首先定义一个类 Human ，自身的属性我们可以写在 constructor 构造函数里面，共有属性可直接与 constructor 并列写在一起</p>
+<p>继承类的类 Man 通过关键字 extends 实现继承 ，相当于 JS 中执行代码 <code>Man.prototype.__proto__ = Human.prototype</code>。在 Man 的构造函数中， super 相当于调用 Human ，相当于 ES5 中的 <code>Human.call(this,name)</code></p>
+<p>以上，虽然 Man 已经声明了是 class ，但是在使用 <code>typeof Man</code> 时显示 Man 的类型仍然是 function。</p>
+<p>这种使用 class 实现继承的方法固然好，但是仍存在一些问题，比如我们要在 Human 原型中声明一个属性而不是方法的时候， class 不能为我们很好的实现。</p>
+<h3 id="二、mixin-、柯里化等常见属于"><a href="#二、mixin-、柯里化等常见属于" class="headerlink" title="二、mixin 、柯里化等常见属于"></a>二、mixin 、柯里化等常见属于</h3><h4 id="1、mixin"><a href="#1、mixin" class="headerlink" title="1、mixin"></a>1、mixin</h4><p>先看一下 mixin 的实现原理：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var mixin = function(a,b)&#123;</span><br><span class="line">  for(let key in b)&#123;</span><br><span class="line">    a[key] = b[key]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>mixin 实现的是将一个对象的属性复制给另一个对象。现在前端实现这个功能使用的方法是 <code>Object.assign(a,b)</code>，这样 b 的属性就赋给 a ，并且 a 保留了自身的属性，同时 b 的属性不会发生变化。</p>
+<h4 id="2、柯里化"><a href="#2、柯里化" class="headerlink" title="2、柯里化"></a>2、柯里化</h4><p>先讲一下函数，函数是一个元素对另一个元素的映射，可以理解为 <code>y = f(x)</code> 。复杂一点的话，出现了 <code>x,y） -&gt; z</code> ，即 <code>z = f(x,y)</code> 。紧接着，如果 x ，y 中的某一个值为固定为常数，即 <code>f(x,y)</code> 变成 <code>f(1,y)</code>，写成 <code>g(y)</code>，那么我们可以认为 <code>g(y)</code> 为偏函数。柯里化就是把关于 x 、 y 的函数中的 x (或 y) 参数固定下来，得到新的关于 y (或 x) 的函数，这个过程叫做柯里化。其中参数的数量可以为多个。</p>
+<p>用代码举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let f = function(x,y)&#123;</span><br><span class="line">  return x + 2*y</span><br><span class="line">&#125;</span><br><span class="line">let g = function(y)&#123;</span><br><span class="line">  return f(1,y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上，在调用 <code>f(1,2)</code>、<code>g(2)</code>得到的结果是一样的。<br>再举个例子，比如说写个函数 <code>add(1)(2)</code> ，得到的结果是 3 ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let f = function(x)&#123;</span><br><span class="line">  return function(y)&#123;</span><br><span class="line">    return x+y</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Demo:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var cache = [];</span><br><span class="line">var add = function(n)&#123;</span><br><span class="line">  if(n===undefined)&#123;</span><br><span class="line">    return cache.reduce((p,n) =&gt; p+n,0)</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    cache.push(n)</span><br><span class="line">    return add</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在执行 <code>add(1)(2)(3)(4)</code>时最后返回 10 。以上两个例子其实都是柯里化的一种，我们会在函数中传递很多个参数进去，但是会逐一固定其中的某一个值进行处理，参考最初介绍的偏函数。<br><!-- 但是在 JS 中我们更习惯这么写 `add(x,y,z ....)`，那如何实现将一个函数变成一个偏函数呢？
+自动将函数变成偏函数的函数 --></p>
+<h4 id="3、高阶函数"><a href="#3、高阶函数" class="headerlink" title="3、高阶函数"></a>3、高阶函数</h4><p>先看定义：<br>高阶函数是至少满足下列一个条件的函数：</p>
+<ul>
+<li>接受一个或多个函数作为输入</li>
+<li>输出一个函数</li>
+</ul>
+<p>相关面试题（react）：</p>
+<ul>
+<li>什么是高阶组件？即一个组件接受一个组件并返回一个组件就是高阶组件，详情再看下文档吧</li>
+</ul>
+<h3 id="三、Web-性能优化"><a href="#三、Web-性能优化" class="headerlink" title="三、Web 性能优化"></a>三、Web 性能优化</h3><h4 id="1、什么是-Web-性能优化"><a href="#1、什么是-Web-性能优化" class="headerlink" title="1、什么是 Web 性能优化"></a>1、什么是 Web 性能优化</h4><p>以用户为例，如果用户觉得打开你的网站加载很快，那么可以称之为 Web 性能优化。</p>
+<h4 id="2、在搜索栏输入-url-按下回车后都发生了什么？"><a href="#2、在搜索栏输入-url-按下回车后都发生了什么？" class="headerlink" title="2、在搜索栏输入 url 按下回车后都发生了什么？"></a>2、在搜索栏输入 url 按下回车后都发生了什么？</h4><ul>
+<li>缓存 ： 查看是否有缓存</li>
+<li>DNS 查询</li>
+<li>建立 TCP 连接（三次握手）</li>
+<li>发送 HTTP 请求  Etag -&gt; 开始后台处理</li>
+<li>接收响应</li>
+<li>接受完成 -&gt; HTML -&gt; 解析 HTML</li>
+<li>根据 Doctype 进行文件解析</li>
+<li>逐行解析（阅读）</li>
+<li>看到 html 标签后，chrome 会在所有的样式下载完之后再去渲染标签，以防止 css 将标签隐藏，而 FF 的渲染机制正好相反。也就是说 css 的解析会阻塞 html 的渲染</li>
+<li>看到 CSS 进行下载，css 的下载可以同时进行，chrome 最多可同时下载 8 个 css 文件，IE 可同时下载 4 个 css 文件。下在 css 是并行的，解析 css 是串行的</li>
+<li>看 JS ，并行下载，串行解析。会阻塞 HTML 渲染</li>
+</ul>
+<h4 id="3、开始优化"><a href="#3、开始优化" class="headerlink" title="3、开始优化"></a>3、开始优化</h4><p>根据以上的 11 个步骤，我们开始进行优化。</p>
+<h5 id="1-DNS-查询"><a href="#1-DNS-查询" class="headerlink" title="1) DNS 查询"></a>1) DNS 查询</h5><p>DNS 查询无法优化其查询过程，但是可优化其数量，如减少 DNS 查询。比如我们请求 <code>www.a.com/index.html</code> ，他的 css 是在 CDN 上的，需要对地址 <code>cdn.com/a/b.css</code> 进行请求。为了减少 DNS 查询，可以将 css 资源放在 <code>www.a.com</code> 下。</p>
+<h5 id="2-TCP-连接"><a href="#2-TCP-连接" class="headerlink" title="2) TCP 连接"></a>2) TCP 连接</h5><p>TCP 连接复用，在 HTTP 请求头中添加 <code>keep-alive</code>，那么服务器就会尽量去复用这个 TCP 连接，也就是说第一次建立连接之后，不断开连接，在进行第二次请求的时候直接复用之前的连接即可。</p>
+<p>如果使用了 HTTP 2.0 版本，其连接复用率是较高的，为多路复用。</p>
+<h5 id="3-发送请求"><a href="#3-发送请求" class="headerlink" title="3)发送请求"></a>3)发送请求</h5><ul>
+<li>请求一共分为四个部分，请求行、请求头。请求头减少 cookie 体积。</li>
+<li>使用 <code>CacheControl</code> 减少发送请求的次数。</li>
+<li>同时发送多个请求（不需要人为操作，浏览器会自己进行并行请求多个文件）</li>
+<li>同一个域名下同时能够发送 4-8 个请求，所以可以将 css 和 js 放在不同的 CDN 下，这样并行的下载文件个数由 4-8 增加到 8-16。这样跟 DNS 优化方案看起来背道而驰。那如何权衡二者的关系呢？如果项目文件很少的情况下，我们可以将所有资源放在同一个域名下，文件较多的情况下可放在不同 CDN 下进行请求。并且 CDN 的请求是不会带上 cookie 的，所以其 cookie 的大小为 0 ，也会加速请求</li>
+</ul>
+<h5 id="4-接收响应"><a href="#4-接收响应" class="headerlink" title="4) 接收响应"></a>4) 接收响应</h5><ul>
+<li>使用 Etag ，如果请求返回的是 304 (not modified)，那么我们接收请求的体积特别小。</li>
+<li>使用 Gzip 压缩 css js img文件，然后发送到浏览器再进行解压缩</li>
+</ul>
+<h5 id="5-DOCTYPE"><a href="#5-DOCTYPE" class="headerlink" title="5) DOCTYPE"></a>5) DOCTYPE</h5><p>DOCTYPE 一定要写，否则的话浏览器需要去判断需要解析的文件为什么类型，也是会增加渲染时间或者渲染错误</p>
+<h5 id="6-渲染标签"><a href="#6-渲染标签" class="headerlink" title="6) 渲染标签"></a>6) 渲染标签</h5><p>减少无用标签，影响较小</p>
+<h5 id="7-合并资源"><a href="#7-合并资源" class="headerlink" title="7) 合并资源"></a>7) 合并资源</h5><p>合并 css / js 资源，增大文件减少请求次数</p>
+<h5 id="8）-首屏加载"><a href="#8）-首屏加载" class="headerlink" title="8） 首屏加载"></a>8） 首屏加载</h5><p>如果网站需要请求特别多的图片资源、样式和 js ，可以使用首屏加载，加快展示首屏的速度，在页面滚动的时候加载将要展示的资源或者使用 loading 动画以增加用户的等候时间。</p>
+<hr>
+<p>综上，性能优化的方案之一是增加 CDN 来增加并行的下载数量，以达到最快下载。CSS 放在 head 中加载，JS 放在 body 闭合标签前加载</p>
+<p>推荐看一下雅虎前端优化35条。</p>
+<h4 id="4、如何测试优化效果"><a href="#4、如何测试优化效果" class="headerlink" title="4、如何测试优化效果"></a>4、如何测试优化效果</h4><p>在 chrome 浏览器控制台中，有 Audit ，点击运行，控制台会将需要优化的部分展示出来。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript-继承/" rel="tag"># JavaScript 继承</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/13/Vue-之-路由/" rel="next" title="Vue 之 路由">
+                <i class="fa fa-chevron-left"></i> Vue 之 路由
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNjMzNy8xMjg3Mg=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Summer</p>
+              <p class="site-description motion-element" itemprop="description">yanjun|闫俊|summer|HappyJeannie|Happjeannie|html|css|html5|css3|javascript|vue|webpack|node|java|chart|d3|响应式|h5</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、继承"><span class="nav-number">1.</span> <span class="nav-text">一、继承</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、什么是继承？"><span class="nav-number">1.1.</span> <span class="nav-text">1、什么是继承？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、ES5-实现"><span class="nav-number">1.2.</span> <span class="nav-text">2、ES5 实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、ES6-实现"><span class="nav-number">1.3.</span> <span class="nav-text">3、ES6 实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、mixin-、柯里化等常见属于"><span class="nav-number">2.</span> <span class="nav-text">二、mixin 、柯里化等常见属于</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、mixin"><span class="nav-number">2.1.</span> <span class="nav-text">1、mixin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、柯里化"><span class="nav-number">2.2.</span> <span class="nav-text">2、柯里化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、高阶函数"><span class="nav-number">2.3.</span> <span class="nav-text">3、高阶函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、Web-性能优化"><span class="nav-number">3.</span> <span class="nav-text">三、Web 性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、什么是-Web-性能优化"><span class="nav-number">3.1.</span> <span class="nav-text">1、什么是 Web 性能优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、在搜索栏输入-url-按下回车后都发生了什么？"><span class="nav-number">3.2.</span> <span class="nav-text">2、在搜索栏输入 url 按下回车后都发生了什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、开始优化"><span class="nav-number">3.3.</span> <span class="nav-text">3、开始优化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-DNS-查询"><span class="nav-number">3.3.1.</span> <span class="nav-text">1) DNS 查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-TCP-连接"><span class="nav-number">3.3.2.</span> <span class="nav-text">2) TCP 连接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-发送请求"><span class="nav-number">3.3.3.</span> <span class="nav-text">3)发送请求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-接收响应"><span class="nav-number">3.3.4.</span> <span class="nav-text">4) 接收响应</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-DOCTYPE"><span class="nav-number">3.3.5.</span> <span class="nav-text">5) DOCTYPE</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-渲染标签"><span class="nav-number">3.3.6.</span> <span class="nav-text">6) 渲染标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-合并资源"><span class="nav-number">3.3.7.</span> <span class="nav-text">7) 合并资源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8）-首屏加载"><span class="nav-number">3.3.8.</span> <span class="nav-text">8） 首屏加载</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、如何测试优化效果"><span class="nav-number">3.4.</span> <span class="nav-text">4、如何测试优化效果</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Summer</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.4.2</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
