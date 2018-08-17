@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="关于 ES6 中对象语法增强。">
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6 - 创建对象">
+<meta property="og:url" content="http://yoursite.com/2018/08/17/ES6-创建对象/index.html">
+<meta property="og:site_name" content="Summer&#39;s blog">
+<meta property="og:description" content="关于 ES6 中对象语法增强。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-17T08:47:30.447Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6 - 创建对象">
+<meta name="twitter:description" content="关于 ES6 中对象语法增强。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/17/ES6-创建对象/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ES6 - 创建对象 | Summer's blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Summer's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">A front-end developer‘s knowledge home</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/17/ES6-创建对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Summer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Summer's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6 - 创建对象
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-17 15:23:18 / 修改时间：16:47:30" itemprop="dateCreated datePublished" datetime="2018-08-17T15:23:18+08:00">2018-08-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>关于 ES6 中对象语法增强。</p>
+<a id="more"></a>
+<h3 id="一、初始化对象"><a href="#一、初始化对象" class="headerlink" title="一、初始化对象"></a>一、初始化对象</h3><ul>
+<li>new Object()</li>
+<li>Object.create()</li>
+<li>字面量标记法</li>
+</ul>
+<p>可使用以上三种方法初始化一个对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let a = new Object();             // ES5 方法</span><br><span class="line">let b = Object.create(null);      // ES6 新增</span><br><span class="line">let c = Object.create(Object.prototype)   // 这种写法等价于 ES5 的声明方法</span><br><span class="line">let c = &#123;&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>其中，a 、 c 声明完成后，无任何属性，其原型为 <code>Object.prototype</code>，而 ES6 的声明方式会生成一个无任何属性也无任何原型的空对象。但是如果调用 <code>b.__proto__</code> 、 <code>b.toString()</code> 仍会返回对象原型上的方法。</p>
+<p>相比于 ES5 ，ES6 的对象更严格。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let a = 1;</span><br><span class="line">let b = 2;</span><br><span class="line">let objES5 = &#123;</span><br><span class="line">  a:a,</span><br><span class="line">  b:b</span><br><span class="line">&#125;</span><br><span class="line">let objES6 = &#123;</span><br><span class="line">  a,</span><br><span class="line">  b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<!-- 以上代码在 ES5 中，obj.a 会使用最后一个值，在 ES6 中则会报错。 -->
+<p>以上代码实现的效果一样。</p>
+<h3 id="二、ES6-ES5-对比"><a href="#二、ES6-ES5-对比" class="headerlink" title="二、ES6 | ES5 对比"></a>二、ES6 | ES5 对比</h3><h4 id="1、动态使用-key"><a href="#1、动态使用-key" class="headerlink" title="1、动态使用 key"></a>1、动态使用 key</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">let name = &apos;a&apos;;   // 我想得到 obj=&#123;a:1&#125;，如果使用 let obj = &#123;  name : 1&#125; 那么键名只能是 name ， ES5 的做法是：</span><br><span class="line">let obj = &#123;&#125;;</span><br><span class="line">obj[name] = 1;      // 此时，obj = &#123; a : 1&#125;;</span><br><span class="line">// 而 ES6 的实现方法为</span><br><span class="line">let obj2 = &#123;</span><br><span class="line">  [name] : 1</span><br><span class="line">&#125;</span><br><span class="line">// 此方法为动态属性名，还可实现如下操作：</span><br><span class="line">let a = 2;</span><br><span class="line">let obj3 = &#123;</span><br><span class="line">  [a*a + a / 2 + a/3] : 1</span><br><span class="line">&#125;         </span><br><span class="line">// obj 为 &#123;5.666666667:1&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2、浅拷贝和深拷贝"><a href="#2、浅拷贝和深拷贝" class="headerlink" title="2、浅拷贝和深拷贝"></a>2、浅拷贝和深拷贝</h4><p>写一个小 Demo ， 如何实现 <code>a==1&amp;&amp;a==1&amp;a==3</code> 为 true<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let i = 0;</span><br><span class="line">Object.defineProperty(window,&apos;a&apos;,&#123;</span><br><span class="line">	get()&#123;</span><br><span class="line">		i++;</span><br><span class="line">		return i;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line">a==1&amp;&amp;a==1&amp;a==3   // 此时为 true</span><br></pre></td></tr></table></figure></p>
+<p>在对象中，浅拷贝的意思是通过某些操作将 obj1 的值赋值给 obj2 ，当改变 obj2 中的某一属性时，obj1 也会随之改变，因为本质上他们时同个对象，这就是浅拷贝。而深拷贝两个对象之间的修改不会对另外一个对象产生任何影响。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">let obj1 = &#123;</span><br><span class="line">  a : 1,</span><br><span class="line">  b : 100</span><br><span class="line">&#125;</span><br><span class="line">let obj2 = obj1;</span><br><span class="line">obj2.a = 100;     // 此时 obj1.a === 100  为 true</span><br><span class="line">// 为了解决这个问题，在 ES5 中常用的做法是：</span><br><span class="line">let obj3 = &#123;&#125;;</span><br><span class="line">for(let key in obj1)&#123;</span><br><span class="line">  obj3[key] = obj1[key]</span><br><span class="line">&#125;</span><br><span class="line">// 这样 obj3 的值的修改不会影响到 obj1 的值</span><br><span class="line"></span><br><span class="line">// 这样循环对象的方式很麻烦，在 ES6 中的实现方式为：</span><br><span class="line">let obj4 = Object.assign(&#123;&#125;,obj1);</span><br><span class="line"></span><br><span class="line">// 更加精简的方法：</span><br><span class="line">let obj5 = &#123;...obj1&#125;</span><br><span class="line"></span><br><span class="line">// 再来个更炫的定义方法</span><br><span class="line">let aa = 11;</span><br><span class="line">let bb = 22;</span><br><span class="line">let obj6 = &#123;...obj1,...obj2,...obj3,aa,bb,get x()&#123;return &apos;hi&apos;&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>由于 obj1 、obj2 、obj3 中都含有 a 、 b 的值，所以谁在后面就使用谁的值。</p>
+<h4 id="3、变更原型"><a href="#3、变更原型" class="headerlink" title="3、变更原型"></a>3、变更原型</h4><p>我们使用 ES6 声明一个对象的时候，<code>let a = Object.create()</code> ，在控制台输出 a 发现其中什么都没有，包括原型也是没有的，但是调用 <code>a.__proto__</code> 、 <code>a.valueOf()</code> 都是能访问的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let b = &#123;</span><br><span class="line">  sayHi:function()&#123;</span><br><span class="line">    console.log(&apos;hi&apos;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let a = Object.create(b);</span><br></pre></td></tr></table></figure></p>
+<p>此时 <code>a.__proto__ === b</code> 为真，即将 a 的原型赋值为对象 b 。在 ES6 中不推荐直接访问 <code>a.__proto__</code> 而是使用 <code>Object.getProperty(a)</code> 来获得。</p>
+<h3 id="三、Object-defineProperty"><a href="#三、Object-defineProperty" class="headerlink" title="三、Object.defineProperty()"></a>三、<code>Object.defineProperty()</code></h3><p><code>Object.defineProperty()</code> 的作用是对已经定义了 <code>get</code> 、<code>set</code> 方法的对象或者未定义需要修改 <code>get</code> 、<code>set</code> 方法的对象进行重新定义。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var function          // 报错，function 为关键字</span><br><span class="line">var null              // 报错，null 为关键字</span><br><span class="line">var this              // 报错，this 为关键字</span><br><span class="line">var undefined = 1     // 未报错</span><br><span class="line">undefined             // 尽管已经赋值，但是仍返回 undefined</span><br></pre></td></tr></table></figure></p>
+<p>出现以上问题的原因主要因为 <code>undefined</code> 是 window 的只读属性。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag"># ES6</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/17/ES6-生成器/" rel="next" title="ES6 - 生成器">
+                <i class="fa fa-chevron-left"></i> ES6 - 生成器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNjMzNy8xMjg3Mg=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Summer</p>
+              <p class="site-description motion-element" itemprop="description">yanjun|闫俊|summer|HappyJeannie|Happjeannie|html|css|html5|css3|javascript|vue|webpack|node|java|chart|d3|响应式|h5</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、初始化对象"><span class="nav-number">1.</span> <span class="nav-text">一、初始化对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、ES6-ES5-对比"><span class="nav-number">2.</span> <span class="nav-text">二、ES6 | ES5 对比</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、动态使用-key"><span class="nav-number">2.1.</span> <span class="nav-text">1、动态使用 key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、浅拷贝和深拷贝"><span class="nav-number">2.2.</span> <span class="nav-text">2、浅拷贝和深拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、变更原型"><span class="nav-number">2.3.</span> <span class="nav-text">3、变更原型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、Object-defineProperty"><span class="nav-number">3.</span> <span class="nav-text">三、Object.defineProperty()</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Summer</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.4.2</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
